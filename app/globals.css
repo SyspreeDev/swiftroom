@@ -1,3 +1,18 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 25s linear infinite;
+}
+
+
 @import "tailwindcss";
 
 :root {
@@ -8,8 +23,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +35,104 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Ensure the container allows the center slide to grow upwards/downwards */
+.main-video-swiper {
+  padding: 100px 0 !important; /* Extra padding for increased height */
+  overflow: visible !important;
+  align-items: center;
+}
+
+/* BASE STATE: Small/Side Slides */
+.main-slide-item {
+  /* Increased height for the cards */
+  height: 500px !important; 
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform: scale(0.7); /* Side slides are smaller */
+  filter: brightness(0.4);
+  opacity: 0.6;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .main-slide-item {
+    height: 420px !important; /* Even taller on desktop */
+    width: 250px !important;
+  }
+}
+
+.video-container {
+  width: 350px !important;
+  height: 100%;
+  position: relative;
+  background: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  align-items: center;
+}
+
+/* CENTER SLIDE: Large/Active */
+.swiper-slide-active.main-slide-item {
+  transform: scale(1.2) !important; /* Grows bigger than sides */
+  filter: brightness(1);
+  opacity: 1;
+  z-index: 50;
+}
+
+/* IMMEDIATE NEIGHBORS: Medium Scale */
+.swiper-slide-next.main-slide-item,
+.swiper-slide-prev.main-slide-item {
+  transform: scale(0.9) !important;
+  filter: brightness(0.7);
+  opacity: 0.9;
+  z-index: 20;
+}
+
+/* Reset the wrapper timing so it isn't linear anymore */
+.swiper-wrapper {
+  transition-timing-function: ease-out !important;
+  align-items: center;
+}
+
+/* Play Button Styling */
+.play-btn-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-triangle-shape {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-left: 20px solid black;
+  border-bottom: 12px solid transparent;
+  margin-left: 5px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
 }
