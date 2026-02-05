@@ -22,7 +22,7 @@ export default function Hero() {
       {/* ===== Content ===== */}
       <div className="relative z-10 max-w-[1300px] mx-auto h-full flex items-center px-4">
 
-        <div className="max-w-xl text-white text-center sm:text-left">
+        <div className="max-w-xl text-white">
 
           {/* Title */}
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug sm:leading-tight">
@@ -33,24 +33,24 @@ export default function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base text-gray-200 leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base text-gray-200 leading-relaxed max-w-lg">
             Designing immersive environments that leave a lasting impression
             of excellence.
           </p>
 
           {/* Buttons */}
-          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
 
             {/* Primary */}
             <Link href="/bookshowroom">
-              <button className="w-full sm:w-auto bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-md text-sm font-medium">
+              <button className="bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-md text-sm font-medium">
                 Book Showroom Visit
               </button>
             </Link>
 
             {/* Secondary */}
             <Link href="/getaquote">
-              <button className="w-full sm:w-auto bg-white hover:bg-gray-100 transition text-gray-900 px-6 py-3 rounded-md text-sm font-medium">
+              <button className="bg-white hover:bg-gray-100 transition text-gray-900 px-6 py-3 rounded-md text-sm font-medium">
                 Get a Quote
               </button>
             </Link>
