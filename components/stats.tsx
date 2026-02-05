@@ -57,7 +57,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section className="py-16 bg-[#fff]">
+    <section className="py-8 pb-20 bg-[#fff]">
 
       <div className="max-w-6xl mx-auto px-6">
 
