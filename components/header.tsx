@@ -71,7 +71,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-8 text-[14px] text-gray-800 font-medium whitespace-nowrap">
+<nav className="hidden md:flex items-center gap-8 text-[14px] text-gray-800 font-medium whitespace-nowrap absolute left-1/2 -translate-x-1/2">
 
             {links.map((item) => {
 

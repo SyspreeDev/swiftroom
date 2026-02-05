@@ -31,12 +31,17 @@ export default function About() {
         <div>
 
           {/* About Label */}
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-[#0B6F63] font-semibold tracking-widest text-xl">
-              ABOUT US
-            </span>
-            <span className="w-16 h-[2px] bg-[#0B6F63]" />
-          </div>
+          <div className="inline-flex flex-col items-start">
+
+  <p className="text-[#0B6F63] tracking-[0.2em] text-xl font-medium">
+    ABOUT US
+  </p>
+
+  {/* Short Animated Line */}
+  <span className="mt-1 h-[3px] w-25 bg-[#0B6F63] animate-underline mb-6"></span>
+
+</div>
+
 
           {/* Title */}
           <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-gray-900 mb-4">
@@ -69,7 +74,7 @@ export default function About() {
 
           {/* Button */}
           <Link href="/getaquote">
-          <button className="bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-md text-sm font-medium mt-8">
+          <button className="w-full sm:w-[210px] bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg mt-8">
     Submit Enquiry
   </button>
   </Link>

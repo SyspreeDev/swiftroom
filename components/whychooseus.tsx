@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+
 
 import {
   Award,
@@ -25,33 +27,62 @@ export default function WhyChooseUs() {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-18 text-black">
 
-          {/* Card 1 */}
-          <FeatureCard
-            icon={<Award size={50} />}
-            title="Experienced & Trusted Expertise"
-            desc="With over 14+ years in business and 3,500+ completed projects in the UAE, we bring unmatched experience and reliability to every installation."
-          />
+{/* Card 1 */}
+<FeatureCard
+  icon={
+    <Image
+      src="/images/icons/medal.png"
+      alt="Experience"
+      width={50}
+      height={50}
+    />
+  }
+  title="Experienced & Trusted Expertise"
+  desc="With over 14+ years in business and 3,500+ completed projects in the UAE, we bring unmatched experience and reliability to every installation."
+/>
 
-          {/* Card 2 */}
-          <FeatureCard
-            icon={<Gem size={50} />}
-            title="Premium Quality Materials & Craftsmanship"
-            desc="We use high-end aluminium, uPVC, and glazing systems designed to withstand the UAE climate while ensuring lasting durability and performance."
-          />
+{/* Card 2 */}
+<FeatureCard
+  icon={
+    <Image
+      src="/images/icons/diamond.png"
+      alt="Premium Quality"
+      width={50}
+      height={50}
+    />
+  }
+  title="Premium Quality Materials & Craftsmanship"
+  desc="We use high-end aluminium, uPVC, and glazing systems designed to withstand the UAE climate while ensuring lasting durability and performance."
+/>
 
-          {/* Card 3 */}
-          <FeatureCard
-            icon={<UserCheck size={50} />}
-            title="Customer-Centric Approach"
-            desc="From consultation to installation and aftercare, our team of experts ensures a seamless, tailored experience that exceeds expectations."
-          />
+{/* Card 3 */}
+<FeatureCard
+  icon={
+    <Image
+      src="/images/icons/customer.png"
+      alt="Customer Focus"
+      width={50}
+      height={50}
+    />
+  }
+  title="Customer-Centric Approach"
+  desc="From consultation to installation and aftercare, our team of experts ensures a seamless, tailored experience that exceeds expectations."
+/>
 
-          {/* Card 4 */}
-          <FeatureCard
-            icon={<Leaf size={50} />}
-            title="Sustainable & Energy-Efficient Solutions"
-            desc="Our products are engineered for thermal efficiency and reduced energy use, aligning with green building standards for comfort and lower running costs."
-          />
+{/* Card 4 */}
+<FeatureCard
+  icon={
+    <Image
+      src="/images/icons/leaf.png"
+      alt="Sustainable Solutions"
+      width={50}
+      height={50}
+    />
+  }
+  title="Sustainable & Energy-Efficient Solutions"
+  desc="Our products are engineered for thermal efficiency and reduced energy use, aligning with green building standards for comfort and lower running costs."
+/>
+
 
         </div>
 
@@ -60,15 +91,15 @@ export default function WhyChooseUs() {
 
           {/* Primary */}
           <Link href="/bookshowroom">
-          <button className="bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-8 py-3 rounded-full text-sm font-medium">
+          <button className="w-full sm:w-[210px] bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
             Book Showroom Visit
           </button>
           </Link>
 
           {/* Secondary */}
           <Link href="/getaquote">
-          <button className="border border-[#0B6F63] text-[#0B6F63] hover:bg-[#0B6F63] hover:text-white transition px-8 py-3 rounded-full text-sm font-medium">
-            Submit Enquiry
+          <button className="w-full sm:w-[210px] bg-white border border-[#0B6F63] text-[#0B6F63] hover:bg-[#0B6F63] hover:text-white transition px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
+            Get a Quote
           </button>
           </Link>
 

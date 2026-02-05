@@ -39,23 +39,24 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+<div className="mt-6 sm:mt-8 flex flex-wrap gap-4">
 
-            {/* Primary */}
-            <Link href="/bookshowroom">
-              <button className="bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-md text-sm font-medium">
-                Book Showroom Visit
-              </button>
-            </Link>
+  {/* Primary */}
+  <Link href="/bookshowroom" className="w-full sm:w-auto">
+    <button className="w-full sm:w-[210px] bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
+      Book Showroom Visit
+    </button>
+  </Link>
 
-            {/* Secondary */}
-            <Link href="/getaquote">
-              <button className="bg-white hover:bg-gray-100 transition text-gray-900 px-6 py-3 rounded-md text-sm font-medium">
-                Get a Quote
-              </button>
-            </Link>
+  {/* Secondary */}
+  <Link href="/getaquote" className="w-full sm:w-auto">
+    <button className="w-full sm:w-[210px] bg-white border border-[#0B6F63] text-[#0B6F63] hover:bg-[#0B6F63] hover:text-white transition px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
+      Get a Quote
+    </button>
+  </Link>
 
-          </div>
+</div>
+
 
         </div>
 

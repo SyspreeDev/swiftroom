@@ -377,7 +377,7 @@ export default function ContactSection() {
               <button
                 disabled={loading}
                 type="submit"
-                className="bg-[#008970] text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-[#007a63] transition disabled:opacity-50"
+                className="w-full sm:w-[210px] bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg mt-6"
               >
                 {loading ? "Submitting..." : "Submit"}
               </button>

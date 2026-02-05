@@ -112,14 +112,14 @@ export default function Install() {
 
           {/* Primary */}
           <Link href="/bookshowroom">
-          <button className="bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-8 py-3 rounded-full text-sm font-medium">
+          <button className="w-full sm:w-[210px] bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
             Book Showroom Visit
           </button>
           </Link>
 
           {/* Secondary */}
           <Link href="/getaquote">
-          <button className="border border-[#0B6F63] text-[#0B6F63] hover:bg-[#0B6F63] hover:text-white transition px-8 py-3 rounded-full text-sm font-medium">
+          <button className="w-full sm:w-[210px] bg-white border border-[#0B6F63] text-[#0B6F63] hover:bg-[#0B6F63] hover:text-white transition px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
             Submit Enquiry
           </button>
           </Link>

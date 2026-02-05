@@ -125,7 +125,7 @@ const VideoCarousel = () => {
 
         <Link href="/getaquote">
 
-          <button className="bg-white hover:bg-gray-100 transition text-[#008873] px-8 py-3 rounded-full text-sm md:text-base font-medium shadow-lg">
+          <button className="w-full sm:w-[210px] bg-white border border-[#0B6F63] text-[#0B6F63]  transition px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg">
             Get a Quote
           </button>
 

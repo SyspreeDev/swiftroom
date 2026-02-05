@@ -154,3 +154,17 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
 }
+
+
+@keyframes underlineGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 3rem; /* same as w-12 */
+  }
+}
+
+.animate-underline {
+  animation: underlineGrow 0.8s ease-out forwards;
+}
