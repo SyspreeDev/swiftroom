@@ -163,12 +163,10 @@ export default function Footer() {
 
             </div>
 
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 bg-white text-[#0B6F63] px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition w-fit"
-            >
-              Contact Us →
-            </Link>
+            <a href={isHome ? "#contact" : "/#contact"}
+              className="inline-flex items-center gap-2 bg-white text-[#0B6F63] px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition w-fit" >
+               Contact Us →
+            </a>
 
           </div>
 
