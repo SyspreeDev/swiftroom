@@ -1,8 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <header className="w-full font-poppins">
 
@@ -15,10 +22,13 @@ export default function Header() {
           <div className="flex items-center gap-6">
 
             {/* Email */}
-            <div className="flex items-center gap-2">
+            <a
+              href="mailto:hello@swiftrooms.ae"
+              className="flex items-center gap-2 transition"
+            >
               <Mail size={14} />
               <span>hello@swiftrooms.ae</span>
-            </div>
+            </a>
 
             {/* Location */}
             <div className="flex items-center gap-2">
@@ -43,61 +53,50 @@ export default function Header() {
 
           {/* Logo (Left) */}
           <div className="flex items-center">
-            <Link
-              href="/">
 
-              
-            <Image
-              src="/images/logo.png"
-              alt="SwiftRooms"
-              width={150}
-              height={40}
-              className="object-contain"
-            />
+            <Link href="/">
+
+              <Image
+                src="/images/logo.png"
+                alt="SwiftRooms"
+                width={150}
+                height={40}
+                className="object-contain"
+              />
+
             </Link>
+
           </div>
 
           {/* Menu (Center) */}
-<nav className="hidden md:flex justify-center items-center gap-8 text-[14px] text-gray-800 font-medium whitespace-nowrap">
+          <nav className="hidden md:flex justify-center items-center gap-8 text-[14px] text-gray-800 font-medium whitespace-nowrap">
 
-            <Link
-              href="/"
-              className="hover:text-[#0B6F63] transition"
-            >
-              Home
-            </Link>
+            {[
+              { name: "Home", id: "home" },
+              { name: "About us", id: "about" },
+              { name: "Projects", id: "projects" },
+              { name: "Services", id: "services" },
+              { name: "Testimonials", id: "testimonials" },
+            ].map((item) => {
 
-            <Link
-              href="/about"
-              className="hover:text-[#0B6F63] transition"
-            >
-              About us
-            </Link>
+              const href = isHome
+                ? `#${item.id}`
+                : `/#${item.id}`;
 
-            <Link
-              href="/products"
-              className="hover:text-[#0B6F63] transition"
-            >
-              Products
-            </Link>
-
-            <Link
-              href="/services"
-              className="hover:text-[#0B6F63] transition"
-            >
-              Services
-            </Link>
-
-            <Link
-              href="/testimonials"
-              className="hover:text-[#0B6F63] transition"
-            >
-              Testimonials
-            </Link>
+              return (
+                <a
+                  key={item.name}
+                  href={href}
+                  className="hover:text-[#0B6F63] transition"
+                >
+                  {item.name}
+                </a>
+              );
+            })}
 
           </nav>
 
-          {/* Right Empty Space (For Balance) */}
+          {/* Mobile Menu Button */}
           <div className="flex justify-end md:hidden">
             <button className="text-2xl text-gray-800">
               ☰
@@ -105,6 +104,7 @@ export default function Header() {
           </div>
 
         </div>
+
       </div>
 
     </header>

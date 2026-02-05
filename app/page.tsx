@@ -25,22 +25,53 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <Brands />
-      <About />      
-      <Install />
-      <WhyChoose />
-      <VideoCarousel />
-      <Gallery />
-      <WhyChooseUs />
-      <Testimonials />
-      <Faq />
-      <Stats />
-      <ContactSection />
+
+      <section id="home">
+        <Hero />
+      </section>
+
+      <section id="brands">
+        <Brands />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="services">
+        <Install />
+        <WhyChoose />
+      </section>
+
+       <VideoCarousel />
+
+      <section id="projects">
+       
+        <Gallery />
+      </section>
+
+      <section id="whyus">
+        <WhyChooseUs />
+      </section>
+
+      <section id="testimonials">
+        <Testimonials />
+      </section>
+
+      <section id="faq">
+        <Faq />
+      </section>
+
+      <section id="stats">
+        <Stats />
+      </section>
+
+      <section id="contact">
+        <ContactSection />
+      </section>
+
       <Footer />
-
-
-
     </>
   );
 }
+

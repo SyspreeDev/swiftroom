@@ -111,7 +111,7 @@ export default function Install() {
         <div className="flex flex-wrap justify-center gap-4">
 
           {/* Primary */}
-          <Link href="/showroom">
+          <Link href="/bookshowroom">
           <button className="bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-8 py-3 rounded-full text-sm font-medium">
             Book Showroom Visit
           </button>
