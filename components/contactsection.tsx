@@ -24,8 +24,9 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  /* 👉 Added pr-12 for select arrows */
   const inputStyle =
-    "w-full border border-gray-300 rounded-md px-4 py-2 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#008970] focus:border-[#008970]";
+    "w-full border border-gray-300 rounded-md px-4 py-2 pr-12 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#008970] focus:border-[#008970]";
 
 
   /* ---------------- HANDLE CHANGE ---------------- */
@@ -40,13 +41,9 @@ export default function ContactSection() {
     if (type === "checkbox") {
       const input = e.target as HTMLInputElement;
 
-      // Terms checkbox
       if (name === "agree") {
         setForm({ ...form, agree: input.checked });
-      }
-
-      // Products checkbox
-      else {
+      } else {
         const updated = input.checked
           ? [...form.products, value]
           : form.products.filter((p) => p !== value);
@@ -116,12 +113,10 @@ export default function ContactSection() {
     setLoading(true);
     setSuccess(false);
 
-    // Simulate API request
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
 
-      // Reset form
       setForm({
         name: "",
         phone: "",
@@ -227,7 +222,7 @@ export default function ContactSection() {
 
 
               {/* Role */}
-              <div>
+              <div >
                 <select
                   name="role"
                   value={form.role}
@@ -369,7 +364,7 @@ export default function ContactSection() {
               <button
                 disabled={loading}
                 type="submit"
-                className="w-full sm:w-[210px] bg-[#0B6F63] hover:bg-[#095b52] transition text-white px-6 py-3 rounded-[10px] text-sm font-medium shadow-md hover:shadow-lg mt-6"
+                className="bg-[#008970] text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-[#007a63] transition disabled:opacity-50"
               >
                 {loading ? "Submitting..." : "Submit"}
               </button>

@@ -122,17 +122,69 @@ function FeatureCard({
   desc: string;
 }) {
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6 text-left hover:shadow-md transition">
+    <div
+      className="
+        group
+        bg-white
+        rounded-xl
+        shadow-sm
+        p-6
+        text-left
+        border
+        border-gray-100
 
-      <div className="text-[#0B6F63] mb-4">
+        transition-all
+        duration-300
+        ease-out
+
+        hover:bg-[#0B6F63]
+        hover:-translate-y-2
+        hover:shadow-xl
+      "
+    >
+      {/* Icon */}
+      <div
+        className="
+          mb-4
+          transition
+          duration-300
+          group-hover:brightness-0
+          group-hover:invert
+        "
+      >
         {icon}
       </div>
 
-      <h3 className="font-semibold text-lg mb-3">
+      {/* Title */}
+      <h3
+        className="
+          font-semibold
+          text-lg
+          mb-3
+          text-gray-900
+
+          transition-colors
+          duration-300
+
+          group-hover:text-white
+        "
+      >
         {title}
       </h3>
 
-      <p className="text-gray-600 text-sm leading-relaxed">
+      {/* Description */}
+      <p
+        className="
+          text-gray-600
+          text-sm
+          leading-relaxed
+
+          transition-colors
+          duration-300
+
+          group-hover:text-gray-100
+        "
+      >
         {desc}
       </p>
 
