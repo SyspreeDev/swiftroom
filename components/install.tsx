@@ -5,19 +5,19 @@ import Link from "next/link";
 const services = [
   {
     title: "ALUMINIUM SLIDING DOOR",
-    image: "/images/install/install1.png",
+    image: "/images/install/aluminium-sliding-door.png",
   },
   {
     title: "ALUMINIUM BI-FOLDING DOORS",
-    image: "/images/install/install2.png",
+    image: "/images/install/aluminium-bi-folding-doors.png",
   },
   {
     title: "ALUMINIUM WINDOWS",
-    image: "/images/install/install3.png",
+    image: "/images/install/aluminium-windows.png",
   },
   {
     title: "PVCU WINDOWS & DOOR",
-    image: "/images/install/install4.png",
+    image: "/images/install/pvcu.png",
   },
 ];
 

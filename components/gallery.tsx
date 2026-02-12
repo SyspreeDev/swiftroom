@@ -4,20 +4,20 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const gallery = [
-  { img: "/images/gallery/spring.png", title: "THE SPRINGS" },
-  { img: "/images/gallery/dubai.png", title: "DUBAI HILLS" },
-  { img: "/images/gallery/palm.png", title: "PALM JUMEIRAH" },
-  { img: "/images/gallery/damac1.png", title: "DAMAC HILLS" },
+  { img: "/images/gallery/gallery-spring.jpg", title: "THE SPRINGS" },
+  { img: "/images/gallery/gallery-dubai.png", title: "DUBAI HILLS" },
+  { img: "/images/gallery/gallery-palm.jpeg", title: "PALM JUMEIRAH" },
+  { img: "/images/gallery/gallery-damac1.jpg", title: "DAMAC HILLS" },
 
-  { img: "/images/gallery/nest.png", title: "AL BARARI - THE NEST" },
-  { img: "/images/gallery/jumeirah.png", title: "JUMEIRAH" },
-  { img: "/images/gallery/damac2.png", title: "DAMAC HILLS" },
-  { img: "/images/gallery/ranches.png", title: "ARABIAN RANCHES" },
+  { img: "/images/gallery/gallery-nest.jpeg", title: "AL BARARI - THE NEST" },
+  { img: "/images/gallery/gallery-sequimm.png", title: "UMM SEQUIMM" },
+  { img: "/images/gallery/gallery-damac2.jpg", title: "DAMAC HILLS" },
+  { img: "/images/gallery/gallery-ranches.jpg", title: "ARABIAN RANCHES" },
 
-  { img: "/images/gallery/golf.png", title: "JUMEIRAH GOLF ESTATES" },
-  { img: "/images/gallery/meadows.png", title: "THE MEADOWS" },
-  { img: "/images/gallery/foggs.png", title: "PHILLIAS FOGGS" },
-  { img: "/images/gallery/villa.png", title: "THE VILLA" },
+  { img: "/images/gallery/gallery-golf.png", title: "JUMEIRAH GOLF ESTATES" },
+  { img: "/images/gallery/gallery-meadows.png", title: "THE MEADOWS" },
+  { img: "/images/gallery/gallery-foggs.jpg", title: "PHILLIAS FOGGS" },
+  { img: "/images/gallery/gallery-villa.jpeg", title: "THE VILLA" },
 ];
 
 export default function Gallery() {
