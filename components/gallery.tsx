@@ -16,7 +16,7 @@ const gallery = [
 
   { img: "/images/gallery/gallery-golf.png", title: "JUMEIRAH GOLF ESTATES" },
   { img: "/images/gallery/gallery-meadows.png", title: "THE MEADOWS" },
-  { img: "/images/gallery/gallery-phillias.jpg", title: "PHILLIAS FOGGS" },
+  { img: "/images/gallery/gallery-phillias.png", title: "PHILLIAS FOGGS" },
   { img: "/images/gallery/gallery-villa.jpeg", title: "THE VILLA" },
 ];
 
