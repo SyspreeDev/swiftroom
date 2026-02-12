@@ -3,7 +3,7 @@ import Image from "next/image";
 const TOTAL_LOGOS = 6; // 👈 Change this to how many logos you have
 
 const logos = Array.from({ length: TOTAL_LOGOS }, (_, i) => {
-  return `/images/brands/logo${i + 1}.png`;
+  return `/images/brands/logo${i + 1}.jpg`;
 });
 
 export default function Brands() {

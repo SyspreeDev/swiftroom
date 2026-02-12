@@ -62,7 +62,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/">
             <Image
-              src="/images/logo.png"
+              src="/images/swiftroom-logo.jpg"
               alt="SwiftRooms"
               width={150}
               height={40}
