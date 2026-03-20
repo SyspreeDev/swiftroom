@@ -7,7 +7,6 @@ import { Mail, MapPin, X, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
-
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -15,69 +14,38 @@ export default function Header() {
 
   const links = [
     { name: "Home", id: "home" },
-    { name: "About us", id: "about" },
-    { name: "Projects", id: "projects" },
-    { name: "Services", id: "services" },
+    { name: "Products", id: "products" },
+    { name: "Process", id: "process" },
+    { name: "Brands", id: "brands" },
+    { name: "Portfolio", id: "portfolio" },
+    { name: "Get a Quote", id: "get-a-quote" },
+    { name: "Gallery", id: "gallery" },
     { name: "Testimonials", id: "testimonials" },
+    { name: "FAQs", id: "faqs" },
   ];
 
   return (
     <header className="w-full font-poppins relative z-50">
-
-      {/* ================= TOP BAR ================= */}
-      <div className="bg-[#0B6F63] text-white text-[13px] hidden sm:block">
-
-        <div className="max-w-[1300px] mx-auto flex items-center justify-between px-4 py-2">
-
-          {/* Left Info */}
-          <div className="flex items-center gap-6">
-
-            <a
-              href="mailto:hello@swiftrooms.ae"
-              className="flex items-center gap-2 transition"
-            >
-              <Mail size={14} />
-              <span>hello@swiftrooms.ae</span>
-            </a>
-
-            <div className="flex items-center gap-2">
-              <MapPin size={14} />
-              <span>Jebel Ali, Ind Area 1</span>
-            </div>
-
-          </div>
-
-          <div className="italic font-medium text-right">
-            Free Site Visit & 10-Year Warranty – Limited Slots This Month
-          </div>
-
-        </div>
-      </div>
-
       {/* ================= MAIN NAV ================= */}
       <div className="bg-white border-b border-gray-200">
-
         <div className="max-w-[1300px] mx-auto flex items-center justify-between px-4 py-4">
-
           {/* Logo */}
+        <div className="flex items-center">
           <Link href="/">
             <Image
               src="/images/swiftroom-logo.jpg"
               alt="SwiftRooms"
-              width={150}
-              height={40}
+              width={200}
+              height={60}
               className="object-contain"
             />
           </Link>
+        </div>
 
           {/* Desktop Menu */}
-<nav className="hidden md:flex items-center gap-8 text-[14px] text-gray-800 font-medium whitespace-nowrap absolute left-1/2 -translate-x-1/2">
-
+          <nav className="hidden md:flex justify-center items-center gap-6 text-[14px] text-gray-800 font-medium whitespace-nowrap">
             {links.map((item) => {
-
-              const href = isHome
-                ? `#${item.id}`
-                : `/#${item.id}`;
+              const href = isHome ? `#${item.id}` : `/#${item.id}`;
 
               return (
                 <a
@@ -89,8 +57,16 @@ export default function Header() {
                 </a>
               );
             })}
-
           </nav>
+
+          {/* RIGHT - CTA */}
+          <div className="hidden md:flex justify-end">
+            <Link href="/contact">
+              <button className="bg-[#0B7D69] text-white px-6 py-3 rounded-xl text-[14px] font-medium shadow-md hover:bg-[#09695a] transition duration-300">
+                Get a Quote | Visit Showroom
+              </button>
+            </Link>
+          </div>
 
           {/* Mobile Button */}
           <button
@@ -99,20 +75,14 @@ export default function Header() {
           >
             {open ? <X size={26} /> : <Menu size={26} />}
           </button>
-
         </div>
 
         {/* ================= MOBILE MENU ================= */}
         {open && (
           <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
-
             <nav className="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
-
               {links.map((item) => {
-
-                const href = isHome
-                  ? `#${item.id}`
-                  : `/#${item.id}`;
+                const href = isHome ? `#${item.id}` : `/#${item.id}`;
 
                 return (
                   <a
@@ -128,7 +98,6 @@ export default function Header() {
 
               {/* Mobile Contact */}
               <div className="pt-4 border-t text-sm text-gray-600 space-y-2">
-
                 <a
                   href="mailto:hello@swiftrooms.ae"
                   className="flex items-center gap-2"
@@ -141,16 +110,11 @@ export default function Header() {
                   <MapPin size={14} />
                   Jebel Ali, Ind Area 1
                 </div>
-
               </div>
-
             </nav>
-
           </div>
         )}
-
       </div>
-
     </header>
   );
 }

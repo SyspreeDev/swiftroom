@@ -12,7 +12,6 @@
   animation: scroll 25s linear infinite;
 }
 
-
 @import "tailwindcss";
 
 :root {
@@ -74,7 +73,6 @@ body {
   }
 }
 
-
 @media (min-width: 1024px) {
   .main-slide-item {
     height: 420px !important; /* Even taller on desktop */
@@ -91,7 +89,6 @@ body {
   overflow: hidden;
   align-items: center;
   max-width: 350px; /* Mobile */
-
 }
 
 /* CENTER SLIDE: Large/Active */
@@ -141,6 +138,16 @@ body {
   margin-left: 5px;
 }
 
+/* Move pagination dots down */
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
+
+/* Active dot */
+.swiper .swiper-pagination-bullet-active {
+  background-color: #0b7d69; /* your green */
+}
 
 @keyframes fadeIn {
   from {
@@ -154,7 +161,6 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
 }
-
 
 @keyframes underlineGrow {
   from {

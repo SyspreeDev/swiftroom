@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Header from "@/components/header";
+import Header from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export default function GetAQuotePage() {
@@ -89,10 +89,8 @@ export default function GetAQuotePage() {
 
   return (
     <>
-
       {/* HEADER */}
       <Header />
-
 
       {/* MAIN SECTION */}
       <section
@@ -101,38 +99,26 @@ export default function GetAQuotePage() {
           backgroundImage: "url('/images/getaquote/background.png')",
         }}
       >
-
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-
           <div className="grid grid-cols-1 gap-12 items-start">
+            {/* PAGE TITLE + BREADCRUMB */}
+            <div className="text-center text-white mb-10">
+              <p className="text-white/70 text-sm mb-2">
+                <a href="/" className="hover:text-white transition">
+                  Home
+                </a>
+                {" > "}
+                <span className="text-white font-medium">Get a Quote Form</span>
+              </p>
 
-  {/* PAGE TITLE + BREADCRUMB */}
-  <div className="text-center text-white mb-10">
+              <h1 className="text-3xl md:text-4xl font-bold">Get a Quote</h1>
+            </div>
 
-    <p className="text-white/70 text-sm mb-2">
-      <a href="/" className="hover:text-white transition">
-        Home
-      </a>
-      {" > "}
-      <span className="text-white font-medium">
-        Get a Quote Form
-      </span>
-    </p>
-
-    <h1 className="text-3xl md:text-4xl font-bold">
-      Get a Quote
-    </h1>
-
-  </div>
-
-
-  {/* FORM */}
-  <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8 max-w-xl w-full mx-auto">
-
-
+            {/* FORM */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8 max-w-xl w-full mx-auto">
               {success && (
                 <div className="bg-green-500/20 border border-green-400 text-green-200 text-sm p-3 rounded mb-4 text-center">
                   ✅ Form submitted successfully!
@@ -140,7 +126,6 @@ export default function GetAQuotePage() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
-
                 {/* Name */}
                 <input
                   name="name"
@@ -153,7 +138,6 @@ export default function GetAQuotePage() {
 
                 {/* Phone + Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
                   <div>
                     <input
                       name="phone"
@@ -175,7 +159,6 @@ export default function GetAQuotePage() {
                     />
                     {errors.email && <p className="error">{errors.email}</p>}
                   </div>
-
                 </div>
 
                 {/* Location */}
@@ -186,9 +169,7 @@ export default function GetAQuotePage() {
                   placeholder="Site Location*"
                   className="form-input"
                 />
-                {errors.location && (
-                  <p className="error">{errors.location}</p>
-                )}
+                {errors.location && <p className="error">{errors.location}</p>}
 
                 {/* Role */}
                 <select
@@ -252,9 +233,7 @@ export default function GetAQuotePage() {
                   <option>3–6 Months</option>
                 </select>
 
-                {errors.timeline && (
-                  <p className="error">{errors.timeline}</p>
-                )}
+                {errors.timeline && <p className="error">{errors.timeline}</p>}
 
                 {/* Message */}
                 <textarea
@@ -268,14 +247,12 @@ export default function GetAQuotePage() {
 
                 {/* Terms */}
                 <label className="flex items-center gap-2 text-xs text-white/80">
-
                   <input
                     type="checkbox"
                     name="agree"
                     checked={form.agree}
                     onChange={handleChange}
                   />
-
                   I agree to the Terms & Privacy Policy
                 </label>
 
@@ -289,72 +266,65 @@ export default function GetAQuotePage() {
                 >
                   {loading ? "Submitting..." : "Submit"}
                 </button>
-
               </form>
             </div>
-
           </div>
-
         </div>
 
         {/* Styles */}
         <style jsx>{`
-  .form-input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    padding: 10px 14px;
-    font-size: 14px;
-    color: white;
-    outline: none;
-    backdrop-filter: blur(6px);
-  }
+          .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 14px;
+            color: white;
+            outline: none;
+            backdrop-filter: blur(6px);
+          }
 
-  /* Placeholder */
-  .form-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
+          /* Placeholder */
+          .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+          }
 
-  /* Focus */
-  .form-input:focus {
-    border-color: #00b295;
-    box-shadow: 0 0 0 2px rgba(0, 178, 149, 0.4);
-  }
+          /* Focus */
+          .form-input:focus {
+            border-color: #00b295;
+            box-shadow: 0 0 0 2px rgba(0, 178, 149, 0.4);
+          }
 
-  /* SELECT DROPDOWN FIX */
-  select.form-input {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-  }
+          /* SELECT DROPDOWN FIX */
+          select.form-input {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+          }
 
-  /* Dropdown Options */
-  select.form-input option {
-    background-color: #ffffff;
-    color: #111827;
-    padding: 10px;
-  }
+          /* Dropdown Options */
+          select.form-input option {
+            background-color: #ffffff;
+            color: #111827;
+            padding: 10px;
+          }
 
-  /* Disabled Option */
-  select.form-input option[value=""] {
-    color: #9ca3af;
-  }
+          /* Disabled Option */
+          select.form-input option[value=""] {
+            color: #9ca3af;
+          }
 
-  /* Error */
-  .error {
-    color: #fca5a5;
-    font-size: 12px;
-    margin-top: 2px;
-  }
-`}</style>
-
-
+          /* Error */
+          .error {
+            color: #fca5a5;
+            font-size: 12px;
+            margin-top: 2px;
+          }
+        `}</style>
       </section>
-
 
       {/* FOOTER */}
       <Footer />
-
     </>
   );
 }

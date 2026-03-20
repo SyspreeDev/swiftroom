@@ -1,6 +1,10 @@
-import Header from "@/components/header";
+import Header from "@/components/navbar";
 import Hero from "@/components/hero";
+import PremiumProducts from "@/components/PremiumProducts";
+import TransformSection from "@/components/TransformSection";
 import Brands from "@/components/brands";
+import Portfolio from "@/components/Portfolio";
+import PortfolioSection from "@/components/Portfolio";
 import About from "@/components/about";
 import Install from "@/components/install";
 import WhyChoose from "@/components/whychoose";
@@ -11,15 +15,12 @@ import Testimonials from "@/components/testimonials";
 import Faq from "@/components/faq";
 import Stats from "@/components/stats";
 import ContactSection from "@/components/contactsection";
+import Slider from "@/components/SliderGallery";
 import Footer from "@/components/footer";
-
-
-
-
-
-
-
-
+import SolutionSection from "@/components/solutions";
+import ProcessSection from "@/components/ProcessSection";
+import CTASection from "@/components/CTASection";
+import TestimonialSection from "@/components/TestimonialSection";
 
 export default function Home() {
   return (
@@ -30,11 +31,21 @@ export default function Home() {
         <Hero />
       </section>
 
+      <PremiumProducts />
+      <TransformSection />
+      <SolutionSection />
+      <ProcessSection />
+
       <section id="brands">
         <Brands />
       </section>
 
-      <section id="about">
+      <Portfolio />
+      <CTASection />
+      <Slider />
+      {/* <TestimonialSection/> */}
+
+      {/* <section id="about">
         <About />
       </section>
 
@@ -43,10 +54,8 @@ export default function Home() {
         <WhyChoose />
       </section>
 
-       <VideoCarousel />
 
       <section id="projects">
-       
         <Gallery />
       </section>
 
@@ -68,10 +77,9 @@ export default function Home() {
 
       <section id="contact">
         <ContactSection />
-      </section>
+      </section> */}
 
       <Footer />
     </>
   );
 }
-
