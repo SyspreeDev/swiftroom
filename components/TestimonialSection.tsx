@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useRef } from "react";
 import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -53,7 +53,6 @@ export default function TestimonialSection() {
 
       {/* Slider Container */}
       <div className="max-w-4xl mx-auto relative">
-
         {/* LEFT BUTTON */}
         <button
           ref={prevRef}
@@ -73,19 +72,19 @@ export default function TestimonialSection() {
         {/* SWIPER */}
         <Swiper
           modules={[Navigation]}
-          navigation={false}
           loop={true}
+          slidesPerView={"auto"}
+          spaceBetween={20}
           onBeforeInit={(swiper) => {
-            if (typeof swiper.params.navigation !== "boolean") {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }
+            swiper.params.navigation = {
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            };
           }}
         >
           {testimonials.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="rounded-xl shadow-sm p-8 relative">
-                
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-6 text-gray-200 text-6xl">
                   “”
@@ -106,12 +105,8 @@ export default function TestimonialSection() {
                 {/* Bottom */}
                 <div className="flex items-center justify-between border-t pt-4">
                   <div>
-                    <h4 className="font-semibold text-gray-800">
-                      {item.name}
-                    </h4>
-                    <p className="text-gray-400 text-sm">
-                      {item.time}
-                    </p>
+                    <h4 className="font-semibold text-gray-800">{item.name}</h4>
+                    <p className="text-gray-400 text-sm">{item.time}</p>
                   </div>
 
                   {/* Google Badge */}
