@@ -30,7 +30,7 @@ const VideoCarousel = () => {
         </h2>
 
         <p className="opacity-80 mt-3 md:mt-4 text-sm sm:text-base">
-          Where design, detail, and motion come together
+          Where design, detail and motion come together
         </p>
 
       </div>
