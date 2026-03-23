@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import Header from "@/components/navbar";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 export default function ContactSection() {
   /* ---------------- STATE ---------------- */

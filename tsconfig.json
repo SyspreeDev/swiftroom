@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "components/TestimonialSection.jsx", "components/SolutionsSection.jsx", "components/SliderGallery.jsx", "components/ProcessSection.jsx", "components/PremiumProducts.jsx", "components/Portfolio.jsx", "components/Logos.jsx", "components/HeroSection.jsx", "components/CTASection.jsx"  ],
   "exclude": ["node_modules"]
 }

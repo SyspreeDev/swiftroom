@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaInstagram, FaPlay } from "react-icons/fa";
 
@@ -14,11 +14,54 @@ export default function PortfolioSection() {
 
   const [currentVideo, setCurrentVideo] = useState(0);
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2, // one by one
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 }, // 🔥 from bottom
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.25, 0.8, 0.25, 1],
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -40 }, // 🔥 from left
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.8, 0.25, 1],
+      },
+    },
+  };
+
   return (
     <section className="bg-[#f3f5f4] py-16 px-6">
       {/* Heading */}
-      <div className="text-center mb-10">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }} // 🔥 from bottom
+        whileInView={{ opacity: 1, y: 0 }} // move up
+        transition={{
+          duration: 1,
+          ease: [0.25, 0.8, 0.25, 1],
+        }}
+        viewport={{ once: true }}
+        className="text-center mb-10"
+      >
         <h2 className="text-3xl text-gray-800">Our Portfolio</h2>
+
         <p className="text-gray-500 mt-2">Watch our latest installations</p>
 
         <div className="flex items-center justify-center gap-2 mt-3 text-[#0B7D69] text-sm">
@@ -26,15 +69,23 @@ export default function PortfolioSection() {
           <span>@swiftrooms.ae</span>
           <span className="text-[#0B7D69]">• Follow for more</span>
         </div>
-      </div>
-
+      </motion.div>
       {/* Main Grid */}
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
         {/* LEFT */}
         <div className="flex justify-center">
           <div className="flex flex-col items-center">
             {/* Video Card */}
-            <div className="relative w-[300px] h-[520px] rounded-3xl overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, x: -80 }} // 🔥 from left
+              whileInView={{ opacity: 1, x: 0 }} // move to position
+              transition={{
+                duration: 1,
+                ease: [0.25, 0.8, 0.25, 1],
+              }}
+              viewport={{ once: true }}
+              className="relative w-[300px] h-[520px] rounded-3xl overflow-hidden"
+            >
               <iframe
                 key={currentVideo}
                 src={videos[currentVideo]}
@@ -87,7 +138,7 @@ export default function PortfolioSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Controls */}
             <div className="flex gap-3 mt-6">
@@ -118,47 +169,90 @@ export default function PortfolioSection() {
             </div>
 
             {/* Button */}
-            <button className="mt-6 bg-[#0B7D69] text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-md hover:bg-[#096b5a]">
-              <FaInstagram />
-              Watch All Reels
-            </button>
+            <motion.button
+  initial={{ opacity: 0, y: 40 }}   // from bottom
+  whileInView={{ opacity: 1, y: 0 }} // move up
+  transition={{
+    duration: 1.1, // 🔥 slower
+    ease: [0.22, 1, 0.36, 1], // 🔥 premium smooth easing
+  }}
+  viewport={{ once: true }}
+  className="mt-6 bg-[#0B7D69] text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-md hover:bg-[#096b5a]"
+>
+  <FaInstagram />
+  Watch All Reels
+</motion.button>
           </div>
         </div>
 
         {/* RIGHT */}
         <div className="flex flex-col">
           <div className="max-w-md">
-            <h3 className="text-xl text-gray-800 mb-2">
-              Real Projects, Real Results
-            </h3>
+            <motion.div
+              initial={{ opacity: 0, x: 80 }} // 🔥 from right
+              whileInView={{ opacity: 1, x: 0 }} // move to position
+              transition={{
+                duration: 1,
+                ease: [0.25, 0.8, 0.25, 1],
+              }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl text-gray-800 mb-2">
+                Real Projects, Real Results
+              </h3>
 
-            <p className="text-gray-500 mb-6 text-sm">
-              Transforming homes across Dubai’s most prestigious communities.
-            </p>
+              <p className="text-gray-500 mb-6 text-sm">
+                Transforming homes across Dubai’s most prestigious communities.
+              </p>
+            </motion.div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-4 mb-6"
+            >
               {[
                 { title: "30K", sub: "Instagram Followers" },
                 { title: "500+", sub: "Projects Shared" },
                 { title: "98%", sub: "Customer Satisfaction" },
                 { title: "4.9★", sub: "Average Rating" },
               ].map((item, i) => (
-                <div
+                <motion.div
                   key={i}
+                  variants={cardVariants}
                   className="bg-white rounded-xl p-5 text-center shadow-sm"
                 >
                   <h4 className="text-[#0B7D69] text-xl">{item.title}</h4>
                   <p className="text-gray-500 text-sm">{item.sub}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Communities */}
             <div>
-              <h4 className=" text-gray-800 mb-3">Featured Communities</h4>
+              <motion.h4
+                initial={{ opacity: 0, x: 40 }} // 🔥 from right
+                whileInView={{ opacity: 1, x: 0 }} // move to position
+                transition={{
+                  duration: 0.8,
+                  ease: [0.25, 0.8, 0.25, 1],
+                }}
+                viewport={{ once: true }}
+                className="text-gray-800 mb-3"
+              >
+                Featured Communities
+              </motion.h4>
 
-              <div className="grid grid-cols-2 gap-y-2 text-gray-600 text-sm">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="grid grid-cols-2 gap-y-2 text-gray-600 text-sm"
+              >
                 {[
                   "Arabian Ranches",
                   "Dubai Hills",
@@ -167,12 +261,16 @@ export default function PortfolioSection() {
                   "Emirates Hills",
                   "Saadiyat Islands",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
+                  <motion.div
+                    key={i}
+                    variants={itemVariants}
+                    className="flex items-center gap-2"
+                  >
                     <span className="text-[#0B7D69]">✔</span>
                     {item}
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

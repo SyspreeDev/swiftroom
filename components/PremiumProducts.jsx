@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -56,15 +57,36 @@ export default function ProductSlider() {
   return (
     <div className="bg-gray-100 py-16 px-6">
       {/* Heading */}
-      <div className="text-center mb-12">
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }} // 🔥 start ABOVE
+        whileInView={{ opacity: 1, y: 0 }} // move DOWN
+        transition={{
+          duration: 1.2, // slow
+          ease: [0.25, 0.8, 0.25, 1],
+        }}
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
         <h2 className="text-3xl font-medium">Our Premium Products</h2>
+
         <p className="text-gray-500 mt-2">
           High-quality aluminum and UPVC solutions
         </p>
-      </div>
+      </motion.div>
 
       {/* Slider Wrapper (IMPORTANT: relative) */}
-      <div className="relative max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 60 }} // hidden
+        whileInView={{ opacity: 1, y: 0 }} // visible
+        transition={{
+          duration: 1,
+          delay: 1, // 🔥 waits 2 sec after scroll
+          ease: [0.25, 0.8, 0.25, 1],
+        }}
+        viewport={{ once: true }}
+        className="relative max-w-7xl mx-auto"
+      >
         {/* Left Arrow */}
         <button className="custom-prev cursor-pointer absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:scale-105 transition">
           <FaChevronLeft className="text-[#0B7D69] text-sm" />
@@ -126,7 +148,7 @@ export default function ProductSlider() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
     </div>
   );
 }

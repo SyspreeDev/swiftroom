@@ -111,7 +111,8 @@
 //     </section>
 //   );
 // }
-"use client";
+'use client';
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaInstagram } from "react-icons/fa";
@@ -155,37 +156,69 @@ const images = [
 
 export default function Slider() {
   return (
-    <section className="relative pt-20 pb-28 md:pt-20 md:pb-36 min-h-[720px] bg-[#f8f8f8] overflow-visible">
+    <section className="relative pt-10 pb-16 md:pt-20 md:pb-28 min-h-auto md:min-h-[720px] bg-[#f8f8f8] overflow-visible">
       {/* TITLE */}
 
-      <div className="text-center mb-12">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ staggerChildren: 0.2 }}
+        className="text-center mb-12"
+      >
         {/* TITLE */}
-        <h2 className="text-3xl md:text-4xl text-gray-800">
+        <motion.h2
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="text-3xl md:text-4xl text-gray-800"
+        >
           Our Gallery
-        </h2>
+        </motion.h2>
 
         {/* SUBTEXT */}
-        <p className="text-gray-500 text-sm md:text-base mt-3">
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="text-gray-500 text-sm md:text-base mt-3"
+        >
           Feel free to browse our work
-        </p>
+        </motion.p>
 
         {/* INSTAGRAM LINE */}
-        <div className="mt-3 flex items-center justify-center gap-2 text-sm md:text-base">
-          {/* ICON BOX */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mt-3 flex items-center justify-center gap-2 text-sm md:text-base"
+        >
           <span className="w-6 h-6 flex items-center justify-center">
             <FaInstagram className="text-[#0B7D69] text-2xl" />
           </span>
 
-          {/* HANDLE */}
           <span className="text-[#0B7D69] font-medium">@swiftrooms</span>
 
-          {/* DOT */}
           <span className="text-gray-400">•</span>
 
-          {/* TEXT */}
           <span className="text-[#0B7D69]">Follow us for more</span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* SLIDER */}
       <Swiper
