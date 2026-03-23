@@ -1,4 +1,4 @@
-import Header from "@/components/Navbar";
+import Header from "@/components/navbar";
 import Hero from "@/components/HeroSection";
 import PremiumProducts from "@/components/PremiumProducts";
 import TransformSection from "@/components/TransformSection";
@@ -15,7 +15,7 @@ import TestimonialSection from "@/components/TestimonialSection";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header/>
       <Hero />
       <PremiumProducts />
       <TransformSection />

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Header({ isHome, pathname }) {
+export default function Header() {
   const links = [
     { name: "Home", id: "home" },
     { name: "Products", id: "products" },
