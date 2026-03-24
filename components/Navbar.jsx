@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Header() {
+export default function Navbar() {
   const links = [
     { name: "Home", id: "home" },
     { name: "Products", id: "products" },
@@ -69,7 +69,7 @@ export default function Header() {
       initial="hidden"
       animate="visible"
       variants={navVariants}
-      className="w-full font-poppins relative z-50"
+      className="w-full font-poppins relative z-50 overflow-x-hidden"
     >
       {/* ================= MAIN NAV ================= */}
       <div className="bg-white border-b border-gray-200">

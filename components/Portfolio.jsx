@@ -49,7 +49,7 @@ const itemVariants = {
 };
 
   return (
-    <section className="py-16 px-6">
+    <section id="portfolio" className="py-16 px-6">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }} // 🔥 from bottom

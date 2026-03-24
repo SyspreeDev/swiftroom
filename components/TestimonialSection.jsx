@@ -119,7 +119,7 @@ export default function TestimonialSection() {
   ];
 
   return (
-    <section className="bg-white py-20 px-6">
+    <section id="testimonials" className="bg-white py-20 px-6">
       {/* Heading */}
 
       <motion.div

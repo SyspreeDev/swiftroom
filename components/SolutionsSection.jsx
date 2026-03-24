@@ -89,7 +89,7 @@ export default function SolutionSection() {
   };
 
   return (
-    <div className="py-20 px-6">
+    <section id="solutions" className="py-20 px-6">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 50 }} // 🔥 start from bottom
@@ -197,6 +197,6 @@ export default function SolutionSection() {
           </button>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -15,7 +15,7 @@ const duplicatedLogos = [...logos, ...logos, ...logos];
 
 export default function Brands() {
   return (
-    <section className="bg-[#0B7D69] py-40 overflow-hidden">
+    <section id="brands" className="bg-[#0B7D69] py-40 overflow-hidden">
       {/* Title */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }} // 🔥 start from bottom

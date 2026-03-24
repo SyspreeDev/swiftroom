@@ -6,7 +6,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] min-h-[320px] overflow-hidden">
+    <section id="home" className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] min-h-[320px] overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"

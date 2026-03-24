@@ -65,8 +65,41 @@ export default function ProcessSection() {
     },
   };
 
+  const cardHover = {
+    rest: { scale: 1 },
+    hover: {
+      scale: 1.08,
+      transition: { type: "spring", stiffness: 160, damping: 12 },
+    },
+  };
+
+  const circleVariants = {
+    rest: {
+      scale: 1,
+      boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+    },
+    hover: {
+      scale: 1.15,
+      boxShadow: "0px 12px 30px rgba(11,125,105,0.35)", // green glow
+      transition: { duration: 0.4 },
+    },
+  };
+
+  const diamondVariants = {
+    rest: {
+      rotate: 45,
+      scale: 1,
+      borderWidth: "1px",
+    },
+    hover: {
+      rotate: 405,
+      scale: 1.4,
+      borderWidth: "2px",
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
+  };
   return (
-    <section className=" py-20 px-6">
+    <section id="process" className="py-20 px-6">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }} // 🔥 start from bottom
@@ -109,16 +142,28 @@ export default function ProcessSection() {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              variants={stepVariants}
-              className="flex flex-col items-center relative"
+              variants={cardHover}
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
+              className="flex flex-col items-center relative cursor-pointer"
             >
               {/* Circle */}
-              <div className="w-20 h-20 rounded-full bg-[#0B7D69] text-white flex items-center justify-center text-2xl font-medium shadow-md z-10">
+              <motion.div
+                variants={circleVariants}
+                className="w-20 h-20 rounded-full bg-[#0B7D69] text-white flex items-center justify-center text-2xl font-medium z-10"
+              >
                 {step.id}
-              </div>
+              </motion.div>
 
-              {/* Diamond */}
-              <div className="w-4 h-4 rotate-45 border border-[#0B7D69] mt-6 mb-4"></div>
+              {/* Diamond (styled like image) */}
+              <motion.div
+                variants={diamondVariants}
+                className="w-7 h-7 mt-6 mb-4 border border-[#0B7D69] relative"
+              >
+                {/* inner diamond border (to match design) */}
+                <div className="absolute inset-1 border border-[#0B7D69]"></div>
+              </motion.div>
 
               {/* Title */}
               <h3 className="text-xl font-medium text-gray-800 mb-2">

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section id="cta" className="py-20 px-6 relative overflow-hidden">
       {/* Background Pattern (optional light shapes) */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         {/* You can replace with SVG/image if needed */}

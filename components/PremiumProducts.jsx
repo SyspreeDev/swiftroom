@@ -55,17 +55,17 @@ export default function ProductSlider() {
   ];
 
   return (
-    <div className="bg-gray-100 py-16 px-6">
+    <section id="products" className="bg-gray-100 py-16 px-6">
       {/* Heading */}
 
       <motion.div
-        initial={{ opacity: 0, y: 40 }} // 🔥 start ABOVE
-        whileInView={{ opacity: 1, y: 0 }} // move DOWN
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 1.2, // slow
-          ease: [0.25, 0.8, 0.25, 1],
+          duration: 0.8, // ✅ sweet spot
+          ease: [0.22, 1, 0.36, 1], // ✅ smoother easing
         }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.3 }}
         className="text-center mb-12"
       >
         <h2 className="text-4xl font-medium">Our Premium Products</h2>
@@ -77,14 +77,13 @@ export default function ProductSlider() {
 
       {/* Slider Wrapper (IMPORTANT: relative) */}
       <motion.div
-        initial={{ opacity: 0, y: 60 }} // hidden
-        whileInView={{ opacity: 1, y: 0 }} // visible
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         transition={{
-          duration: 1,
-          delay: 1, // 🔥 waits 2 sec after scroll
-          ease: [0.25, 0.8, 0.25, 1],
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
         }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.2 }}
         className="relative max-w-7xl mx-auto"
       >
         {/* Left Arrow */}
@@ -149,6 +148,6 @@ export default function ProductSlider() {
           ))}
         </Swiper>
       </motion.div>
-    </div>
+    </section>
   );
 }

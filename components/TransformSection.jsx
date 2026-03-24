@@ -52,7 +52,7 @@ const cardVariants = {
 };
 
   return (
-    <section className="bg-white py-20 px-6 relative overflow-hidden">
+    <section id="transform" className="bg-white py-20 px-6 relative overflow-hidden">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 50 }} // 🔥 start from bottom

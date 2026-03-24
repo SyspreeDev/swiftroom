@@ -56,94 +56,109 @@ const faqs = [
 ];
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState();
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="bg-white min-h-screen py-20 px-5">
+    <section id="faqs" className="bg-white min-h-screen py-20 px-5">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.8, 0.25, 1] }}
+          className="text-center mb-14"
+        >
           <h2 className="text-4xl md:text-5xl text-[#0f2d27] mb-3 tracking-tight">
             Frequently Asked Questions
           </h2>
           <p className="text-gray-700 text-base">
             Find answers to common questions about our products and services
           </p>
-        </div>
+        </motion.div>
 
         {/* FAQ Items */}
-       <div className="flex flex-col gap-3">
-      {faqs.map((faq, i) => {
-        const isOpen = openIndex === i;
+        <div className="flex flex-col gap-3">
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
 
-        return (
-          <motion.div
-            key={i}
-            onClick={() => toggle(i)}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }} // ⬅️ triggers per item
-            transition={{
-              duration: 0.6,
-              delay: i * 0.15, // ⬅️ optional stagger feel
-              ease: "easeOut",
-            }}
-            className={`bg-white rounded-xl border cursor-pointer transition-all duration-200
-              ${
-                isOpen
-                  ? "border-[#0B7D69] shadow-[0_4px_20px_rgba(11,125,105,0.12)]"
-                  : "border-[#e0eae7] shadow-sm hover:border-[#0B7D69]/40"
-              }`}
-          >
-            {/* Question Row */}
-            <div className="flex items-center justify-between px-6 py-5">
-              <span className="font-medium text-lg text-[#0f2d27] pr-4">
-                {faq.question}
-              </span>
-
-              {/* Icon */}
-              <span
-                className={`w-7 h-7 rounded-full flex items-center justify-center
-                ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
+            return (
+              <motion.div
+                key={i}
+                onClick={() => toggle(i)}
+                initial={{ opacity: 0, y: 30 }} // ⬅️ reduced distance
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{
+                  duration: 0.8, // ⬅️ slower
+                  delay: i * 0.12, // ⬅️ softer stagger
+                  ease: [0.22, 1, 0.36, 1], // ⬅️ smooth cubic-bezier (very important)
+                }}
+                className={`bg-white rounded-xl border cursor-pointer transition-all duration-300
+    ${
+      isOpen
+        ? "border-[#0B7D69] shadow-[0_4px_20px_rgba(11,125,105,0.12)]"
+        : "border-[#e0eae7] shadow-sm hover:border-[#0B7D69]/40"
+    }`}
               >
-                <FiPlus
-                  className={`transition-transform duration-300 ${
-                    isOpen
-                      ? "rotate-45 text-white"
-                      : "text-[#0B7D69]"
-                  }`}
-                />
-              </span>
-            </div>
+                {/* Question Row */}
+                <div className="flex items-center justify-between px-6 py-5">
+                  <span className="font-medium text-lg text-[#0f2d27] pr-4">
+                    {faq.question}
+                  </span>
 
-            {/* Answer */}
-            <motion.div
-              initial={false}
-              animate={{
-                height: isOpen ? "auto" : 0,
-                opacity: isOpen ? 1 : 0,
-              }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden"
-            >
-              <p className="px-6 pb-5 text-[#4a6b63] text-sm">
-                {faq.answer}
-              </p>
-            </motion.div>
-          </motion.div>
-        );
-      })}
-    </div>
+                  {/* Icon */}
+                  <span
+                    className={`w-7 h-7 rounded-full flex items-center justify-center
+                ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
+                  >
+                    <FiPlus
+                      className={`transition-transform duration-300 ${
+                        isOpen ? "rotate-45 text-white" : "text-[#0B7D69]"
+                      }`}
+                    />
+                  </span>
+                </div>
+
+                {/* Answer */}
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: isOpen ? "auto" : 0,
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-6 pb-5 text-[#4a6b63] text-sm">
+                    {faq.answer}
+                  </p>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
 
         {/* Footer CTA */}
-        <div className="text-center mt-14">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.9,
+            delay: 0.3, // ⬅️ whole block comes slightly late
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="text-center mt-14"
+        >
           <p className="text-gray-600 text-lg mb-4">Still have questions?</p>
+
           <button className="bg-[#0B7D69] hover:bg-[#095f50] text-white px-8 py-3.5 rounded-lg text-medium tracking-wide transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
             Get Free Consultation
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
