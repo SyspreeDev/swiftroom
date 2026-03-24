@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           {/* Tagline */}
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+          <p className="text-gray-400 text-sm leading-relaxed max-w-s">
             Premium aluminum solutions for UAE homes and businesses
           </p>
 
@@ -45,7 +45,7 @@ export default function Footer() {
               <span className="w-9 h-9 rounded-lg bg-[#0B7D69]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0B7D69] transition-colors duration-200">
                 <FiPhone className="text-[#0B7D69] group-hover:text-white text-sm transition-colors duration-200" />
               </span>
-              <span className="text-[#0B7D69] text-sm font-medium">
+              <span className="text-gray-300 text-sm font-medium">
                 04 347 4240
               </span>
             </a>

@@ -52,7 +52,7 @@ const cardVariants = {
 };
 
   return (
-    <section className="bg-gray-100 py-20 px-6 relative overflow-hidden">
+    <section className="bg-white py-20 px-6 relative overflow-hidden">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 50 }} // 🔥 start from bottom
@@ -64,9 +64,9 @@ const cardVariants = {
         viewport={{ once: true }}
         className="text-center mb-14"
       >
-        <h2 className="text-4xl font-semibold mb-4">Transform Your Space</h2>
+        <h2 className="text-4xl font-bold mb-4">Transform Your Space</h2>
 
-        <p className="text-gray-500 max-w-2xl mx-auto">
+        <p className="text-gray-700 text-lg max-w-2xl mx-auto">
           From common problems to premium solutions – experience the SWIFTROOMS
           difference
         </p>
@@ -97,7 +97,7 @@ const cardVariants = {
             <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
 
             {/* Description */}
-            <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+            <p className="text-gray-700 text-lg leading-relaxed">{item.desc}</p>
           </motion.div>
         ))}
       </motion.div>

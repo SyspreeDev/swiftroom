@@ -68,10 +68,10 @@ export default function ProductSlider() {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl font-medium">Our Premium Products</h2>
+        <h2 className="text-4xl font-medium">Our Premium Products</h2>
 
-        <p className="text-gray-500 mt-2">
-          High-quality aluminum and UPVC solutions
+        <p className="text-gray-700 text-xl mt-2">
+          High-quality aluminum and UPVC solutions for UAE's climate
         </p>
       </motion.div>
 
@@ -132,11 +132,11 @@ export default function ProductSlider() {
 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-300 flex flex-col justify-end p-6 text-white">
-                  <span className="absolute top-4 right-4 bg-[#0B7D69] text-xs px-3 py-1 rounded-full">
+                  <span className="absolute font-semibold top-4 right-4 bg-[#0B7D69] text-xs px-3 py-1 rounded-full">
                     {item.tag}
                   </span>
 
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <h3 className="text-2xl font-medium mb-2">{item.title}</h3>
 
                   <p className="text-sm mb-4">{item.desc}</p>
 

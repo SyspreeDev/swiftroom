@@ -139,7 +139,7 @@ export default function TestimonialSection() {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-3xl md:text-4xl font-semibold text-gray-800"
+          className="text-3xl md:text-4xl font-bold text-gray-800"
         >
           What Our Clients Say
         </motion.h2>
@@ -154,7 +154,7 @@ export default function TestimonialSection() {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-gray-500 mt-3"
+          className="text-gray-500 text-lg mt-3"
         >
           Don&apos;t just take our word for it—hear from our satisfied customers
           across the UAE
@@ -170,7 +170,7 @@ export default function TestimonialSection() {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="flex items-center justify-center gap-2 mt-4"
+          className="flex items-center justify-center gap-2 mt-4 text-xl"
         >
           <div className="flex text-[#f59e0b]">
             {[...Array(5)].map((_, i) => (
@@ -178,9 +178,9 @@ export default function TestimonialSection() {
             ))}
           </div>
 
-          <span className="font-semibold text-gray-800">5.0</span>
+          <span className="font-bold text-gray-800 text-xl">5.0</span>
 
-          <span className="text-gray-400 text-sm">
+          <span className="text-gray-500 text-sm">
             Based on 49+ Google reviews
           </span>
         </motion.div>
@@ -221,24 +221,24 @@ export default function TestimonialSection() {
                 {/* Card */}
                 <div className="bg-white rounded-2xl p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)] max-w-3xl w-full">
                   {/* Stars */}
-                  <div className="flex text-[#f59e0b] mb-4">
+                  <div className="flex text-[#f59e0b] mb-4 text-xl">
                     {[...Array(5)].map((_, i) => (
                       <FaStar key={i} />
                     ))}
                   </div>
 
                   {/* Text */}
-                  <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  <p className="text-gray-600 text-xl leading-relaxed mb-6 text-sm">
                     "{item.text}"
                   </p>
 
                   {/* Bottom */}
                   <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                     <div>
-                      <h4 className="font-semibold text-gray-800 text-sm">
+                      <h4 className="font-semibold text-gray-800 text-lg">
                         {item.name}
                       </h4>
-                      <p className="text-gray-400 text-sm">{item.time}</p>
+                      <p className="text-gray-400">{item.time}</p>
                     </div>
 
                     {/* Google Badge */}

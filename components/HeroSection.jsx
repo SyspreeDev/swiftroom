@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function Hero() {
   return (
@@ -23,7 +24,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-[1300px] mx-auto h-full flex flex-col md:flex-row items-center justify-between px-4 gap-6">
         {/* LEFT CONTENT */}
         <div className="max-w-xl text-white">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl leading-snug sm:leading-tight uppercase tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-3xl font-semibold leading-snug sm:leading-tight uppercase tracking-wider">
             Performance Windows Doors Engineered for Excellence Designed for the
             UAE Climate
           </h1>
@@ -55,9 +56,9 @@ export default function Hero() {
         {/* RIGHT SIDE CTA */}
         <div className="flex flex-col items-center w-full md:w-auto mt-8 md:mt-0">
           {/* CTA BUTTON */}
-          <button className="w-full md:w-[500px] bg-[#0B7D69] hover:bg-[#096a59] text-white px-8 py-5 rounded-[20px] text-lg sm:text-xl shadow-xl transition-all duration-300 flex items-center justify-center gap-4">
-            <span>Start Your Swiftrooms Journey</span>
-            <span className="text-2xl">→</span>
+          <button className="w-full md:w-[500px] font-medium bg-[#0B7D69] hover:bg-[#096a59] text-white px-8 py-5 rounded-[20px] text-lg sm:text-xl shadow-xl transition-all duration-300 flex items-center justify-center gap-4">
+            <span  className="text-2xl">Start Your Swiftrooms Journey</span>
+            <FiArrowRight className="text-2xl" />
           </button>
 
           {/* POINTS */}

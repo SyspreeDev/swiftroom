@@ -1,6 +1,26 @@
-'use client'
+"use client";
 
 import { useState } from "react";
+import { FiPlus } from "react-icons/fi";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.25, // ⬅️ slower stagger (increase if needed)
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }, // ⬅️ slower animation
+  },
+};
 
 const faqs = [
   {
@@ -48,79 +68,74 @@ export default function FaqSection() {
           <h2 className="text-4xl md:text-5xl text-[#0f2d27] mb-3 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-[#5a7a72] text-base">
+          <p className="text-gray-700 text-base">
             Find answers to common questions about our products and services
           </p>
         </div>
 
         {/* FAQ Items */}
-        <div className="flex flex-col gap-3">
-          {faqs.map((faq, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div
-                key={i}
-                onClick={() => toggle(i)}
-                className={`bg-white rounded-xl border cursor-pointer transition-all duration-200
-                  ${
-                    isOpen
-                      ? "border-[#0B7D69] shadow-[0_4px_20px_rgba(11,125,105,0.12)]"
-                      : "border-[#e0eae7] shadow-sm hover:border-[#0B7D69]/40"
-                  }`}
+       <div className="flex flex-col gap-3">
+      {faqs.map((faq, i) => {
+        const isOpen = openIndex === i;
+
+        return (
+          <motion.div
+            key={i}
+            onClick={() => toggle(i)}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }} // ⬅️ triggers per item
+            transition={{
+              duration: 0.6,
+              delay: i * 0.15, // ⬅️ optional stagger feel
+              ease: "easeOut",
+            }}
+            className={`bg-white rounded-xl border cursor-pointer transition-all duration-200
+              ${
+                isOpen
+                  ? "border-[#0B7D69] shadow-[0_4px_20px_rgba(11,125,105,0.12)]"
+                  : "border-[#e0eae7] shadow-sm hover:border-[#0B7D69]/40"
+              }`}
+          >
+            {/* Question Row */}
+            <div className="flex items-center justify-between px-6 py-5">
+              <span className="font-medium text-lg text-[#0f2d27] pr-4">
+                {faq.question}
+              </span>
+
+              {/* Icon */}
+              <span
+                className={`w-7 h-7 rounded-full flex items-center justify-center
+                ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
               >
-                {/* Question Row */}
-                <div className="flex items-center justify-between px-6 py-5">
-                  <span className="font-semibold text-[0.95rem] text-[#0f2d27] leading-snug pr-4">
-                    {faq.question}
-                  </span>
+                <FiPlus
+                  className={`transition-transform duration-300 ${
+                    isOpen
+                      ? "rotate-45 text-white"
+                      : "text-[#0B7D69]"
+                  }`}
+                />
+              </span>
+            </div>
 
-                  {/* Icon */}
-                  <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-200
-                      ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
-                  >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      className={`transition-transform duration-300 ${isOpen ? "rotate-45" : "rotate-0"}`}
-                    >
-                      <line
-                        x1="6"
-                        y1="0"
-                        x2="6"
-                        y2="12"
-                        stroke={isOpen ? "#fff" : "#0B7D69"}
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <line
-                        x1="0"
-                        y1="6"
-                        x2="12"
-                        y2="6"
-                        stroke={isOpen ? "#fff" : "#0B7D69"}
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
-
-                {/* Answer */}
-                <div
-                  className={`overflow-hidden transition-all duration-350 ease-in-out
-                    ${isOpen ? "max-h-96" : "max-h-0"}`}
-                >
-                  <p className="px-6 pb-5 text-[#4a6b63] text-sm leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+            {/* Answer */}
+            <motion.div
+              initial={false}
+              animate={{
+                height: isOpen ? "auto" : 0,
+                opacity: isOpen ? 1 : 0,
+              }}
+              transition={{ duration: 0.4 }}
+              className="overflow-hidden"
+            >
+              <p className="px-6 pb-5 text-[#4a6b63] text-sm">
+                {faq.answer}
+              </p>
+            </motion.div>
+          </motion.div>
+        );
+      })}
+    </div>
 
         {/* Footer CTA */}
         <div className="text-center mt-14">

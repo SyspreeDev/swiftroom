@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
-    <section className="bg-[#f3f5f4] py-20 px-6 relative overflow-hidden">
+    <section className="py-20 px-6 relative overflow-hidden">
       {/* Background Pattern (optional light shapes) */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         {/* You can replace with SVG/image if needed */}
@@ -30,7 +30,7 @@ export default function CTASection() {
               duration: 1,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="text-3xl md:text-5xl font-semibold text-gray-900 mb-4"
+            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
           >
             Ready to Transform Your Space?
           </motion.h2>
@@ -60,7 +60,7 @@ export default function CTASection() {
             ease: [0.22, 1, 0.36, 1], // smooth premium easing
           }}
           viewport={{ once: true }}
-          className="bg-[#0B7D69] hover:bg-[#096b5a] text-white text-lg md:text-xl font-medium px-10 py-5 rounded-2xl flex items-center gap-4 mx-auto shadow-lg transition-all duration-300 hover:scale-105"
+          className="bg-[#0B7D69] hover:bg-[#096b5a] text-white text-lg md:text-2xl font-medium px-10 py-5 rounded-2xl flex items-center gap-4 mx-auto shadow-lg transition-all duration-300 hover:scale-105"
         >
           Start Your Swiftrooms Journey
           <FaArrowRight className="text-xl" />

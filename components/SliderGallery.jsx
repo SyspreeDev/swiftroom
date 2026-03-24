@@ -156,7 +156,7 @@ const images = [
 
 export default function Slider() {
   return (
-    <section className="relative pt-10 pb-16 md:pt-20 md:pb-28 min-h-auto md:min-h-[720px] bg-[#f8f8f8] overflow-visible">
+    <section className="relative pt-10 pb-16 md:pt-20 md:pb-28 min-h-auto md:min-h-[720px] overflow-visible">
       {/* TITLE */}
 
       <motion.div

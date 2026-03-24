@@ -15,40 +15,41 @@ export default function PortfolioSection() {
   const [currentVideo, setCurrentVideo] = useState(0);
 
   const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2, // one by one
-      },
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.35,   // ⬅️ slower gap between items
+      delayChildren: 0.2,      // ⬅️ slight delay before starting
     },
-  };
+  },
+};
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 }, // 🔥 from bottom
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.8, 0.25, 1],
-      },
+const cardVariants = {
+  hidden: { opacity: 0, y: 60 }, // ⬅️ more distance = more visible motion
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1, // ⬅️ slower (was 0.7)
+      ease: [0.25, 0.8, 0.25, 1],
     },
-  };
+  },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -40 }, // 🔥 from left
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.8, 0.25, 1],
-      },
+const itemVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.9, // ⬅️ slower (was 0.6)
+      ease: [0.25, 0.8, 0.25, 1],
     },
-  };
+  },
+};
 
   return (
-    <section className="bg-[#f3f5f4] py-16 px-6">
+    <section className="py-16 px-6">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }} // 🔥 from bottom
@@ -62,12 +63,12 @@ export default function PortfolioSection() {
       >
         <h2 className="text-3xl text-gray-800">Our Portfolio</h2>
 
-        <p className="text-gray-500 mt-2">Watch our latest installations</p>
+        <p className="text-gray-800 mt-2">Watch our latest installations</p>
 
         <div className="flex items-center justify-center gap-2 mt-3 text-[#0B7D69] text-sm">
           <FaInstagram />
           <span>@swiftrooms.ae</span>
-          <span className="text-[#0B7D69]">• Follow for more</span>
+          <span className="text-[#026b58]">• Follow for more</span>
         </div>
       </motion.div>
       {/* Main Grid */}
@@ -170,18 +171,18 @@ export default function PortfolioSection() {
 
             {/* Button */}
             <motion.button
-  initial={{ opacity: 0, y: 40 }}   // from bottom
-  whileInView={{ opacity: 1, y: 0 }} // move up
-  transition={{
-    duration: 1.1, // 🔥 slower
-    ease: [0.22, 1, 0.36, 1], // 🔥 premium smooth easing
-  }}
-  viewport={{ once: true }}
-  className="mt-6 bg-[#0B7D69] text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-md hover:bg-[#096b5a]"
->
-  <FaInstagram />
-  Watch All Reels
-</motion.button>
+              initial={{ opacity: 0, y: 40 }} // from bottom
+              whileInView={{ opacity: 1, y: 0 }} // move up
+              transition={{
+                duration: 1.1, // 🔥 slower
+                ease: [0.22, 1, 0.36, 1], // 🔥 premium smooth easing
+              }}
+              viewport={{ once: true }}
+              className="mt-6 bg-[#0B7D69] text-white font-medium px-6 py-3 rounded-full flex items-center gap-2 shadow-md hover:bg-[#096b5a]"
+            >
+              <FaInstagram />
+              Watch All Reels
+            </motion.button>
           </div>
         </div>
 
@@ -197,11 +198,11 @@ export default function PortfolioSection() {
               }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl text-gray-800 mb-2">
+              <h3 className="text-2xl text-gray-800 mb-2">
                 Real Projects, Real Results
               </h3>
 
-              <p className="text-gray-500 mb-6 text-sm">
+              <p className="text-gray-800 mb-6 text-sm">
                 Transforming homes across Dubai’s most prestigious communities.
               </p>
             </motion.div>
@@ -211,7 +212,7 @@ export default function PortfolioSection() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="grid grid-cols-2 gap-4 mb-6"
             >
               {[
@@ -225,8 +226,8 @@ export default function PortfolioSection() {
                   variants={cardVariants}
                   className="bg-white rounded-xl p-5 text-center shadow-sm"
                 >
-                  <h4 className="text-[#0B7D69] text-xl">{item.title}</h4>
-                  <p className="text-gray-500 text-sm">{item.sub}</p>
+                  <h4 className="text-[#0B7D69] text-2xl">{item.title}</h4>
+                  <p className="text-gray-800 text-sm">{item.sub}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -241,7 +242,7 @@ export default function PortfolioSection() {
                   ease: [0.25, 0.8, 0.25, 1],
                 }}
                 viewport={{ once: true }}
-                className="text-gray-800 mb-3"
+                className="text-gray-800 text-xl mb-3"
               >
                 Featured Communities
               </motion.h4>

@@ -66,7 +66,7 @@ export default function ProcessSection() {
   };
 
   return (
-    <section className="bg-[#f3f5f4] py-20 px-6">
+    <section className=" py-20 px-6">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }} // 🔥 start from bottom
@@ -82,7 +82,7 @@ export default function ProcessSection() {
           SIMPLE 5-STEP PROCESS
         </h2>
 
-        <p className="text-gray-500 mt-3">
+        <p className="text-gray-800 text-xl mt-3">
           From quote to installation, we make it easy
         </p>
       </motion.div>
@@ -113,7 +113,7 @@ export default function ProcessSection() {
               className="flex flex-col items-center relative"
             >
               {/* Circle */}
-              <div className="w-20 h-20 rounded-full bg-[#0B7D69] text-white flex items-center justify-center text-lg font-semibold shadow-md z-10">
+              <div className="w-20 h-20 rounded-full bg-[#0B7D69] text-white flex items-center justify-center text-2xl font-medium shadow-md z-10">
                 {step.id}
               </div>
 
@@ -126,7 +126,7 @@ export default function ProcessSection() {
               </h3>
 
               {/* Description */}
-              <p className="text-gray-500 text-sm max-w-[200px]">{step.desc}</p>
+              <p className="text-gray-500 text-sm max-w-[300px]">{step.desc}</p>
             </motion.div>
           ))}
         </motion.div>

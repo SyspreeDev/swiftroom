@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
-
+import { FiArrowRight } from "react-icons/fi";
 export default function SolutionSection() {
   const frustrations = [
     "Excessive heat penetration",
@@ -89,7 +89,7 @@ export default function SolutionSection() {
   };
 
   return (
-    <div className="bg-gray-100 py-20 px-6">
+    <div className="py-20 px-6">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 50 }} // 🔥 start from bottom
@@ -101,7 +101,7 @@ export default function SolutionSection() {
         viewport={{ once: true }}
         className="text-center mb-14"
       >
-        <h2 className="text-3xl font-semibold">The SWIFTROOMS Solution</h2>
+        <h2 className="text-3xl font-bold">The SWIFTROOMS Solution</h2>
       </motion.div>
 
       {/* Cards */}
@@ -191,8 +191,9 @@ export default function SolutionSection() {
           </motion.ul>
 
           {/* Button */}
-          <button className="w-full bg-white text-[#0B7D69] font-semibold py-3 rounded-lg text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition">
-            Explore Our Products →
+          <button className="w-full bg-white text-[#0B7D69] font-extrabold py-3 rounded-lg text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition">
+            Explore Our Products
+            <FiArrowRight className="text-lg transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </motion.div>
       </div>
