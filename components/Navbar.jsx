@@ -1,5 +1,5 @@
 "use client";
-
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,46 +21,48 @@ export default function Header() {
 
   // 🔥 Navbar animation
   // Navbar animation
-const navVariants = {
-  hidden: { y: -60, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.8, 0.25, 1], // smoother cubic-bezier
-      when: "beforeChildren",
-      staggerChildren: 0.06, // slightly faster
+  const navVariants = {
+    hidden: { y: -60, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.8, 0.25, 1], // smoother cubic-bezier
+        when: "beforeChildren",
+        staggerChildren: 0.06, // slightly faster
+      },
     },
-  },
-};
+  };
 
-// Menu items animation
-const itemVariants = {
-  hidden: { y: -10, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.35,
-      ease: [0.25, 0.8, 0.25, 1],
+  // Menu items animation
+  const itemVariants = {
+    hidden: { y: -10, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.35,
+        ease: [0.25, 0.8, 0.25, 1],
+      },
     },
-  },
-};
+  };
 
-// CTA animation (FIXED)
-const ctaVariants = {
-  hidden: { x: 40, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.45,
-      ease: [0.25, 0.8, 0.25, 1],
-      delay: 0.8, // small delay (not too much)
+  // CTA animation (FIXED)
+  const ctaVariants = {
+    hidden: { x: 40, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.45,
+        ease: [0.25, 0.8, 0.25, 1],
+        delay: 0.8, // small delay (not too much)
+      },
     },
-  },
-};
+  };
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <motion.header
