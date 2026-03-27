@@ -2,11 +2,13 @@
 
 import { ShieldCheck, Gem, Home } from "lucide-react";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 export default function TransformSection() {
   const data = [
     {
-      icon: <ShieldCheck className="text-[#0B7D69]" size={24} />,
+      icon: "/images/sheild.svg",
       title: "Performance windows & doors",
       desc: "Engineered to perform. Built to outlast.",
       bg: "bg-[#F5EDE3]",
@@ -14,15 +16,15 @@ export default function TransformSection() {
       iconBg: "bg-[#F3E2C7]",
     },
     {
-      icon: <Gem className="text-[#0B7D69]" size={24} />,
+      icon: "/images/gem.svg",
       title: "Panoramic Slim Sliding Systems",
-      desc: "Ultra-slim profiles. Seamless design. Maximum light.",
+      desc: "Ultra-slim profiles. Seamless design.",
       bg: "bg-[#F3E7E7]",
       border: "border-[#E5BABA]",
       iconBg: "bg-[#F1D6D6]",
     },
     {
-      icon: <Home className="text-[#0B7D69]" size={24} />,
+      icon: "/images/home.svg",
       title: "Garden rooms & extensions",
       desc: "Transform unused space into living space.",
       bg: "bg-[#E7EEF6]",
@@ -30,77 +32,142 @@ export default function TransformSection() {
       iconBg: "bg-[#D6E3F3]",
     },
   ];
- const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.5, // 🔥 slower gap between cards
-      delayChildren: 0.3,   // slight delay before starting
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.5, // 🔥 slower gap between cards
+        delayChildren: 0.3, // slight delay before starting
+      },
     },
-  },
-};
+  };
 
-const cardVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 1.2, // 🔥 slower fade
-      ease: [0.22, 1, 0.36, 1], // 🔥 premium smooth easing
+  const cardVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1.2, // 🔥 slower fade
+        ease: [0.22, 1, 0.36, 1], // 🔥 premium smooth easing
+      },
     },
-  },
-};
+  };
 
   return (
-    <section id="transform" className="bg-white py-20 px-6 relative overflow-hidden">
+    <section
+      id="transform"
+      className="bg-white py-20 px-6 relative overflow-hidden"
+    >
+      {/* Heading */}
       {/* Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }} // 🔥 start from bottom
-        whileInView={{ opacity: 1, y: 0 }} // move up
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 1,
-          ease: [0.25, 0.8, 0.25, 1],
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
         }}
-        viewport={{ once: true }}
-        className="text-center mb-14"
+        viewport={{ once: true, amount: 0.3 }}
+        className="text-center mb-8 sm:mb-10 md:mb-12 px-2"
       >
-        <h2 className="text-4xl font-bold mb-4">Transform Your Space</h2>
+        {/* Title */}
+        <h2
+          className="
+    text-2xl sm:text-3xl md:text-4xl
+    font-bold
+    text-gray-900
+    leading-snug
+  "
+        >
+          Transform Your space
+        </h2>
 
-        <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-          From common problems to premium solutions – experience the SWIFTROOMS
+        {/* Subtitle */}
+        <p
+          className="
+    text-gray-600
+    text-sm sm:text-base md:text-lg
+    mt-2 sm:mt-3
+    max-w-xl mx-auto
+  "
+        >
+          From common problems to premium solutions - experience the SWIFTROOMS
           difference
         </p>
       </motion.div>
-
       {/* Cards */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8"
-      >
-        {data.map((item, index) => (
-          <motion.div
-            key={index}
-            variants={cardVariants}
-            className={`${item.bg} ${item.border} border rounded-2xl p-8 text-center transition duration-300 hover:-translate-y-2`}
+      <div className="max-w-6xl mx-auto">
+        {/* Mobile Slider */}
+        <div className="block md:hidden">
+          <Swiper
+            modules={[Pagination]} // 👈 required
+            spaceBetween={16}
+            slidesPerView={1.2}
+            pagination={{ clickable: true }} // 👈 enable dots
           >
-            {/* Icon */}
-            <div
-              className={`w-14 h-14 mx-auto mb-6 flex items-center justify-center rounded-xl shadow-sm ${item.iconBg}`}
+            {data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  className={`${item.bg} ${item.border} border rounded-2xl p-6 text-center`}
+                >
+                  {/* Icon */}
+                  <div
+                    className={`w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-xl shadow-sm ${item.iconBg}`}
+                  >
+                    <img
+                      src={item.icon}
+                      alt={item.title}
+                      className="w-6 h-6 object-contain"
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-m font-semibold mb-2">{item.title}</h3>
+
+                  {/* Description */}
+                  <p className="text-gray-700 text-sm">{item.desc}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Desktop Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="hidden md:grid md:grid-cols-3 gap-8"
+        >
+          {data.map((item, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              className={`${item.bg} ${item.border} border rounded-2xl p-8 text-center transition duration-300 hover:-translate-y-2`}
             >
-              {item.icon}
-            </div>
+              {/* Icon */}
+              <div
+                className={`w-14 h-14 mx-auto mb-6 flex items-center justify-center rounded-xl shadow-sm ${item.iconBg}`}
+              >                                                                 
+                <img
+                  src={item.icon}
+                  alt={item.title}
+                  className="w-7 h-7 object-contain"
+                />
+              </div>
 
-            {/* Title */}
-            <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+              {/* Title */}
+              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
 
-            {/* Description */}
-            <p className="text-gray-700 text-lg leading-relaxed">{item.desc}</p>
-          </motion.div>
-        ))}
-      </motion.div>
+              {/* Description */}
+              <p className="text-gray-700 text-lg leading-relaxed">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

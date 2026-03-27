@@ -1,48 +1,79 @@
-'use client'
+"use client";
 
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
-import {motion} from "framer-motion"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { motion } from "framer-motion";
 
-const TOTAL_LOGOS = 6;
+const TOTAL_LOGOS = 5;
 
 const logos = Array.from({ length: TOTAL_LOGOS }, (_, i) => {
-  return `/images/brands/logo${i + 1}.jpg`;
+  return `/images/brands/logo${i + 1}.png`;
 });
-
-// Duplicate to ensure content always exceeds desktop viewport width
-const duplicatedLogos = [...logos, ...logos, ...logos];
 
 export default function Brands() {
   return (
     <section id="brands" className="bg-[#0B7D69] py-40 overflow-hidden">
       {/* Title */}
       <motion.h2
-        initial={{ opacity: 0, y: 40 }} // 🔥 start from bottom
-        whileInView={{ opacity: 1, y: 0 }} // move up
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{
           duration: 1,
           ease: [0.25, 0.8, 0.25, 1],
         }}
         viewport={{ once: true }}
-        className="text-center text-3xl md:text-4xl text-white mb-16"
+        className="text-center text-2xl sm:text-3xl md:text-4xl text-white mb-12"
       >
         BRANDS WE WORK WITH
       </motion.h2>
 
-      <Marquee speed={50} pauseOnHover={false} gradient={false}>
-        {duplicatedLogos.map((logo, i) => (
-          <div key={i} className="mx-10 flex items-center">
+      {/* ✅ Mobile Slider */}
+      <div className="block sm:hidden px-4 brands-swiper">
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 2000 }}
+          loop={true}
+        >
+          {logos.map((logo, i) => (
+            <SwiperSlide key={i}>
+              <div className="flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt={`Brand ${i + 1}`}
+                  width={250}
+                  height={50}
+                  className="object-contain"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* ✅ Grid (Tablet & Desktop) */}
+      <div
+        className="hidden sm:grid max-w-7xl mx-auto px-6 
+               grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
+               gap-10 items-center justify-items-center"
+      >
+        {logos.map((logo, i) => (
+          <div key={i} className="flex items-center justify-center">
             <Image
               src={logo}
-              alt={`Brand ${(i % TOTAL_LOGOS) + 1}`}
-              width={140}
-              height={60}
+              alt={`Brand ${i + 1}`}
+              width={200}
+              height={80}
               className="object-contain"
             />
           </div>
         ))}
-      </Marquee>
+      </div>
     </section>
   );
 }

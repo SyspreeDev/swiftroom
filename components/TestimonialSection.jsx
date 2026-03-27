@@ -11,8 +11,9 @@ import {
 
 export default function TestimonialSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
     align: "center",
+    containScroll: "trimSnaps",
+    loop: true,
   });
 
   const testimonials = [
@@ -187,66 +188,64 @@ export default function TestimonialSection() {
       </motion.div>
 
       {/* Carousel */}
-      <div className="max-w-5xl mx-auto relative">
-        {/* Left Button */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* 🔹 Left Button */}
         <button
           onClick={() => emblaApi && emblaApi.scrollPrev()}
-          className="absolute left-2 sm:left-6 md:left-16 lg:left-[120px] top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-md flex items-center justify-center z-10"
+          className="absolute left-0 sm:left-2 md:left-10 lg:left-30 top-1/2  w-9 h-9 sm:w-10 sm:h-10 bg-white  rounded-full shadow-md flex items-center justify-center z-10"
         >
-          <FaChevronLeft className="text-gray-600 text-sm sm:text-base" />
+          <FaChevronLeft className="text-[#0B7D69] text-xs sm:text-sm" />
         </button>
 
+        {/* 🔹 Right Button */}
         <button
           onClick={() => emblaApi && emblaApi.scrollNext()}
-          className="absolute right-2 sm:right-6 md:right-16 lg:right-[120px] top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-md flex items-center justify-center z-10"
+          className="absolute right-0 sm:right-2 md:right-10 lg:right-30 top-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center z-10"
         >
-          <FaChevronRight className="text-gray-600 text-sm sm:text-base" />
+          <FaChevronRight className="text-[#0B7D69] text-xs sm:text-sm" />
         </button>
 
-        {/* Embla Viewport */}
+        {/* 🔹 Embla Viewport */}
         <div className="overflow-hidden" ref={emblaRef}>
-          {/* Slides */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }} // 🔥 from bottom
-            whileInView={{ opacity: 1, y: 0 }} // move up
-            transition={{
-              duration: 1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="flex"
           >
             {testimonials.map((item, index) => (
-              <div key={index} className="min-w-full flex justify-center px-4">
-                {/* Card */}
-                <div className="bg-white rounded-2xl p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)] max-w-3xl w-full">
-                  {/* Stars */}
-                  <div className="flex text-[#f59e0b] mb-4 text-xl">
+              <div key={index} className="min-w-full flex justify-center">
+                {/* 🔹 Card */}
+                <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8  shadow-md sm:shadow-lg md:shadow-[0_20px_60px_rgba(0,0,0,0.08)] w-full max-w-md sm:max-w-xl md:max-w-3xl">
+                  {/* ⭐ Stars */}
+                  <div className="flex text-[#f59e0b] mb-3 text-base sm:text-lg">
                     {[...Array(5)].map((_, i) => (
                       <FaStar key={i} />
                     ))}
                   </div>
 
-                  {/* Text */}
-                  <p className="text-gray-600 text-xl leading-relaxed mb-6 text-sm">
+                  {/* 📝 Text */}
+                  <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed mb-5">
                     "{item.text}"
                   </p>
 
-                  {/* Bottom */}
-                  <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+                  {/* 🔻 Bottom */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-gray-200 pt-4">
+                    {/* Name */}
                     <div>
-                      <h4 className="font-semibold text-gray-800 text-lg">
+                      <h4 className="font-semibold text-gray-800 text-base sm:text-lg">
                         {item.name}
                       </h4>
-                      <p className="text-gray-400">{item.time}</p>
+                      <p className="text-gray-400 text-sm">{item.time}</p>
                     </div>
 
                     {/* Google Badge */}
-                    <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-sm">
+                    <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-xs sm:text-sm w-fit">
                       <img
                         src="/images/google.png"
                         alt="Google"
-                        className="w-5 h-5 object-contain"
+                        className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                       />
                       <span className="text-[#0B7D69] font-medium">Google</span>
                     </div>

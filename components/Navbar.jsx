@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="flex items-center flex-shrink-0">
             <Link href="/">
               <Image
-                src="/images/swiftroom-logo.jpg"
+                src="/images/logo.png"
                 alt="SwiftRooms"
                 width={180}
                 height={50}

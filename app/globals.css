@@ -33,7 +33,7 @@
 
 body {
   font-family: var(--font-barlow);
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 h1,
@@ -147,15 +147,46 @@ h6 {
   margin-left: 5px;
 }
 
-/* Move pagination dots down */
+/* Move pagination down */
 .swiper-pagination {
   position: relative !important;
   margin-top: 20px;
 }
 
-/* Active dot */
+/* Default dots */
+.swiper .swiper-pagination-bullet {
+  background-color: #d1d5db;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Active = pill */
 .swiper .swiper-pagination-bullet-active {
   background-color: #0b7d69; /* your green */
+  opacity: 1;
+  width: 24px; /* 🔥 stretch */
+  border-radius: 999px; /* 🔥 pill shape */
+}
+
+/* Only affects brands section */
+.brands-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+}
+
+.brands-swiper .swiper-pagination-bullet {
+  background-color: #d1d5db; /* normal dots */
+  opacity: 0.5;
+}
+
+.brands-swiper .swiper-pagination-bullet-active {
+  background-color: #ffffff;
+  opacity: 1;
+  width: 24px; /* 🔥 increase width */
+  border-radius: 999px; /* 🔥 makes it pill */
 }
 
 @keyframes fadeIn {

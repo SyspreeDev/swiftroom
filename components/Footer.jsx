@@ -22,16 +22,16 @@ export default function Footer() {
           {/* Logo */}
           <div>
             <Image
-              src="/images/logo.png"
+              src="/images/logo-circle.png"
               alt="Swiftrooms Logo"
-              width={200}
-              height={60}
+              width={50}
+              height={0}
               className="object-contain"
             />
           </div>
 
           {/* Tagline */}
-          <p className="text-gray-400 text-sm leading-relaxed max-w-s">
+          <p className="text-white text-sm leading-relaxed max-w-s">
             Premium aluminum solutions for UAE homes and businesses
           </p>
 

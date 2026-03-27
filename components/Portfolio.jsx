@@ -2,6 +2,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaInstagram, FaPlay } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function PortfolioSection() {
   const videos = [
@@ -15,38 +19,38 @@ export default function PortfolioSection() {
   const [currentVideo, setCurrentVideo] = useState(0);
 
   const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.35,   // ⬅️ slower gap between items
-      delayChildren: 0.2,      // ⬅️ slight delay before starting
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.35, // ⬅️ slower gap between items
+        delayChildren: 0.2, // ⬅️ slight delay before starting
+      },
     },
-  },
-};
+  };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 60 }, // ⬅️ more distance = more visible motion
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1, // ⬅️ slower (was 0.7)
-      ease: [0.25, 0.8, 0.25, 1],
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 }, // ⬅️ more distance = more visible motion
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1, // ⬅️ slower (was 0.7)
+        ease: [0.25, 0.8, 0.25, 1],
+      },
     },
-  },
-};
+  };
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.9, // ⬅️ slower (was 0.6)
-      ease: [0.25, 0.8, 0.25, 1],
+  const itemVariants = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9, // ⬅️ slower (was 0.6)
+        ease: [0.25, 0.8, 0.25, 1],
+      },
     },
-  },
-};
+  };
 
   return (
     <section id="portfolio" className="py-16 px-6">
@@ -71,22 +75,16 @@ const itemVariants = {
           <span className="text-[#026b58]">• Follow for more</span>
         </div>
       </motion.div>
+
       {/* Main Grid */}
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
         {/* LEFT */}
-        <div className="flex justify-center">
+
+        {/*DESKTOP */}
+        <div className="hidden md:flex justify-center">
           <div className="flex flex-col items-center">
-            {/* Video Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -80 }} // 🔥 from left
-              whileInView={{ opacity: 1, x: 0 }} // move to position
-              transition={{
-                duration: 1,
-                ease: [0.25, 0.8, 0.25, 1],
-              }}
-              viewport={{ once: true }}
-              className="relative w-[300px] h-[520px] rounded-3xl overflow-hidden"
-            >
+            {/* Video */}
+            <motion.div className="relative w-[300px] h-[520px] rounded-3xl overflow-hidden">
               <iframe
                 key={currentVideo}
                 src={videos[currentVideo]}
@@ -94,51 +92,6 @@ const itemVariants = {
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />
-
-              {/* Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-between p-4 bg-black/30 text-white">
-                {/* Top */}
-                <div>
-                  <div className="w-full h-[2px] bg-white/40 mb-3">
-                    <div className="w-1/3 h-full bg-white"></div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#0B7D69] font-bold">
-                      S
-                    </div>
-                    <span className="text-sm font-medium">@swiftrooms</span>
-                  </div>
-                </div>
-
-                {/* Bottom */}
-                <div className="text-sm space-y-2">
-                  <p>
-                    Explore our full range of premium aluminium windows, sliding
-                    doors, bifolds and luxury glass systems — all under one
-                    roof. See the quality, feel the finishes, and get expert
-                    advice tailored to your project. Call or WhatsApp Yaseen:
-                    056 307 1536
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "#SWIFTROOMS",
-                      "#DubaiShowroom",
-                      "#DubaiHomes",
-                      "#AluminiumWindows",
-                      "#BifoldDoors",
-                    ].map((tag, i) => (
-                      <span
-                        key={i}
-                        className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </motion.div>
 
             {/* Controls */}
@@ -150,13 +103,12 @@ const itemVariants = {
                   <button
                     key={i}
                     onClick={() => setCurrentVideo(i)}
-                    className={`w-13 h-13 rounded-xl flex items-center justify-center transition-all duration-200
-        ${isActive ? "border-2 border-[#0B7D69]" : "border border-gray-300"}`}
+                    className={`w-13 h-13 rounded-xl flex items-center justify-center
+            ${isActive ? "border-2 border-[#0B7D69]" : "border border-gray-300"}`}
                   >
-                    {/* Inner Box */}
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center
-          ${isActive ? "bg-[#0B7D69]" : "bg-gray-200"}`}
+              ${isActive ? "bg-[#0B7D69]" : "bg-gray-200"}`}
                     >
                       <FaPlay
                         className={`text-sm ${
@@ -168,22 +120,33 @@ const itemVariants = {
                 );
               })}
             </div>
-
-            {/* Button */}
-            <motion.button
-              initial={{ opacity: 0, y: 40 }} // from bottom
-              whileInView={{ opacity: 1, y: 0 }} // move up
-              transition={{
-                duration: 1.1, // 🔥 slower
-                ease: [0.22, 1, 0.36, 1], // 🔥 premium smooth easing
-              }}
-              viewport={{ once: true }}
-              className="mt-6 bg-[#0B7D69] text-white font-medium px-6 py-3 rounded-full flex items-center gap-2 shadow-md hover:bg-[#096b5a]"
-            >
-              <FaInstagram />
-              Watch All Reels
-            </motion.button>
           </div>
+        </div>
+
+        {/* MOBILE */}
+        <div className="md:hidden flex justify-center">
+          <Swiper
+            modules={[Pagination]}
+            pagination={{ clickable: true }}
+            spaceBetween={16}
+            slidesPerView={1}
+            className="w-full max-w-sm"
+          >
+            {videos.map((video, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex justify-center">
+                  <div className="w-[280px] h-[500px] rounded-3xl overflow-hidden shadow-sm">
+                    <iframe
+                      src={video}
+                      className="w-full h-full"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* RIGHT */}
