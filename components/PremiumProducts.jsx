@@ -36,7 +36,7 @@ export default function ProductSlider() {
     },
      {
       title: "Aluminum Windows",
-      desc: "Sleek sliding doors with smooth operation, perfect for balconies and terraces.",
+      desc: "Sleek sliding doors with smooth operation, perfect for balconies and terrace.",
       tag: "Doors",
       img: "/products/aluminium-windows.png",
     },
