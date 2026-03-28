@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaInstagram, FaPlay } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -52,6 +52,8 @@ export default function PortfolioSection() {
     },
   };
 
+  const swiperRef = useRef(null);
+
   return (
     <section id="portfolio" className="py-16 px-6">
       {/* Heading */}
@@ -80,11 +82,11 @@ export default function PortfolioSection() {
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
         {/* LEFT */}
 
-        {/*DESKTOP */}
-        <div className="hidden md:flex justify-center">
-          <div className="flex flex-col items-center">
-            {/* Video */}
-            <motion.div className="relative w-[300px] h-[520px] rounded-3xl overflow-hidden">
+        {/* LEFT COLUMN: VIDEOS */}
+        <div className="flex flex-col items-center w-full">
+          {/* Desktop View: Single Video Player + Buttons */}
+          <div className="hidden md:flex flex-col items-center">
+            <motion.div className="relative w-[300px] h-[520px] rounded-3xl overflow-hidden shadow-2xl">
               <iframe
                 key={currentVideo}
                 src={videos[currentVideo]}
@@ -94,59 +96,58 @@ export default function PortfolioSection() {
               />
             </motion.div>
 
-            {/* Controls */}
+            {/* Desktop Only Buttons */}
             <div className="flex gap-3 mt-6">
-              {videos.map((_, i) => {
-                const isActive = currentVideo === i;
-
-                return (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentVideo(i)}
-                    className={`w-13 h-13 rounded-xl flex items-center justify-center
-            ${isActive ? "border-2 border-[#0B7D69]" : "border border-gray-300"}`}
+              {videos.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentVideo(i)}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all cursor-pointer 
+                    ${currentVideo === i ? "border-2 border-[#0B7D69]" : "border border-gray-300"}`}
+                >
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${currentVideo === i ? "bg-[#0B7D69]" : "bg-gray-200"}`}
                   >
-                    <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center
-              ${isActive ? "bg-[#0B7D69]" : "bg-gray-200"}`}
-                    >
-                      <FaPlay
-                        className={`text-sm ${
-                          isActive ? "text-white" : "text-gray-400"
-                        }`}
-                      />
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* MOBILE */}
-        <div className="md:hidden flex justify-center">
-          <Swiper
-            modules={[Pagination]}
-            pagination={{ clickable: true }}
-            spaceBetween={16}
-            slidesPerView={1}
-            className="w-full max-w-sm"
-          >
-            {videos.map((video, index) => (
-              <SwiperSlide key={index}>
-                <div className="flex justify-center">
-                  <div className="w-[280px] h-[500px] rounded-3xl overflow-hidden shadow-sm">
-                    <iframe
-                      src={video}
-                      className="w-full h-full"
-                      allow="autoplay; encrypted-media"
-                      allowFullScreen
+                    <FaPlay
+                      className={`text-[10px] ${currentVideo === i ? "text-white" : "text-gray-400"}`}
                     />
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile View: Swiper + Dots */}
+          <div className="md:hidden w-full flex flex-col items-center">
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              spaceBetween={16}
+              slidesPerView={1}
+              onSlideChange={(swiper) => setCurrentVideo(swiper.activeIndex)}
+              className="w-full max-w-sm pb-10 custom-swiper" // Added padding for dots
+            >
+              {videos.map((video, index) => (
+                <SwiperSlide key={index}>
+                  <div className="flex justify-center">
+                    <div className="w-[280px] h-[500px] rounded-3xl overflow-hidden shadow-lg">
+                      <iframe
+                        src={video}
+                        className="w-full h-full"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* "Watch All Reels" Button as seen in your image */}
+            <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md">
+              <FaInstagram />
+              Watch All Reels
+            </button>
+          </div>
         </div>
 
         {/* RIGHT */}
@@ -239,6 +240,22 @@ export default function PortfolioSection() {
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        .custom-swiper .swiper-pagination-bullet {
+          background: #d1d5db;
+          opacity: 1;
+        }
+        .custom-swiper .swiper-pagination-bullet-active {
+          background: #0b7d69 !important;
+          width: 24px; /* Makes the active dot a pill shape like your image */
+          border-radius: 10px;
+          transition: width 0.3s ease;
+        }
+        .custom-swiper .swiper-pagination {
+          bottom: 0px !important;
+        }
+      `}</style>
     </section>
   );
 }
