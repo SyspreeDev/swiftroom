@@ -720,7 +720,7 @@ export default function Hero() {
           )}
 
           {/* POINTS */}
-          <div className="mt-5 flex flex-wrap md:flex-nowrap justify-center items-center gap-6 text-sm sm:text-base text-gray-200">
+          <div className="mt-5 mb-6 flex flex-wrap md:flex-nowrap justify-center items-center gap-6 text-sm sm:text-base text-gray-200">
             <div className="flex items-center gap-2">
              <FaCheck className="text-white text-sm" />
               <span>Free Consultation</span>
