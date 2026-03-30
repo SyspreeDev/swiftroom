@@ -69,7 +69,7 @@ export default function Brands() {
               alt={`Brand ${i + 1}`}
               width={200}
               height={80}
-              className="object-contain"
+              className="object-contain transition duration-300 hover:scale-120"
             />
           </div>
         ))}

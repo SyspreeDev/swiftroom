@@ -136,7 +136,7 @@ export default function ProductSlider() {
                     </span>
 
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4 text-white">
+                    <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
                       <h3 className="text-lg font-semibold">{item.title}</h3>
                       <p className="text-xs mt-1">{item.desc}</p>
 

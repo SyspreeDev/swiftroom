@@ -294,6 +294,7 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
 import { FaInstagram, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
@@ -372,6 +373,7 @@ const images = [
 ];
 
 export default function SliderGallery() {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <>
       <section
@@ -510,14 +512,19 @@ export default function SliderGallery() {
                     />
 
                     {/* BOTTOM LOGO WATERMARK */}
-                    {isActive && (
-                      <div className="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none">
-                        {/* <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full">
-                          <div className="w-5 h-5 bg-[#0B7D69] rounded-sm rotate-45"></div>
-                          <span className="text-gray-800 font-semibold text-sm tracking-wider">
-                            SWIFTROOMS
-                          </span>
-                        </div> */}
+                    {(isActive) && (
+                      <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
+                        <div className="text-left text-white">
+                          {/* TITLE */}
+                          <h3 className="font-semibold text-lg tracking-wide">
+                            {item.title}
+                          </h3>
+
+                          {/* DESCRIPTION */}
+                          <p className="text-sm text-white/80 mt-1">
+                            {item.desc}
+                          </p>
+                        </div>
                       </div>
                     )}
                   </Tilt>

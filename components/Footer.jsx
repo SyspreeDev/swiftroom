@@ -22,10 +22,10 @@ export default function Footer() {
           {/* Logo */}
           <div>
             <Image
-              src="/images/logo-circle.png"
+              src="/images/logo-footer.png"
               alt="Swiftrooms Logo"
-              width={50}
-              height={0}
+              width={200}
+              height={50}
               className="object-contain"
             />
           </div>
