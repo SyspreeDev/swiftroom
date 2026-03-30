@@ -15,7 +15,11 @@ const logos = Array.from({ length: TOTAL_LOGOS }, (_, i) => {
 
 export default function Brands() {
   return (
-    <section id="brands" className="bg-[#0B7D69] py-40 overflow-hidden">
+    <section
+      id="brands"
+      className="bg-[#0B7D69] py-40 md:py-60 overflow-hidden"
+    >
+      {" "}
       {/* Title */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
@@ -29,7 +33,6 @@ export default function Brands() {
       >
         BRANDS WE WORK WITH
       </motion.h2>
-
       {/* ✅ Mobile Slider */}
       <div className="block sm:hidden px-4 brands-swiper">
         <Swiper
@@ -55,7 +58,6 @@ export default function Brands() {
           ))}
         </Swiper>
       </div>
-
       {/* ✅ Grid (Tablet & Desktop) */}
       <div
         className="hidden sm:grid max-w-7xl mx-auto px-6 
