@@ -73,7 +73,16 @@ export default function PortfolioSection() {
 
         <div className="flex items-center justify-center gap-2 mt-3 text-[#0B7D69] text-sm">
           <FaInstagram />
-          <span>@swiftrooms.ae</span>
+          <span>
+            <a
+              href="https://instagram.com/swiftrooms.ae"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              @swiftrooms.ae
+            </a>
+          </span>
           <span className="text-[#026b58]">• Follow for more</span>
         </div>
       </motion.div>
@@ -115,6 +124,17 @@ export default function PortfolioSection() {
                 </button>
               ))}
             </div>
+            {/* "Watch All Reels" Button as seen in your image */}
+            <a
+              href="https://www.instagram.com/swiftrooms.ae/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md">
+                <FaInstagram />
+                Watch All Reels
+              </button>
+            </a>
           </div>
 
           {/* Mobile View: Swiper + Dots */}
@@ -143,10 +163,16 @@ export default function PortfolioSection() {
             </Swiper>
 
             {/* "Watch All Reels" Button as seen in your image */}
-            <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md">
-              <FaInstagram />
-              Watch All Reels
-            </button>
+            <a
+              href="https://www.instagram.com/swiftrooms.ae/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md">
+                <FaInstagram />
+                Watch All Reels
+              </button>
+            </a>
           </div>
         </div>
 

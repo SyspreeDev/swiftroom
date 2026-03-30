@@ -155,9 +155,12 @@ export default function FaqSection() {
         >
           <p className="text-gray-600 text-lg mb-4">Still have questions?</p>
 
-          <button className="bg-[#0B7D69] hover:bg-[#095f50] text-white px-8 py-3.5 rounded-lg text-medium tracking-wide transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+          <a
+            href="#cta"
+            className="bg-[#0B7D69] hover:bg-[#095f50] text-white px-8 py-3.5 rounded-lg text-medium tracking-wide transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 inline-block"
+          >
             Get Free Consultation
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

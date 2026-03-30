@@ -116,7 +116,7 @@ export default function Navbar() {
             variants={ctaVariants}
             className="hidden md:flex flex-shrink-0"
           >
-            <Link href="/contact">
+            <Link href="#cta">
               <button className="bg-[#0B7D69] text-white px-5 py-2.5 rounded-lg text-[13px] font-medium shadow-md hover:bg-[#09695a] transition duration-300">
                 Get Quote | Visit Showroom
               </button>

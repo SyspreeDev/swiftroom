@@ -4,12 +4,12 @@ import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 
 const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "Process", href: "/process" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "FAQs", href: "/faqs" },
-  { label: "Get Quote", href: "/get-quote" },
+  { label: "Home", href: "#hero" },
+  { label: "Products", href: "#products" },
+  { label: "Process", href: "#process" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "FAQs", href: "#faqs" },
+  { label: "Get Quote", href: "#cta" },
 ];
 
 export default function Footer() {
@@ -101,7 +101,7 @@ export default function Footer() {
               Follow Us on Instagram
             </h3>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/swiftrooms.ae/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-xl bg-[#0B7D69] flex items-center justify-center hover:bg-[#095f50] hover:-translate-y-0.5 transition-all duration-200"

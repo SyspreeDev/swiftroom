@@ -394,7 +394,17 @@ export default function SliderGallery() {
 
           <div className="flex items-center justify-center gap-2 text-sm md:text-base">
             <FaInstagram className="text-[#0B7D69] text-xl" />
-            <span className="text-[#0B7D69] font-medium">@swiftrooms</span>
+            <span className="text-[#0B7D69] font-medium">
+              {" "}
+              <a
+                href="https://instagram.com/swiftrooms.ae"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                @swiftrooms.ae
+              </a>
+            </span>
             <span className="text-gray-400 mx-1">•</span>
             <span className="text-[#0B7D69]">Follow us for more</span>
           </div>
