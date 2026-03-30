@@ -25,6 +25,7 @@ export default function Hero() {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [fullName, setFullName] = useState("");
+  const [loading, setLoading] = useState(false);
   const products = [
     "Aluminum Sliding Doors",
     "Bi-Fold Doors",
@@ -59,12 +60,12 @@ export default function Hero() {
   const [email, setEmail] = useState("");
   return (
     <section
-  id="home"
-  className="relative w-full 
+      id="home"
+      className="relative w-full 
              min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] 
              pt-24 sm:pt-28 lg:pt-10
              overflow-hidden"
->
+    >
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
@@ -299,7 +300,7 @@ export default function Hero() {
                 {/* Villa */}
                 <div
                   onClick={() => {
-                    setSelectedProperty("villa");     
+                    setSelectedProperty("villa");
                     setStep(5);
                   }}
                   className={`h-[100px] flex flex-col items-center justify-center rounded-xl border cursor-pointer transition-all
@@ -516,11 +517,13 @@ export default function Hero() {
             </div>
           )}
           {step === 7 && (
-          <div className="bg-white 
+            <div
+              className="bg-white 
                 px-4 py-6 sm:px-6 sm:py-8 
                 rounded-2xl shadow-lg 
                 max-w-xs sm:max-w-md md:max-w-3xl 
-                mx-auto">
+                mx-auto"
+            >
               {/* Top */}
               <div className="flex justify-between text-sm text-gray-500">
                 <span>Question 5 of 6</span>
@@ -652,12 +655,47 @@ export default function Hero() {
                   ← Back
                 </button>
 
-                {/* Submit */}
                 <button
-                  onClick={() => setStep(9)}
-                  className="px-6 py-3 rounded-xl bg-[#0B7D69] text-white flex items-center gap-2 hover:bg-[#096b5a] transition"
+                  disabled={loading}
+                  onClick={async () => {
+                    setLoading(true);
+
+                    const formData = {
+                      fullName,
+                      phone,
+                      email,
+                      selectedProperty,
+                      selectedProducts,
+                      projectType: selected,
+                      country,
+                    };
+
+                    try {
+                      const res = await fetch("/api/send-email", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formData),
+                      });
+
+                      const data = await res.json();
+
+                      if (data.success) {
+                        setStep(9);
+                      } else {
+                        alert("Failed to send email");
+                      }
+                    } catch (err) {
+                      console.error(err);
+                      alert("Error occurred");
+                    }
+
+                    setLoading(false);
+                  }}
+                  className="px-6 py-3 rounded-xl bg-[#0B7D69] text-white flex items-center gap-2"
                 >
-                  Submit →
+                  {loading ? "Sending..." : "Submit →"}
                 </button>
               </div>
             </div>
@@ -722,7 +760,7 @@ export default function Hero() {
           {/* POINTS */}
           <div className="mt-5 mb-6 flex flex-wrap md:flex-nowrap justify-center items-center gap-6 text-sm sm:text-base text-gray-200">
             <div className="flex items-center gap-2">
-             <FaCheck className="text-white text-sm" />
+              <FaCheck className="text-white text-sm" />
               <span>Free Consultation</span>
             </div>
 

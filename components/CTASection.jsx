@@ -23,6 +23,7 @@ export default function CTASection() {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [fullName, setFullName] = useState("");
+  const [loading, setLoading] = useState(false);
   const products = [
     "Aluminum Sliding Doors",
     "Bi-Fold Doors",
@@ -641,10 +642,46 @@ export default function CTASection() {
 
               {/* Submit */}
               <button
-                onClick={() => setStep(9)}
-                className="px-6 py-3 rounded-xl bg-[#0B7D69] text-white flex items-center gap-2 hover:bg-[#096b5a] transition"
+                disabled={loading}
+                onClick={async () => {
+                  setLoading(true);
+
+                  const formData = {
+                    fullName,
+                    phone,
+                    email,
+                    selectedProperty,
+                    selectedProducts,
+                    projectType: selected,
+                    country,
+                  };
+
+                  try {
+                    const res = await fetch("/api/send-email", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(formData),
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                      setStep(9);
+                    } else {
+                      alert("Failed to send email");
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    alert("Error occurred");
+                  }
+
+                  setLoading(false);
+                }}
+                className="px-6 py-3 rounded-xl bg-[#0B7D69] text-white flex items-center gap-2"
               >
-                Submit →
+                {loading ? "Sending..." : "Submit →"}
               </button>
             </div>
           </div>

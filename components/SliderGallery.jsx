@@ -457,7 +457,7 @@ export default function SliderGallery() {
             slidesPerView={"auto"}
             loop={true}
             // FIX ADDED: Forces Swiper to render enough clones to keep the loop populated
-            loopAdditionalSlides={5}
+            // loopAdditionalSlides={5}
             slideToClickedSlide={true}
             observer={true}
             observeParents={true}
