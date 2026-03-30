@@ -63,7 +63,7 @@ export default function Hero() {
   className="relative w-full 
              min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] 
              pt-24 sm:pt-28 lg:pt-10
-             overflow-y-hidden"
+             overflow-hidden"
 >
       {/* Background Video */}
       <video
@@ -79,7 +79,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#0B7D69]/70" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1300px] mx-auto h-full flex flex-col md:flex-row items-center justify-between px-4 gap-6">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between px-4 gap-6">
         {/* LEFT CONTENT */}
         <div className="max-w-xl text-white">
           <h1 className="text-2xl sm:text-3xl lg:text-3xl font-semibold leading-snug sm:leading-tight uppercase tracking-wider">
@@ -133,7 +133,7 @@ export default function Hero() {
             </motion.button>
           )}
           {step === 2 && (
-            <div className="bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="bg-white px-4 py-6 sm:px-6 sm:py-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Visit Showroom */}
               <div
                 onClick={() => setStep(3)}
@@ -181,7 +181,7 @@ export default function Hero() {
             </div>
           )}
           {step === 3 && (
-            <div className="bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="bg-white px-4 py-6 sm:px-6 sm:py-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Top */}
               <div className="flex justify-between text-sm text-gray-500">
                 <span>Question 1 of 6</span>
@@ -541,9 +541,9 @@ export default function Hero() {
               </p>
 
               {/* Inputs */}
-              <div className="flex gap-4 relative">
+              <div className="flex flex-col sm:flex-row gap-4 relative">
                 {/* Country Dropdown */}
-                <div className="relative w-[220px]">
+                <div className="relative w-full sm:w-[220px]">
                   <div
                     onClick={() => setOpenDropdown(!openDropdown)}
                     className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
@@ -613,7 +613,7 @@ export default function Hero() {
             </div>
           )}
           {step === 8 && (
-            <div className="bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="bg-white px-4 py-6 sm:px-6 sm:py-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Top */}
               <div className="flex justify-between text-sm text-gray-500">
                 <span>Question 6 of 6</span>

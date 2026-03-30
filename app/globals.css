@@ -31,7 +31,7 @@
   }
 }
 
-body {
+html,body {
   font-family: var(--font-barlow);
   overflow-x: hidden;
 }
@@ -52,7 +52,7 @@ h6 {
 /* Ensure the container allows the center slide to grow upwards/downwards */
 .main-video-swiper {
   padding: 100px 0 !important; /* Extra padding for increased height */
-  overflow: visible !important;
+  overflow: hidden !important;
   align-items: center;
 }
 
@@ -100,6 +100,11 @@ h6 {
   max-width: 350px; /* Mobile */
 }
 
+@media (max-width: 640px) {
+  .swiper-slide-active.main-slide-item {
+    transform: scale(1.05) !important;
+  }
+}
 /* CENTER SLIDE: Large/Active */
 .swiper-slide-active.main-slide-item {
   transform: scale(1.2) !important; /* Grows bigger than sides */
