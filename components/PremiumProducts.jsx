@@ -140,9 +140,12 @@ export default function ProductSlider() {
                       <h3 className="text-lg font-semibold">{item.title}</h3>
                       <p className="text-xs mt-1">{item.desc}</p>
 
-                      <button className="mt-3 bg-white text-[#0B7D69] px-3 py-2 rounded-md text-xs w-fit">
+                      <a
+                        href="#cta"
+                        className="mt-3 bg-white text-[#0B7D69] px-3 py-2 rounded-md text-xs w-fit inline-block"
+                      >
                         Get A Quote
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -202,9 +205,12 @@ export default function ProductSlider() {
                     <h3 className="text-2xl font-medium mb-2">{item.title}</h3>
                     <p className="text-sm mb-4">{item.desc}</p>
 
-                    <button className="bg-white text-[#0B7D69] px-4 py-2 rounded-md text-sm w-fit transition duration-300 hover:bg-[#0B7D69] hover:text-white">
+                    <a
+                      href="#cta"
+                      className="mt-3 bg-white text-[#0B7D69] px-3 py-2 rounded-md text-xs w-fit inline-block"
+                    >
                       Get A Quote
-                    </button>
+                    </a>
                   </div>
                 </div>
               </SwiperSlide>

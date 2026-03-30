@@ -18,6 +18,7 @@ import {
 } from "react-icons/hi2";
 
 export default function CTASection() {
+
   const [step, setStep] = useState(1);
   const [selected, setSelected] = useState(null); // just for UI
   const [selectedProperty, setSelectedProperty] = useState(null);

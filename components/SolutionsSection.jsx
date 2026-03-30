@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
 import { FiArrowRight } from "react-icons/fi";
 import { useState } from "react";
+import Link from "next/link";
 export default function SolutionSection() {
   const [activeTab, setActiveTab] = useState("frustrations");
 
@@ -190,10 +191,12 @@ export default function SolutionSection() {
                 ))}
               </div>
 
-              <button className="mt-5 w-full bg-[#0B7D69] text-white py-3 rounded-lg text-sm flex items-center justify-center gap-2">
-                Explore Our Products
-                <FiArrowRight />
-              </button>
+              <Link href="#products">
+                <button className="mt-5 w-full bg-[#0B7D69] text-white py-3 rounded-lg text-sm flex items-center justify-center gap-2">
+                  Explore Our Products
+                  <FiArrowRight />
+                </button>
+              </Link>
             </div>
           )}
         </div>
@@ -278,10 +281,12 @@ export default function SolutionSection() {
               ))}
             </motion.ul>
 
-            <button className="w-full bg-white text-[#0B7D69] font-extrabold py-3 rounded-lg text-sm flex items-center justify-center gap-2">
-              Explore Our Products
-              <FiArrowRight />
-            </button>
+            <Link href="#products">
+              <button className="mt-5 w-full bg-[#0B7D69] text-white py-3 rounded-lg text-sm flex items-center justify-center gap-2">
+                Explore Our Products
+                <FiArrowRight />
+              </button>
+            </Link>
           </motion.div>
         </div>
       </div>
