@@ -34,7 +34,37 @@ export default function ProductSlider() {
       tag: "Windows",
       img: "/products/upvc-windows.png",
     },
-     {
+    {
+      title: "Aluminum Windows",
+      desc: "Sleek sliding doors with smooth operation, perfect for balconies and terraces.",
+      tag: "Doors",
+      img: "/products/aluminium-windows.png",
+    },
+    {
+      title: "Skylights and Garden Rooms",
+      desc: "Premium roof windows and skylights that flood interiors with natural light.",
+      tag: "Outdoor Spaces",
+      img: "/products/skylights.png",
+    },
+    {
+      title: "Aluminum Sliding Doors",
+      desc: "Sleek sliding doors with smooth operation, perfect for balconies and terraces.",
+      tag: "Doors",
+      img: "/products/aluminium-doors.png",
+    },
+    {
+      title: "Bi-Fold Doors",
+      desc: "Premium folding doors that seamlessly connect indoor and outdoor spaces.",
+      tag: "Doors",
+      img: "/products/bifold-doors.png",
+    },
+    {
+      title: "UPVC Windows",
+      desc: "Energy efficient windows designed for durability and insulation.",
+      tag: "Windows",
+      img: "/products/upvc-windows.png",
+    },
+    {
       title: "Aluminum Windows",
       desc: "Sleek sliding doors with smooth operation, perfect for balconies and terraces.",
       tag: "Doors",
@@ -56,7 +86,9 @@ export default function ProductSlider() {
         viewport={{ once: true, amount: 0.3 }}
         className="text-center mb-12"
       >
-        <h2 className="md:text-4xl text-3xl font-medium">Our Premium Products</h2>
+        <h2 className="md:text-4xl text-3xl font-medium">
+          Our Premium Products
+        </h2>
 
         <p className="text-gray-700 text-xl mt-2">
           High-quality aluminum and UPVC solutions for UAE's climate
@@ -135,6 +167,7 @@ export default function ProductSlider() {
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
             slidesPerView={3}
+            loopedSlides={3}
             loop={true}
             autoplay={{
               delay: 3000,
