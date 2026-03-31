@@ -61,8 +61,18 @@ export default function FaqSection() {
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faqs" className="bg-white min-h-screen py-20 px-5">
-      <div className="max-w-3xl mx-auto">
+    <section id="faqs" className="bg-white min-h-screen py-20 px-5 relative">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
+
+      <div className="max-w-3xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

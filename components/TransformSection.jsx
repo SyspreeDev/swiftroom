@@ -54,10 +54,17 @@ export default function TransformSection() {
   };
 
   return (
-    <section
-      id="transform"
-      className="bg-white py-20 px-6 relative overflow-hidden"
-    >
+    <section id="transform" className="py-20 px-6 relative">
+      {/* 🎥 Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
       {/* Heading */}
       {/* Heading */}
       <motion.div
@@ -68,7 +75,7 @@ export default function TransformSection() {
           ease: [0.22, 1, 0.36, 1],
         }}
         viewport={{ once: true, amount: 0.3 }}
-        className="text-center mb-8 sm:mb-10 md:mb-12 px-2"
+        className="text-center mb-8 sm:mb-10 md:mb-12 px-2 relative z-10"
       >
         {/* Title */}
         <h2
@@ -96,7 +103,7 @@ export default function TransformSection() {
         </p>
       </motion.div>
       {/* Cards */}
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Mobile Slider */}
         <div className="block md:hidden">
           <Swiper
@@ -149,7 +156,7 @@ export default function TransformSection() {
               {/* Icon */}
               <div
                 className={`w-14 h-14 mx-auto mb-6 flex items-center justify-center rounded-xl shadow-sm ${item.iconBg}`}
-              >                                                                 
+              >
                 <img
                   src={item.icon}
                   alt={item.title}

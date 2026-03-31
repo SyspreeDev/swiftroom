@@ -380,12 +380,21 @@ export default function SliderGallery() {
         id="gallery"
         className="relative pt-10 pb-16 md:pt-20 md:pb-28 bg-white overflow-hidden hidden md:block"
       >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/videos/bg-video.mp4" type="video/mp4" />
+        </video>
         {/* HEADER SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-10 relative z-10"
         >
           <h2 className="text-3xl md:text-4xl text-gray-800 mb-2">
             Our Gallery
@@ -512,7 +521,7 @@ export default function SliderGallery() {
                     />
 
                     {/* BOTTOM LOGO WATERMARK */}
-                    {(isActive) && (
+                    {isActive && (
                       <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
                         <div className="text-left text-white">
                           {/* TITLE */}
@@ -535,12 +544,43 @@ export default function SliderGallery() {
         </div>
       </section>
 
-      <div className="md:hidden mt-6">
+      <div className="md:hidden mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl md:text-4xl text-gray-800 mb-2">
+            Our Gallery
+          </h2>
+          <p className="text-gray-500 text-sm md:text-base mt-3 mb-2">
+            Feel free to browse our work
+          </p>
+
+          <div className="flex items-center justify-center gap-2 text-sm md:text-base">
+            <FaInstagram className="text-[#0B7D69] text-xl" />
+            <span className="text-[#0B7D69] font-medium">
+              {" "}
+              <a
+                href="https://instagram.com/swiftrooms.ae"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                @swiftrooms.ae
+              </a>
+            </span>
+            <span className="text-gray-400 mx-1">•</span>
+            <span className="text-[#0B7D69]">Follow us for more</span>
+          </div>
+        </motion.div>
         <Swiper
           modules={[Pagination]}
           pagination={{ clickable: true }}
           spaceBetween={12}
           slidesPerView={1.1}
+          loop={true}
           centeredSlides={true}
           className="px-4"
         >

@@ -120,15 +120,25 @@ export default function TestimonialSection() {
   ];
 
   return (
-    <section id="testimonials" className="bg-white py-20 px-6">
+    <section id="testimonials" className="bg-white py-20 px-6 relative">
       {/* Heading */}
+
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
 
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.2 }}
-        className="text-center mb-12"
+        className="text-center mb-12 relative z-10"
       >
         {/* TITLE */}
         <motion.h2

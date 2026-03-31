@@ -55,7 +55,17 @@ export default function PortfolioSection() {
   const swiperRef = useRef(null);
 
   return (
-    <section id="portfolio" className="py-16 px-6">
+    <section id="portfolio" className="py-16 px-6 relative">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
+
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }} // 🔥 from bottom
@@ -65,7 +75,7 @@ export default function PortfolioSection() {
           ease: [0.25, 0.8, 0.25, 1],
         }}
         viewport={{ once: true }}
-        className="text-center mb-10"
+        className="text-center mb-10 relative z-10"
       >
         <h2 className="text-3xl text-gray-800">Our Portfolio</h2>
 
@@ -106,7 +116,7 @@ export default function PortfolioSection() {
             </motion.div>
 
             {/* Desktop Only Buttons */}
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-6 relative z-10">
               {videos.map((_, i) => (
                 <button
                   key={i}
@@ -130,7 +140,7 @@ export default function PortfolioSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md">
+              <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md relative z-10">
                 <FaInstagram />
                 Watch All Reels
               </button>
@@ -144,6 +154,7 @@ export default function PortfolioSection() {
               pagination={{ clickable: true }}
               spaceBetween={16}
               slidesPerView={1}
+              loop={true}
               onSlideChange={(swiper) => setCurrentVideo(swiper.activeIndex)}
               className="w-full max-w-sm pb-10 custom-swiper" // Added padding for dots
             >
@@ -151,9 +162,11 @@ export default function PortfolioSection() {
                 <SwiperSlide key={index}>
                   <div className="flex justify-center">
                     <div className="w-[280px] h-[500px] rounded-3xl overflow-hidden shadow-lg">
+                      <div className="absolute inset-0 z-10"></div>
                       <iframe
                         src={video}
-                        className="w-full h-full"
+                        className="w-full h-full pointer-events-none"
+                        allow="autoplay; encrypted-media"
                         allowFullScreen
                       />
                     </div>
@@ -187,6 +200,7 @@ export default function PortfolioSection() {
                 ease: [0.25, 0.8, 0.25, 1],
               }}
               viewport={{ once: true }}
+              className="relative z-10 "
             >
               <h3 className="text-2xl text-gray-800 mb-2">
                 Real Projects, Real Results
@@ -214,7 +228,7 @@ export default function PortfolioSection() {
                 <motion.div
                   key={i}
                   variants={cardVariants}
-                  className="bg-white rounded-xl p-5 text-center shadow-sm"
+                  className="bg-white rounded-xl p-5 text-center shadow-sm relative z-10"
                 >
                   <h4 className="text-[#0B7D69] text-2xl">{item.title}</h4>
                   <p className="text-gray-800 text-sm">{item.sub}</p>
@@ -232,7 +246,7 @@ export default function PortfolioSection() {
                   ease: [0.25, 0.8, 0.25, 1],
                 }}
                 viewport={{ once: true }}
-                className="text-gray-800 text-xl mb-3"
+                className="text-gray-800 text-xl mb-3 relative z-10"
               >
                 Featured Communities
               </motion.h4>
@@ -242,7 +256,7 @@ export default function PortfolioSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="grid grid-cols-2 gap-y-2 text-gray-600 text-sm"
+                className="grid grid-cols-2 gap-y-2 text-gray-600 text-sm relative z-10"
               >
                 {[
                   "Arabian Ranches",

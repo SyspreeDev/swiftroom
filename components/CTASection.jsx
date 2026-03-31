@@ -18,7 +18,6 @@ import {
 } from "react-icons/hi2";
 
 export default function CTASection() {
-
   const [step, setStep] = useState(1);
   const [selected, setSelected] = useState(null); // just for UI
   const [selectedProperty, setSelectedProperty] = useState(null);
@@ -59,14 +58,24 @@ export default function CTASection() {
   const [email, setEmail] = useState("");
 
   return (
-    <section id="cta" className="py-20 px-6 relative overflow-hidden">
+    <section id="cta" className="py-20 px-6 relative overflow-x-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
+
       {/* Background Pattern (optional light shapes) */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         {/* You can replace with SVG/image if needed */}
       </div>
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center relative z-10">
         {/* Heading */}
         <motion.div
           initial="hidden"
@@ -84,7 +93,7 @@ export default function CTASection() {
               duration: 1,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
+            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 "
           >
             Ready to Transform Your Space?
           </motion.h2>
