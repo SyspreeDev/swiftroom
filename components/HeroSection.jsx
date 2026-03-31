@@ -62,8 +62,8 @@ export default function Hero() {
     <section
       id="home"
       className="relative w-full 
-             min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] 
-             pt-24 sm:pt-28 lg:pt-20
+             min-h-[70vh] sm:min-h-[80vh] lg:min-h-[110vh] 
+             pt-24 sm:pt-28 lg:pt-40
              overflow-hidden"
     >
       {/* Background Video */}
@@ -80,9 +80,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#0B7D69]/70" />
 
       {/* Content */}
-      <div
-        className="relative z-10  w-full max-w-[1200px] xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto h-full  flex flex-col md:flex-row  items-center justify-between  px-4 sm:px-6 lg:px-10 xl:px-10 2xl:px-30 2xl:py-30 gap-6 lg:gap-10"
-      >
+      <div className="relative z-10  w-full max-w-[1200px] xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto h-full  flex flex-col md:flex-row  items-center justify-between  px-4 sm:px-6 lg:px-10 xl:px-10 2xl:px-30 2xl:py-30 gap-6 lg:gap-10">
         {/* LEFT CONTENT */}
         <div className="max-w-xl text-white">
           <h1 className="text-2xl sm:text-3xl lg:text-3xl font-semibold leading-snug sm:leading-tight uppercase tracking-wider">

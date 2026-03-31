@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Mail, MapPin } from "lucide-react";
@@ -17,6 +17,20 @@ export default function Navbar() {
     { name: "Testimonials", id: "testimonials" },
     { name: "FAQs", id: "faqs" },
   ];
+
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const updateHash = () => {
+      setActive(window.location.hash.replace("#", ""));
+    };
+
+    updateHash(); // on load
+    window.addEventListener("hashchange", updateHash);
+
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, []);
+
   const [open, setOpen] = useState(false);
 
   // 🔥 Navbar animation
@@ -61,6 +75,16 @@ export default function Navbar() {
       },
     },
   };
+
+  const menuVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -69,7 +93,7 @@ export default function Navbar() {
       initial="hidden"
       animate="visible"
       variants={navVariants}
-      className="w-full font-poppins relative z-50 overflow-x-hidden"
+      className="w-full font-poppins fixed top-0 left-0 z-50 bg-white"
     >
       {/* ================= MAIN NAV ================= */}
       <div className="bg-white border-b border-gray-200">
@@ -133,45 +157,92 @@ export default function Navbar() {
         </div>
 
         {/* ================= MOBILE MENU ================= */}
+        {/* ================= MOBILE MENU ================= */}
+        {/* ================= MOBILE MENU ================= */}
+
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-gray-200 shadow-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-white z-50 md:hidden flex flex-col justify-between"
           >
-            <nav className="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
-              {links?.map((item) => {
+            {/* TOP */}
+            <div className="relative flex items-center px-6 py-6">
+              {/* CENTER LOGO */}
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <Image
+                  src="/images/logo-circle.png"
+                  alt="logo"
+                  width={50}
+                  height={40}
+                />
+              </div>
+
+              {/* CLOSE BUTTON (RIGHT) */}
+              <div className="ml-auto">
+                <button onClick={() => setOpen(false)}>
+                  <X size={40} className="text-[#0B7D69]" />
+                </button>
+              </div>
+            </div>
+
+            {/* MENU CENTER */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.12, // 👈 controls delay between items
+                  },
+                },
+              }}
+              className="flex flex-col items-center justify-center gap-4 text-xl font-medium text-gray-300"
+            >
+              {links.map((item) => {
                 const href = isHome ? `#${item.id}` : `/#${item.id}`;
 
                 return (
-                  <a
+                  <motion.a
                     key={item.name}
                     href={href}
                     onClick={() => setOpen(false)}
-                    className="hover:text-[#0B6F63] transition"
+                    variants={{
+                      hidden: { x: -60, opacity: 0 },
+                      visible: {
+                        x: 0,
+                        opacity: 1,
+                        transition: {
+                          duration: 0.6, // slower
+                         ease: "linear", // smooth cubic-bezier
+                        },
+                      },
+                    }}
+                    className={`pb-1 border-b transition
+  ${
+    active === item.id
+      ? "text-[#0B7D69]  border-[#0B7D69]"
+      : "text-gray-800 border-gray-300 hover:text-[#0B7D69]"
+  }
+`}
                   >
                     {item.name}
-                  </a>
+                  </motion.a>
                 );
               })}
+            </motion.div>
 
-              {/* Mobile Contact */}
-              <div className="pt-4 border-t text-sm text-gray-600 space-y-2">
-                <a
-                  href="mailto:hello@swiftrooms.ae"
-                  className="flex items-center gap-2"
-                >
-                  <Mail size={14} />
-                  hello@swiftrooms.ae
-                </a>
-
-                <div className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  Jebel Ali, Ind Area 1
-                </div>
-              </div>
-            </nav>
+            {/* BOTTOM */}
+            <div className="text-center text-xs text-gray-500 pb-6 px-6 space-y-2">
+              <p>
+                Dubai’s trusted aluminium windows and doors specialist since
+                2009
+              </p>
+              <p>hello@swiftrooms.ae</p>
+              <p>050 526 9149</p>
+            </div>
           </motion.div>
         )}
       </div>
