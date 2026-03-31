@@ -100,7 +100,19 @@ export default function ProcessSection() {
   };
   return (
     <>
-      <section id="process" className="py-20 px-6 hidden sm:block">
+      <section
+        id="process"
+        className="py-20 px-6 hidden sm:block overflow-hidden relative"
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/videos/bg-video.mp4" type="video/mp4" />
+        </video>
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }} // 🔥 start from bottom
@@ -110,7 +122,7 @@ export default function ProcessSection() {
             ease: [0.25, 0.8, 0.25, 1],
           }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative z-10"
         >
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 tracking-wide">
             SIMPLE 5-STEP PROCESS

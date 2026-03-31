@@ -93,8 +93,18 @@ export default function SolutionSection() {
   };
 
   return (
-    <section id="solutions" className="py-20 px-6">
+    <section id="solutions" className="relative py-20 px-6 overflow-hidden">
       {/* ================= HEADING ================= */}
+      {/* 🎥 Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +113,7 @@ export default function SolutionSection() {
           ease: [0.25, 0.8, 0.25, 1],
         }}
         viewport={{ once: true }}
-        className="text-center mb-10 md:mb-14"
+        className="text-center mb-10 md:mb-14 relative z-10"
       >
         <h2 className="text-2xl sm:text-3xl font-bold">
           The SWIFTROOMS Solution
@@ -111,7 +121,7 @@ export default function SolutionSection() {
       </motion.div>
 
       {/* ================= WRAPPER ================= */}
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* ================= MOBILE TABS ================= */}
         <div className="md:hidden">
           {/* Tabs */}

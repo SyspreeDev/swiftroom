@@ -380,12 +380,21 @@ export default function SliderGallery() {
         id="gallery"
         className="relative pt-10 pb-16 md:pt-20 md:pb-28 bg-white overflow-hidden hidden md:block"
       >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/videos/bg-video.mp4" type="video/mp4" />
+        </video>
         {/* HEADER SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-10 relative z-10"
         >
           <h2 className="text-3xl md:text-4xl text-gray-800 mb-2">
             Our Gallery

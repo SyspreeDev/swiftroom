@@ -73,7 +73,16 @@ export default function ProductSlider() {
   ];
 
   return (
-    <section id="products" className="bg-gray-100 py-16 px-6">
+    <section id="products" className="bg-gray-100 py-16 px-6 relative overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/videos/bg-video.mp4" type="video/mp4" />
+      </video>
       {/* Heading */}
 
       <motion.div
@@ -84,7 +93,7 @@ export default function ProductSlider() {
           ease: [0.22, 1, 0.36, 1], // ✅ smoother easing
         }}
         viewport={{ once: true, amount: 0.3 }}
-        className="text-center mb-12"
+        className="text-center mb-12 z-10 relative"
       >
         <h2 className="md:text-4xl text-3xl font-medium">
           Our Premium Products
