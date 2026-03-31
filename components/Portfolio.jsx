@@ -144,6 +144,7 @@ export default function PortfolioSection() {
               pagination={{ clickable: true }}
               spaceBetween={16}
               slidesPerView={1}
+              loop={true}
               onSlideChange={(swiper) => setCurrentVideo(swiper.activeIndex)}
               className="w-full max-w-sm pb-10 custom-swiper" // Added padding for dots
             >
