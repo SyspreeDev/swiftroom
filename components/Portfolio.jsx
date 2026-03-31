@@ -153,7 +153,12 @@ export default function PortfolioSection() {
                     <div className="w-[280px] h-[500px] rounded-3xl overflow-hidden shadow-lg">
                       <iframe
                         src={video}
-                        className="w-full h-full"
+                        className={`w-full h-full ${
+                          currentVideo === index
+                            ? "pointer-events-auto"
+                            : "pointer-events-none"
+                        }`}
+                        allow="autoplay; encrypted-media"
                         allowFullScreen
                       />
                     </div>
