@@ -212,29 +212,35 @@ export default function PortfolioSection() {
             </motion.div>
 
             {/* Stats */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="grid grid-cols-2 gap-4 mb-6"
-            >
-              {[
-                { title: "30K", sub: "Instagram Followers" },
-                { title: "500+", sub: "Projects Shared" },
-                { title: "98%", sub: "Customer Satisfaction" },
-                { title: "4.9★", sub: "Average Rating" },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={cardVariants}
-                  className="bg-white rounded-xl p-5 text-center shadow-sm relative z-10"
-                >
-                  <h4 className="text-[#0B7D69] text-2xl">{item.title}</h4>
-                  <p className="text-gray-800 text-sm">{item.sub}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            <div className="w-full overflow-hidden">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 w-full max-w-full"
+              >
+                {[
+                  { title: "30K", sub: "Instagram Followers" },
+                  { title: "500+", sub: "Projects Shared" },
+                  { title: "98%", sub: "Customer Satisfaction" },
+                  { title: "4.9★", sub: "Average Rating" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    variants={cardVariants}
+                    className="bg-white rounded-xl p-4 sm:p-5 text-center shadow-sm relative z-10 w-full"
+                  >
+                    <h4 className="text-[#0B7D69] text-xl sm:text-2xl font-semibold">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-800 text-xs sm:text-sm">
+                      {item.sub}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
 
             {/* Communities */}
             <div>
