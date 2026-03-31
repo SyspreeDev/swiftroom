@@ -12,7 +12,6 @@
   animation: scroll 25s linear infinite;
 }
 
-
 @import "tailwindcss";
 
 :root {
@@ -32,9 +31,19 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+html,body {
+  font-family: var(--font-barlow);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-exo);
 }
 
 .container {
@@ -44,7 +53,7 @@ body {
 /* Ensure the container allows the center slide to grow upwards/downwards */
 .main-video-swiper {
   padding: 100px 0 !important; /* Extra padding for increased height */
-  overflow: visible !important;
+  overflow: hidden !important;
   align-items: center;
 }
 
@@ -74,7 +83,6 @@ body {
   }
 }
 
-
 @media (min-width: 1024px) {
   .main-slide-item {
     height: 420px !important; /* Even taller on desktop */
@@ -91,9 +99,13 @@ body {
   overflow: hidden;
   align-items: center;
   max-width: 350px; /* Mobile */
-
 }
 
+@media (max-width: 640px) {
+  .swiper-slide-active.main-slide-item {
+    transform: scale(1.05) !important;
+  }
+}
 /* CENTER SLIDE: Large/Active */
 .swiper-slide-active.main-slide-item {
   transform: scale(1.2) !important; /* Grows bigger than sides */
@@ -141,6 +153,47 @@ body {
   margin-left: 5px;
 }
 
+/* Move pagination down */
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
+
+/* Default dots */
+.swiper .swiper-pagination-bullet {
+  background-color: #d1d5db;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Active = pill */
+.swiper .swiper-pagination-bullet-active {
+  background-color: #0b7d69; /* your green */
+  opacity: 1;
+  width: 24px; /* 🔥 stretch */
+  border-radius: 999px; /* 🔥 pill shape */
+}
+
+/* Only affects brands section */
+.brands-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+}
+
+.brands-swiper .swiper-pagination-bullet {
+  background-color: #d1d5db; /* normal dots */
+  opacity: 0.5;
+}
+
+.brands-swiper .swiper-pagination-bullet-active {
+  background-color: #ffffff;
+  opacity: 1;
+  width: 24px; /* 🔥 increase width */
+  border-radius: 999px; /* 🔥 makes it pill */
+}
 
 @keyframes fadeIn {
   from {
@@ -154,7 +207,6 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
 }
-
 
 @keyframes underlineGrow {
   from {

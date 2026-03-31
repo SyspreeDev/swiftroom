@@ -1,77 +1,69 @@
-import Header from "@/components/header";
-import Hero from "@/components/hero";
-import Brands from "@/components/brands";
-import About from "@/components/about";
-import Install from "@/components/install";
-import WhyChoose from "@/components/whychoose";
-import VideoCarousel from "@/components/videocarousel";
-import Gallery from "@/components/gallery";
-import WhyChooseUs from "@/components/whychooseus";
-import Testimonials from "@/components/testimonials";
-import Faq from "@/components/faq";
-import Stats from "@/components/stats";
-import ContactSection from "@/components/contactsection";
-import Footer from "@/components/footer";
-
-
-
-
-
-
-
-
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/HeroSection";
+import PremiumProducts from "@/components/PremiumProducts";
+import TransformSection from "@/components/TransformSection";
+import Brands from "@/components/Logos";
+import Portfolio from "@/components/Portfolio";
+import Slider from "@/components/SliderGallery";
+import Footer from "@/components/Footer";
+import SolutionSection from "@/components/SolutionsSection";
+import ProcessSection from "@/components/ProcessSection";
+import CTASection from "@/components/CTASection";
+import FAQSection from "@/components/FaqSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import ParallaxBackground from "@/components/ParallaxBackground";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Navbar />
+      <ParallaxBackground />
 
       <section id="home">
         <Hero />
+      </section>
+
+      <section id="products">
+        <PremiumProducts />
+      </section>
+
+      <section id="transform">
+        <TransformSection />
+      </section>
+
+      <section id="solutions">
+        <SolutionSection />
+      </section>
+
+      <section id="process">
+        <ProcessSection />
       </section>
 
       <section id="brands">
         <Brands />
       </section>
 
-      <section id="about">
-        <About />
+      <section id="portfolio">
+        <Portfolio />
       </section>
 
-      <section id="services">
-        <Install />
-        <WhyChoose />
+      <section id="cta">
+        <CTASection />
       </section>
 
-       <VideoCarousel />
-
-      <section id="projects">
-       
-        <Gallery />
-      </section>
-
-      <section id="whyus">
-        <WhyChooseUs />
+      <section id="gallery">
+        <Slider />
       </section>
 
       <section id="testimonials">
-        <Testimonials />
+        <TestimonialSection />
       </section>
 
-      <section id="faq">
-        <Faq />
-      </section>
-
-      <section id="stats">
-        <Stats />
-      </section>
-
-      <section id="contact">
-        <ContactSection />
+      <section id="faqs">
+        <FAQSection />
       </section>
 
       <Footer />
     </>
   );
 }
-

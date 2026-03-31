@@ -1,9 +1,17 @@
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { Exo, Barlow } from "next/font/google";
 
-const poppins = Poppins({
+const exo = Exo({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
+  variable: "--font-exo",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -18,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
+    <html lang="en" className={`${exo.variable} ${barlow.variable}`}>
+      <body className="font-body">
         {children}
       </body>
     </html>
