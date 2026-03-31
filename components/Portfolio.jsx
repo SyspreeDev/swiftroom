@@ -116,7 +116,7 @@ export default function PortfolioSection() {
             </motion.div>
 
             {/* Desktop Only Buttons */}
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-6 relative z-10">
               {videos.map((_, i) => (
                 <button
                   key={i}
@@ -140,7 +140,7 @@ export default function PortfolioSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md">
+              <button className="mt-4 bg-[#0B7D69] text-white px-6 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-md relative z-10">
                 <FaInstagram />
                 Watch All Reels
               </button>
