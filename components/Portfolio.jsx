@@ -151,13 +151,10 @@ export default function PortfolioSection() {
                 <SwiperSlide key={index}>
                   <div className="flex justify-center">
                     <div className="w-[280px] h-[500px] rounded-3xl overflow-hidden shadow-lg">
+                       <div className="absolute inset-0 z-10"></div>
                       <iframe
                         src={video}
-                        className={`w-full h-full ${
-                          currentVideo === index
-                            ? "pointer-events-auto"
-                            : "pointer-events-none"
-                        }`}
+                        className="w-full h-full pointer-events-none"
                         allow="autoplay; encrypted-media"
                         allowFullScreen
                       />
