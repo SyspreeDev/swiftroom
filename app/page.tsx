@@ -11,11 +11,13 @@ import ProcessSection from "@/components/ProcessSection";
 import CTASection from "@/components/CTASection";
 import FAQSection from "@/components/FaqSection";
 import TestimonialSection from "@/components/TestimonialSection";
+import ParallaxBackground from "@/components/ParallaxBackground";
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <ParallaxBackground />
 
       <section id="home">
         <Hero />
