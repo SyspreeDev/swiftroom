@@ -93,11 +93,20 @@ export default function Hero() {
     let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(email);
   };
+  const formActive = step > 1;
+  const [contentVisible, setContentVisible] = useState(true);
+
+  // Replace your setStep(2) call on the CTA button with this:
+  const handleFormOpen = () => {
+    setContentVisible(false);
+    setTimeout(() => setStep(2), 350); // wait for zoom-out to finish
+  };
+
   return (
     <section
       id="home"
       className="relative w-full 
-             min-h-[70vh] sm:min-h-[80vh] lg:min-h-[110vh] 
+              min-h-screen lg:min-h-[110vh] 
              pt-24 sm:pt-28 lg:pt-40
              overflow-hidden"
     >
@@ -115,15 +124,31 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#0B7D69]/70" />
 
       {/* Content */}
-      <div className="relative z-10  w-full max-w-[1200px] xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto h-full  flex flex-col md:flex-row  items-center justify-between  px-4 sm:px-6 lg:px-10 xl:px-10 2xl:px-30 2xl:py-30 gap-6 lg:gap-10">
+      <div
+        className="relative z-10 w-full max-w-[1200px] xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto
+     min-h-[calc(100vh-5rem)] lg:min-h-0
+     flex flex-col md:flex-row 
+     items-center justify-center md:justify-between
+     px-4 sm:px-6 lg:px-10 xl:px-10 2xl:px-30 2xl:py-30 
+     py-8 md:py-16
+     gap-6 lg:gap-10"
+      >
         {/* LEFT CONTENT */}
-        <div className="max-w-xl text-white">
-          <h1 className="text-2xl sm:text-3xl lg:text-3xl font-semibold leading-snug sm:leading-tight uppercase tracking-wider">
+        <div
+          className={`w-full max-w-xl text-white transition-all duration-500
+    ${
+      formActive
+        ? "hidden md:block opacity-100" // Persistent on desktop, hidden on mobile
+        : contentVisible
+          ? "zoom-in block"
+          : "block"
+    }`}
+        >
+          <h1 className="text-md sm:text-xl lg:text-3xl font-semibold leading-tight sm:leading-snug uppercase tracking-wider">
             Performance Windows Doors Engineered for Excellence Designed for the
             UAE Climate
           </h1>
-
-          <div className="mt-4 sm:mt-5 max-w-lg space-y-3">
+          <div className="mt-4 sm:mt-5 max-w-lg md:space-y-3">
             {[
               "Free quote & site visit within 24 hours",
               "Custom-manufactured for perfect fit",
@@ -139,37 +164,50 @@ export default function Hero() {
               </div>
             ))}
           </div>
-
-          <div className="mt-12">
-            <h2 className="text-white text-lg tracking-widest leading-snug">
+          <div className="mt-5 md:mt-12 hidden md:block">
+            <h2 className="text-sm sm:text-lg text-white tracking-widest leading-snug">
               GLASS & ALUMINIUM SYSTEMS BUILT FOR EXTREME GULF CONDITIONS
             </h2>
           </div>
         </div>
 
         {/* RIGHT SIDE CTA */}
-        <div className="flex flex-col items-center w-full md:w-auto mt-8 md:mt-0">
+        <div
+          className={`flex flex-col items-center justify-center w-full md:w-auto md:mt-0 transition-all duration-300 ${formActive ? "flex-1" : ""}`}
+        >
+          {/* ✅ ADD THIS */}
+          {formActive && (
+            <button
+              onClick={() => setStep(1)}
+              className="hero-form-enter flex md:hidden items-center gap-2 text-white text-sm font-medium mb-4 self-start"
+            >
+              <HiChevronLeft className="text-lg" />
+              Back to Home
+            </button>
+          )}
+
           {/* CTA BUTTON */}
           {/* CTA Button */}
           {step === 1 && (
             <motion.button
-              onClick={() => setStep(2)}
+              onClick={() => handleFormOpen()}
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{
                 duration: 1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="bg-[#0B7D69] text-white font-medium md:text-xl 
-             px-10 py-5 rounded-2xl 
+              className="bg-[#0B7D69] text-white font-medium text-sm md:text-xl 
+              w-full text-center p-2
+             md:px-10 md:py-5 rounded-xl justify-center md:rounded-2xl 
              flex items-center gap-3"
             >
               Start Your Swiftrooms Journey
-              <FiArrowRight className="text-2xl" />
+              <FiArrowRight className="text-sm md:text-2xl" />
             </motion.button>
           )}
           {step === 2 && (
-            <div className="bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="hero-form-enter bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Visit Showroom */}
               <div
                 onClick={() => setStep(3)}
@@ -217,7 +255,7 @@ export default function Hero() {
             </div>
           )}
           {step === 3 && (
-            <div className="bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="hero-form-enter bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Top */}
               <div className="flex justify-between text-sm text-gray-500">
                 <span>Question 1 of 6</span>
@@ -291,7 +329,7 @@ export default function Hero() {
             </div>
           )}
           {step === 4 && (
-            <div className="bg-white px-6 py-2 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="hero-form-enter bg-white px-6 py-2 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Top */}
               <div className="flex justify-between text-sm text-gray-500 mt-5">
                 <span>Question 2 of 6</span>
@@ -403,7 +441,7 @@ export default function Hero() {
             </div>
           )}
           {step === 5 && (
-            <div className="bg-white px-8 py-6 rounded-2xl shadow-lg max-w-xl mx-auto">
+            <div className="hero-form-enter bg-white px-8 py-6 rounded-2xl shadow-lg max-w-xl mx-auto">
               {/* Top */}
               <div className="flex justify-between text-xs text-gray-500 mt-3">
                 <span>Question 3 of 6</span>
@@ -501,7 +539,7 @@ export default function Hero() {
             </div>
           )}
           {step === 6 && (
-            <div className="bg-white px-6 py-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="hero-form-enter bg-white px-6 py-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
               {/* Top */}
               <div className="flex justify-between text-sm text-gray-500">
                 <span>Question 4 of 6</span>
@@ -538,38 +576,36 @@ export default function Hero() {
               />
 
               {/* Bottom Buttons */}
-             <div className="flex items-center justify-between mt-12">
-  
-  {/* Back */}
-  <button
-    onClick={() => setStep(5)}
-    className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
-  >
-    <HiChevronLeft className="text-lg" />
-    Back
-  </button>
+              <div className="flex items-center justify-between mt-12">
+                {/* Back */}
+                <button
+                  onClick={() => setStep(5)}
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+                >
+                  <HiChevronLeft className="text-lg" />
+                  Back
+                </button>
 
-  {/* Next */}
-  <button
-    onClick={() => setStep(7)}
-    disabled={fullName.trim() === ""}
-    className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+                {/* Next */}
+                <button
+                  onClick={() => setStep(7)}
+                  disabled={fullName.trim() === ""}
+                  className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
       ${
         fullName.trim()
           ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
           : "bg-gray-200 text-gray-400 cursor-not-allowed"
       }`}
-  >
-    Next
-    <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
-  </button>
-
-</div>
+                >
+                  Next
+                  <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
           )}
           {step === 7 && (
             <div
-              className="bg-white 
+              className="hero-form-enter bg-white 
                 px-4 py-6 sm:px-6 sm:py-8 
                 rounded-2xl shadow-lg 
                 max-w-xs sm:max-w-md md:max-w-3xl 
@@ -669,164 +705,154 @@ export default function Hero() {
               </p>
 
               {/* Bottom Buttons */}
-             <div className="flex items-center justify-between mt-12">
-  
-  {/* Back */}
-  <button
-    onClick={() => setStep(6)}
-    className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
-  >
-    <HiChevronLeft className="text-lg" />
-    Back
-  </button>
+              <div className="flex items-center justify-between mt-12">
+                {/* Back */}
+                <button
+                  onClick={() => setStep(6)}
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+                >
+                  <HiChevronLeft className="text-lg" />
+                  Back
+                </button>
 
-  {/* Next */}
-  <button
-    onClick={() => setStep(8)}
-    disabled={!isValidPhone(phone, country)}
-    className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+                {/* Next */}
+                <button
+                  onClick={() => setStep(8)}
+                  disabled={!isValidPhone(phone, country)}
+                  className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
       ${
         isValidPhone(phone, country)
           ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
           : "bg-gray-200 text-gray-400 cursor-not-allowed"
       }`}
-  >
-    Next
-    <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
-  </button>
-
-</div>
+                >
+                  Next
+                  <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
           )}
           {step === 8 && (
-  <div className="bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
+            <div className="hero-form-enter bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
+              {/* Top */}
+              <div className="flex justify-between text-sm text-gray-500">
+                <span>Question 6 of 6</span>
+                <span className="text-[#0B7D69] font-medium">100%</span>
+              </div>
 
-    {/* Top */}
-    <div className="flex justify-between text-sm text-gray-500">
-      <span>Question 6 of 6</span>
-      <span className="text-[#0B7D69] font-medium">100%</span>
-    </div>
+              {/* Progress */}
+              <div className="w-full bg-gray-200 h-2 rounded-full mt-2 mb-8">
+                <div className="bg-[#0B7D69] h-2 w-full rounded-full"></div>
+              </div>
 
-    {/* Progress */}
-    <div className="w-full bg-gray-200 h-2 rounded-full mt-2 mb-8">
-      <div className="bg-[#0B7D69] h-2 w-full rounded-full"></div>
-    </div>
+              {/* Title */}
+              <h2 className="text-[30px] font-semibold text-gray-800 mb-2">
+                What's your email?
+              </h2>
+              <p className="text-gray-500 mb-10">
+                Optional - for sending you detailed quotes
+              </p>
 
-    {/* Title */}
-    <h2 className="text-[30px] font-semibold text-gray-800 mb-2">
-      What's your email?
-    </h2>
-    <p className="text-gray-500 mb-10">
-      Optional - for sending you detailed quotes
-    </p>
+              {/* Input */}
+              <div className="flex flex-col w-full">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setEmail(value);
 
-    {/* Input */}
-    <div className="flex flex-col w-full">
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => {
-          const value = e.target.value;
-          setEmail(value);
-
-          if (value.length > 0 && !isValidEmail(value)) {
-            setError("Please enter a valid email address");
-          } else {
-            setError("");
-          }
-        }}
-        placeholder="your@email.com"
-        className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none transition
-          ${
-            error
-              ? "border-red-500"
-              : "border-gray-200 focus:border-[#0B7D69]"
-          }
+                    if (value.length > 0 && !isValidEmail(value)) {
+                      setError("Please enter a valid email address");
+                    } else {
+                      setError("");
+                    }
+                  }}
+                  placeholder="your@email.com"
+                  className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none transition
+          ${error ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"}
           text-gray-800 placeholder-gray-400`}
-      />
+                />
 
-      {/* Error */}
-      {error && (
-        <p className="text-red-500 text-xs font-medium mt-2 text-center">
-          {error}
-        </p>
-      )}
-    </div>
+                {/* Error */}
+                {error && (
+                  <p className="text-red-500 text-xs font-medium mt-2 text-center">
+                    {error}
+                  </p>
+                )}
+              </div>
 
-    {/* Bottom Buttons */}
-    <div className="flex items-center justify-between mt-12">
+              {/* Bottom Buttons */}
+              <div className="flex items-center justify-between mt-12">
+                {/* Back */}
+                <button
+                  onClick={() => setStep(7)}
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+                >
+                  <HiChevronLeft className="text-lg" />
+                  Back
+                </button>
 
-      {/* Back */}
-      <button
-        onClick={() => setStep(7)}
-        className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
-      >
-        <HiChevronLeft className="text-lg" />
-        Back
-      </button>
+                {/* Submit */}
+                <button
+                  disabled={loading || !isValidEmail(email)}
+                  onClick={async () => {
+                    setLoading(true);
 
-      {/* Submit */}
-      <button
-        disabled={loading || !isValidEmail(email)}
-        onClick={async () => {
-          setLoading(true);
+                    const formData = {
+                      fullName,
+                      phone,
+                      email,
+                      selectedProperty,
+                      selectedProducts,
+                      projectType: selected,
+                      country,
+                    };
 
-          const formData = {
-            fullName,
-            phone,
-            email,
-            selectedProperty,
-            selectedProducts,
-            projectType: selected,
-            country,
-          };
+                    try {
+                      const res = await fetch("/api/send-email", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formData),
+                      });
 
-          try {
-            const res = await fetch("/api/send-email", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData),
-            });
+                      const data = await res.json();
 
-            const data = await res.json();
+                      if (data.success) {
+                        setStep(9);
+                      } else {
+                        alert("Failed to send email");
+                      }
+                    } catch (err) {
+                      console.error(err);
+                      alert("Error occurred");
+                    }
 
-            if (data.success) {
-              setStep(9);
-            } else {
-              alert("Failed to send email");
-            }
-          } catch (err) {
-            console.error(err);
-            alert("Error occurred");
-          }
-
-          setLoading(false);
-        }}
-        className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+                    setLoading(false);
+                  }}
+                  className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
           ${
             isValidEmail(email)
               ? "bg-[#0B7D69] text-white hover:bg-[#09695a]"
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
-      >
-        {loading ? (
-          "Sending..."
-        ) : (
-          <>
-            Submit
-            <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
-          </>
-        )}
-      </button>
-
-    </div>
-
-  </div>
-)}
+                >
+                  {loading ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Submit
+                      <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          )}
           {step === 9 && (
-            <div className="bg-white px-10 py-2 rounded-2xl shadow-lg text-center max-w-lg mx-auto">
+            <div className="hero-form-enter bg-white px-10 py-2 rounded-2xl shadow-lg text-center max-w-lg mx-auto">
               {/* Success Icon */}
               <div className="w-16 h-16 bg-[#0B7D69] rounded-full flex items-center justify-center mx-auto mb-4">
                 <HiCheck className="text-white text-3xl" />
@@ -883,7 +909,7 @@ export default function Hero() {
           )}
 
           {/* POINTS */}
-          <div className="mt-5 mb-6 flex flex-wrap md:flex-nowrap justify-center items-center gap-6 text-sm sm:text-base text-gray-200">
+          {/* <div className="mt-5 mb-6 flex flex-wrap md:flex-nowrap justify-center items-center gap-6 text-sm sm:text-base text-gray-200">
             <div className="flex items-center gap-2">
               <FaCheck className="text-white text-sm" />
               <span>Free Consultation</span>
@@ -898,6 +924,12 @@ export default function Hero() {
               <FaCheck className="text-white text-sm" />
               <span>No Obligation</span>
             </div>
+          </div> */}
+
+          <div className="mt-5 md:mt-12 block md:hidden">
+            <h2 className="text-xs sm:text-sm text-white tracking-wider">
+              GLASS & ALUMINIUM SYSTEMS BUILT FOR EXTREME GULF CONDITIONS
+            </h2>
           </div>
         </div>
       </div>

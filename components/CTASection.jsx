@@ -21,8 +21,8 @@ import {
   HiOutlineSun, // Skylights
 } from "react-icons/hi2";
 
-export default function CTASection() {
-  const [step, setStep] = useState(1);
+export default function CTASection({ step, setStep }) {
+  // const [step, setStep] = useState(1);
   const [selected, setSelected] = useState(null); // just for UI
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState([]);

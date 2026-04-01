@@ -31,7 +31,8 @@
   }
 }
 
-html,body {
+html,
+body {
   font-family: var(--font-barlow);
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -219,4 +220,52 @@ h6 {
 
 .animate-underline {
   animation: underlineGrow 0.8s ease-out forwards;
+}
+
+@keyframes heroFormIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFormOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+.hero-form-enter {
+  animation: heroFormIn 1.8s ease forwards;
+}
+
+.hero-form-exit {
+  animation: heroFormOut 1.8s ease forwards;
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes zoomOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.95); }
+}
+
+.zoom-in {
+  animation: zoomIn 1.2s ease forwards;
+}
+
+.zoom-out {
+  animation: zoomOut 1.2s ease forwards;
 }

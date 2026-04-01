@@ -378,7 +378,7 @@ export default function SliderGallery() {
     <>
       <section
         id="gallery"
-        className="relative pt-10 pb-16 md:pt-20 md:pb-28 bg-white overflow-hidden hidden md:block"
+        className="relative pt-10 pb-16 md:pt-20 md:pb-28 bg-white/40 overflow-hidden hidden md:block"
       >
         <video
           autoPlay
@@ -422,7 +422,7 @@ export default function SliderGallery() {
         </motion.div>
 
         {/* SLIDER CONTAINER */}
-        <div className="relative max-w-7xl mx-auto px-4 py-8">
+        <div className="relative max-w-8xl mx-auto px-4 py-8">
           {/* LEFT NAVIGATION BUTTON */}
           <div className="prev-btn absolute left-4 md:left-24 top-1/2 -translate-y-1/2 z-50 w-[64px] h-[64px] flex items-center justify-center cursor-pointer group">
             {/* Circular Button Body */}
@@ -501,7 +501,7 @@ export default function SliderGallery() {
             {images.map((item, index) => (
               <SwiperSlide
                 key={index}
-                className="!w-[280px] md:!w-[500px] !h-[350px] md:!h-[650px] flex items-center justify-center"
+                className="!w-[280px] md:!w-[650px] !h-[400px] md:!h-[550px] flex items-center justify-center"
               >
                 {({ isActive }) => (
                   <Tilt

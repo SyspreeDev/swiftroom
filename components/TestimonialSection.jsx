@@ -120,7 +120,7 @@ export default function TestimonialSection() {
   ];
 
   return (
-    <section id="testimonials" className="bg-white py-20 px-6 relative">
+    <section id="testimonials" className="bg-white/40 py-20 px-6 relative">
       {/* Heading */}
 
       <video

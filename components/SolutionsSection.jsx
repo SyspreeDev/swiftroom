@@ -125,10 +125,10 @@ export default function SolutionSection() {
         {/* ================= MOBILE TABS ================= */}
         <div className="md:hidden">
           {/* Tabs */}
-          <div className="bg-gray-200 rounded-full p-1 flex mb-6">
+          <div className="bg-gray-200 rounded-xl md:rounded-full p-1 flex mb-6">
             <button
               onClick={() => setActiveTab("frustrations")}
-              className={`flex-1 py-2 text-sm font-medium rounded-full transition
+              className={`flex-1 py-2 text-sm font-medium rounded-xl md:rounded-full transition
             ${
               activeTab === "frustrations"
                 ? "bg-white shadow text-red-500"
@@ -140,7 +140,7 @@ export default function SolutionSection() {
 
             <button
               onClick={() => setActiveTab("advantages")}
-              className={`flex-1 py-2 text-sm font-medium rounded-full transition
+              className={`flex-1 py-2 text-sm font-medium rounded-xl md:rounded-full transition
             ${
               activeTab === "advantages"
                 ? "bg-[#0B7D69] shadow text-white"

@@ -73,7 +73,7 @@ export default function ProductSlider() {
   ];
 
   return (
-    <section id="products" className="bg-gray-100 py-16 px-6 relative overflow-hidden">
+    <section id="products" className="py-16 px-6 relative overflow-hidden">
       <video
         autoPlay
         loop
@@ -83,6 +83,11 @@ export default function ProductSlider() {
       >
         <source src="/videos/bg-video.mp4" type="video/mp4" />
       </video>
+
+      {/* NEW: Gray Overlay with Opacity */}
+      {/* Adjust 'bg-gray-100/80' to 'bg-gray-100/50' if you want it more transparent */}
+      <div className="absolute inset-0 bg-gray-100/40 z-0" />
+
       {/* Heading */}
 
       <motion.div

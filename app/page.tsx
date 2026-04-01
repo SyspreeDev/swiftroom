@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/HeroSection";
 import PremiumProducts from "@/components/PremiumProducts";
@@ -13,10 +15,13 @@ import FAQSection from "@/components/FaqSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import ParallaxBackground from "@/components/ParallaxBackground";
 
+
 export default function Home() {
+  const [step, setStep] = useState(1);
+
   return (
     <>
-      <Navbar />
+      <Navbar setStep={setStep} />
       <ParallaxBackground />
 
       <section id="home">
@@ -48,7 +53,7 @@ export default function Home() {
       </section>
 
       <section id="cta">
-        <CTASection />
+        <CTASection step={step} setStep={setStep} />
       </section>
 
       <section id="gallery">

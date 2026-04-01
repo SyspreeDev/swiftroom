@@ -61,7 +61,7 @@ export default function FaqSection() {
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faqs" className="bg-white min-h-screen py-20 px-5 relative">
+    <section id="faqs" className="bg-white/40 min-h-screen py-20 px-5 relative">
       <video
         autoPlay
         loop
@@ -121,7 +121,7 @@ export default function FaqSection() {
 
                   {/* Icon */}
                   <span
-                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0
+                    className={`hidden w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0
       ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
                   >
                     <FiPlus

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar({ setStep }) {
   const links = [
     { name: "Home", id: "home" },
     { name: "Products", id: "products" },
@@ -109,6 +109,17 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
+  const handleCTAClick = (e) => {
+    // Prevent default Link behavior if you want custom logic
+    setStep(2);
+
+    // Smooth scroll to the section
+    const element = document.getElementById("cta");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.header
       initial="hidden"
@@ -171,11 +182,17 @@ export default function Navbar() {
             variants={ctaVariants}
             className="hidden md:flex flex-shrink-0"
           >
-            <Link href="/#cta">
+            {/* <Link href="/#cta">
               <button className="bg-[#0B7D69] text-white px-5 py-2.5 rounded-lg text-[13px] font-medium shadow-md hover:bg-[#09695a] transition duration-300">
                 Get Quote | Visit Showroom
               </button>
-            </Link>
+            </Link> */}
+            <button
+              onClick={handleCTAClick}
+              className="bg-[#0B7D69] text-white px-5 py-2.5 rounded-lg text-[13px] font-medium shadow-md hover:bg-[#09695a] transition duration-300 cursor-pointer"
+            >
+              Get Quote | Visit Showroom
+            </button>
           </motion.div>
 
           {/* Mobile Menu Button */}
