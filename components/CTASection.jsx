@@ -166,22 +166,26 @@ export default function CTASection() {
             {/* Visit Showroom */}
             <div
               onClick={() => setStep(3)}
-              className="flex items-center justify-between bg-[#0B7D69] text-white px-6 py-5 rounded-2xl cursor-pointer shadow-md hover:bg-[#096b5a] transition"
+              className="flex items-center justify-between bg-[#0B7D69] text-white px-4 sm:px-6 py-3 sm:py-5 rounded-xl sm:rounded-2xl cursor-pointer shadow-md hover:bg-[#096b5a] transition"
             >
-              {/* Left */}
-              <div className="flex items-center gap-4">
-                <IoGlassesOutline className="text-4xl text-white" />
+              {/* LEFT */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                {/* Icon */}
+                <IoGlassesOutline className="text-2xl sm:text-4xl text-white" />
 
+                {/* Text */}
                 <div>
-                  <p className="font-semibold text-lg">Visit Our Showroom</p>
-                  <p className="text-sm text-green-100">
+                  <p className="font-semibold text-sm sm:text-lg text-left leading-tight">
+                    Visit Our Showroom
+                  </p>
+                  <p className="text-xs sm:text-sm text-green-100">
                     Experience products firsthand
                   </p>
                 </div>
               </div>
 
-              {/* Arrow */}
-              <span className="text-xl">→</span>
+              {/* RIGHT ARROW */}
+              <span className="text-lg sm:text-xl"><HiArrowRight /></span>
             </div>
 
             {/* OR Divider */}
@@ -194,24 +198,26 @@ export default function CTASection() {
             {/* Get Quote */}
             <div
               onClick={() => setStep(3)}
-              className="flex items-center justify-between px-6 py-5 rounded-2xl border border-[#0B7D69] cursor-pointer shadow-sm hover:shadow-md transition"
+              className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-5 rounded-xl sm:rounded-2xl border border-[#0B7D69] cursor-pointer shadow-sm hover:shadow-md transition"
             >
-              {/* Left */}
-              <div className="flex items-center gap-4">
-                <HiOutlineChatBubbleLeft className="text-3xl text-[#0B7D69]" />
+              {/* LEFT */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                {/* Icon */}
+                <HiOutlineChatBubbleLeft className="text-2xl sm:text-3xl text-[#0B7D69]" />
 
+                {/* Text */}
                 <div>
-                  <p className="font-semibold text-lg text-[#0B7D69]">
+                  <p className="font-semibold text-left text-sm sm:text-lg text-[#0B7D69] leading-tight">
                     Get a Free Quote
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs  sm:text-sm text-gray-500">
                     Receive quote in minutes
                   </p>
                 </div>
               </div>
 
-              {/* Arrow */}
-              <span className="text-xl text-[#0B7D69]">→</span>
+              {/* RIGHT ARROW */}
+              <span className="text-lg sm:text-xl text-[#0B7D69]"><HiArrowRight /></span>
             </div>
           </div>
         )}

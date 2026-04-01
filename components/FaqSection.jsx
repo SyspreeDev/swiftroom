@@ -121,8 +121,8 @@ export default function FaqSection() {
 
                   {/* Icon */}
                   <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center
-                ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0
+      ${isOpen ? "bg-[#0B7D69]" : "bg-[#e8f0ee]"}`}
                   >
                     <FiPlus
                       className={`transition-transform duration-300 ${
