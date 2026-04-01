@@ -101,7 +101,7 @@ export default function Footer() {
               Follow Us on Instagram
             </h3>
             <a
-              href="https://www.instagram.com/swiftrooms.ae/"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-xl bg-[#0B7D69] flex items-center justify-center hover:bg-[#095f50] hover:-translate-y-0.5 transition-all duration-200"
