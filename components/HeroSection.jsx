@@ -7,6 +7,8 @@ import { CheckCircle, DoorOpen, DoorClosed, LayoutGrid } from "lucide-react";
 import { FiArrowRight } from "react-icons/fi";
 import { IoGlassesOutline } from "react-icons/io5";
 import {
+  HiChevronLeft,
+  HiChevronRight,
   HiOutlineChatBubbleLeft,
   HiOutlineWrenchScrewdriver,
   HiChevronDown,
@@ -281,9 +283,10 @@ export default function Hero() {
               {/* Back */}
               <button
                 onClick={() => setStep(2)}
-                className="mt-10 text-gray-500 hover:text-gray-700 transition"
+                className="mt-10 flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
               >
-                ← Back
+                <HiChevronLeft className="text-lg" />
+                Back
               </button>
             </div>
           )}
@@ -377,22 +380,24 @@ export default function Hero() {
                 {/* Back */}
                 <button
                   onClick={() => setStep(3)}
-                  className="text-gray-500 hover:text-gray-700 transition"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
                 >
-                  ← Back
+                  <HiChevronLeft className="text-lg" />
+                  Back
                 </button>
 
                 {/* Next */}
                 <button
                   disabled={!selectedProperty}
-                  className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
+                  className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
     ${
       selectedProperty
         ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
         : "bg-gray-200 text-gray-400 cursor-not-allowed"
     }`}
                 >
-                  Next →
+                  Next
+                  <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             </div>
@@ -472,23 +477,25 @@ export default function Hero() {
                 {/* Back */}
                 <button
                   onClick={() => setStep(4)}
-                  className="text-sm text-gray-500 hover:text-gray-700"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
                 >
-                  ← Back
+                  <HiChevronLeft className="text-lg" />
+                  Back
                 </button>
 
                 {/* Next */}
                 <button
                   onClick={() => setStep(6)}
                   disabled={selectedProducts.length === 0}
-                  className={`px-4 py-2 rounded-lg text-sm flex items-center gap-1 transition
-          ${
-            selectedProducts.length > 0
-              ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
-          }`}
+                  className={`group px-5 py-3 rounded-lg text-medium flex items-center gap-1 transition
+    ${
+      selectedProducts.length > 0
+        ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
+        : "bg-gray-200 text-gray-400 cursor-not-allowed"
+    }`}
                 >
-                  Next →
+                  Next
+                  <HiChevronRight className="text-base transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             </div>
@@ -531,29 +538,33 @@ export default function Hero() {
               />
 
               {/* Bottom Buttons */}
-              <div className="flex justify-between items-center mt-12">
-                {/* Back */}
-                <button
-                  onClick={() => setStep(5)}
-                  className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
-                >
-                  ← Back
-                </button>
+             <div className="flex items-center justify-between mt-12">
+  
+  {/* Back */}
+  <button
+    onClick={() => setStep(5)}
+    className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+  >
+    <HiChevronLeft className="text-lg" />
+    Back
+  </button>
 
-                {/* Next */}
-                <button
-                  onClick={() => setStep(7)}
-                  disabled={fullName.trim() === ""}
-                  className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
-          ${
-            fullName.trim()
-              ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
-          }`}
-                >
-                  Next →
-                </button>
-              </div>
+  {/* Next */}
+  <button
+    onClick={() => setStep(7)}
+    disabled={fullName.trim() === ""}
+    className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+      ${
+        fullName.trim()
+          ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
+          : "bg-gray-200 text-gray-400 cursor-not-allowed"
+      }`}
+  >
+    Next
+    <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+  </button>
+
+</div>
             </div>
           )}
           {step === 7 && (
@@ -658,137 +669,162 @@ export default function Hero() {
               </p>
 
               {/* Bottom Buttons */}
-              <div className="flex justify-between items-center mt-12">
-                {/* Back */}
-                <button
-                  onClick={() => setStep(6)}
-                  className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
-                >
-                  ← Back
-                </button>
+             <div className="flex items-center justify-between mt-12">
+  
+  {/* Back */}
+  <button
+    onClick={() => setStep(6)}
+    className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+  >
+    <HiChevronLeft className="text-lg" />
+    Back
+  </button>
 
-                {/* Next */}
-                <button
-                  onClick={() => setStep(8)}
-                  disabled={!isValidPhone(phone, country)}
-                  className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
-    ${
-      isValidPhone(phone, country)
-        ? "bg-[#0B7D69] text-white"
-        : "bg-gray-200 text-gray-400 cursor-not-allowed"
-    }`}
-                >
-                  Next →
-                </button>
-              </div>
+  {/* Next */}
+  <button
+    onClick={() => setStep(8)}
+    disabled={!isValidPhone(phone, country)}
+    className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+      ${
+        isValidPhone(phone, country)
+          ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
+          : "bg-gray-200 text-gray-400 cursor-not-allowed"
+      }`}
+  >
+    Next
+    <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+  </button>
+
+</div>
             </div>
           )}
           {step === 8 && (
-            <div className="bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
-              {/* Top */}
-              <div className="flex justify-between text-sm text-gray-500">
-                <span>Question 6 of 6</span>
-                <span className="text-[#0B7D69] font-medium">100%</span>
-              </div>
+  <div className="bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
 
-              {/* Progress */}
-              <div className="w-full bg-gray-200 h-2 rounded-full mt-2 mb-8">
-                <div className="bg-[#0B7D69] h-2 w-full rounded-full"></div>
-              </div>
+    {/* Top */}
+    <div className="flex justify-between text-sm text-gray-500">
+      <span>Question 6 of 6</span>
+      <span className="text-[#0B7D69] font-medium">100%</span>
+    </div>
 
-              {/* Title */}
-              <h2 className="text-[30px] font-semibold text-gray-800 mb-2">
-                What's your email?
-              </h2>
-              <p className="text-gray-500 mb-10">
-                Optional - for sending you detailed quotes
-              </p>
+    {/* Progress */}
+    <div className="w-full bg-gray-200 h-2 rounded-full mt-2 mb-8">
+      <div className="bg-[#0B7D69] h-2 w-full rounded-full"></div>
+    </div>
 
-              {/* Input */}
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  setEmail(value);
+    {/* Title */}
+    <h2 className="text-[30px] font-semibold text-gray-800 mb-2">
+      What's your email?
+    </h2>
+    <p className="text-gray-500 mb-10">
+      Optional - for sending you detailed quotes
+    </p>
 
-                  if (value === "" || isValidEmail(value)) {
-                    setError("");
-                  } else {
-                    setError("Please enter a valid email address");
-                  }
-                }}
-                placeholder="your@email.com"
-                className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
-    ${error ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"}
-    text-gray-800 placeholder-gray-400`}
-              />
+    {/* Input */}
+    <div className="flex flex-col w-full">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => {
+          const value = e.target.value;
+          setEmail(value);
 
-              {/* Error Message */}
-              {error && (
-                <p className="text-red-500 text-xs font-medium mt-1">{error}</p>
-              )}
+          if (value.length > 0 && !isValidEmail(value)) {
+            setError("Please enter a valid email address");
+          } else {
+            setError("");
+          }
+        }}
+        placeholder="your@email.com"
+        className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none transition
+          ${
+            error
+              ? "border-red-500"
+              : "border-gray-200 focus:border-[#0B7D69]"
+          }
+          text-gray-800 placeholder-gray-400`}
+      />
 
-              {/* Bottom Buttons */}
-              <div className="flex justify-between items-center mt-12">
-                {/* Back */}
-                <button
-                  onClick={() => setStep(7)}
-                  className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
-                >
-                  ← Back
-                </button>
+      {/* Error */}
+      {error && (
+        <p className="text-red-500 text-xs font-medium mt-2 text-center">
+          {error}
+        </p>
+      )}
+    </div>
 
-                <button
-                  disabled={loading || !isValidEmail(email)}
-                  onClick={async () => {
-                    setLoading(true);
+    {/* Bottom Buttons */}
+    <div className="flex items-center justify-between mt-12">
 
-                    const formData = {
-                      fullName,
-                      phone,
-                      email,
-                      selectedProperty,
-                      selectedProducts,
-                      projectType: selected,
-                      country,
-                    };
+      {/* Back */}
+      <button
+        onClick={() => setStep(7)}
+        className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+      >
+        <HiChevronLeft className="text-lg" />
+        Back
+      </button>
 
-                    try {
-                      const res = await fetch("/api/send-email", {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(formData),
-                      });
+      {/* Submit */}
+      <button
+        disabled={loading || !isValidEmail(email)}
+        onClick={async () => {
+          setLoading(true);
 
-                      const data = await res.json();
+          const formData = {
+            fullName,
+            phone,
+            email,
+            selectedProperty,
+            selectedProducts,
+            projectType: selected,
+            country,
+          };
 
-                      if (data.success) {
-                        setStep(9);
-                      } else {
-                        alert("Failed to send email");
-                      }
-                    } catch (err) {
-                      console.error(err);
-                      alert("Error occurred");
-                    }
+          try {
+            const res = await fetch("/api/send-email", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
 
-                    setLoading(false);
-                  }}
-                  className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
-    ${
-      isValidEmail(email)
-        ? "bg-[#0B7D69] text-white"
-        : "bg-gray-200 text-gray-400 cursor-not-allowed"
-    }`}
-                >
-                  {loading ? "Sending..." : "Submit →"}
-                </button>
-              </div>
-            </div>
-          )}
+            const data = await res.json();
+
+            if (data.success) {
+              setStep(9);
+            } else {
+              alert("Failed to send email");
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Error occurred");
+          }
+
+          setLoading(false);
+        }}
+        className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+          ${
+            isValidEmail(email)
+              ? "bg-[#0B7D69] text-white hover:bg-[#09695a]"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+          }`}
+      >
+        {loading ? (
+          "Sending..."
+        ) : (
+          <>
+            Submit
+            <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+          </>
+        )}
+      </button>
+
+    </div>
+
+  </div>
+)}
           {step === 9 && (
             <div className="bg-white px-10 py-2 rounded-2xl shadow-lg text-center max-w-lg mx-auto">
               {/* Success Icon */}
