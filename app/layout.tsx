@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Exo, Barlow } from "next/font/google";
+import CookieBanner from "../components/CookieBannner";
 
 const exo = Exo({
   subsets: ["latin"],

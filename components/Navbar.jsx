@@ -120,7 +120,7 @@ export default function Navbar() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 py-4 relative">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0 absolute left-1/2 -translate-x-1/2 md:static">
+          <div className="flex items-center flex-shrink-0 absolute left-1/2 -translate-x-1/2  md:static md:translate-x-0">
             <Link href="/" className="flex items-center">
               {/* Desktop Logo */}
               <Image
