@@ -9,6 +9,7 @@ import { IoGlassesOutline } from "react-icons/io5";
 import {
   HiOutlineChatBubbleLeft,
   HiOutlineWrenchScrewdriver,
+  HiChevronDown,
   HiCheck,
   HiOutlineArrowRight,
   HiOutlineBuildingOffice2, // Apartment
@@ -517,7 +518,14 @@ export default function Hero() {
               <input
                 type="text"
                 value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+
+                  // allow only letters and spaces
+                  if (!/^[a-zA-Z\s]*$/.test(value)) return;
+
+                  setFullName(value);
+                }}
                 placeholder="Enter your full name"
                 className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69] text-gray-800 placeholder-gray-400"
               />
@@ -584,7 +592,7 @@ export default function Hero() {
                     className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
                   >
                     <span className="text-sm text-gray-700">AE {country}</span>
-                    <span>⌄</span>
+                    <HiChevronDown className="text-sm text-gray-500" />
                   </div>
 
                   {/* Dropdown List */}

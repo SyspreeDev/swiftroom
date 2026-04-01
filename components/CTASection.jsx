@@ -10,6 +10,7 @@ import {
   HiOutlineWrenchScrewdriver,
   HiCheck,
   HiArrowRight,
+  HiChevronDown,
   HiOutlineBuildingOffice2, // Apartment
   HiOutlineHome, // Villa
   HiOutlineBuildingStorefront, // Commercial
@@ -185,7 +186,9 @@ export default function CTASection() {
               </div>
 
               {/* RIGHT ARROW */}
-              <span className="text-lg sm:text-xl"><HiArrowRight /></span>
+              <span className="text-lg sm:text-xl">
+                <HiArrowRight />
+              </span>
             </div>
 
             {/* OR Divider */}
@@ -217,7 +220,9 @@ export default function CTASection() {
               </div>
 
               {/* RIGHT ARROW */}
-              <span className="text-lg sm:text-xl text-[#0B7D69]"><HiArrowRight /></span>
+              <span className="text-lg sm:text-xl text-[#0B7D69]">
+                <HiArrowRight />
+              </span>
             </div>
           </div>
         )}
@@ -524,7 +529,14 @@ export default function CTASection() {
             <input
               type="text"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+
+                // allow only letters and spaces
+                if (!/^[a-zA-Z\s]*$/.test(value)) return;
+
+                setFullName(value);
+              }}
               placeholder="Enter your full name"
               className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69] text-gray-800 placeholder-gray-400"
             />
@@ -585,7 +597,7 @@ export default function CTASection() {
                   className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
                 >
                   <span className="text-sm text-gray-700">AE {country}</span>
-                  <span>⌄</span>
+                  <HiChevronDown className="text-sm text-gray-500" />
                 </div>
 
                 {/* Dropdown List */}
