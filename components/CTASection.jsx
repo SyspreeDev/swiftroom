@@ -578,133 +578,135 @@ export default function CTASection() {
             </div>
           </div>
         )}
-         {step === 7 && (
-            <div
-              className="bg-white 
+        {step === 7 && (
+          <div
+            className="bg-white 
                 px-4 py-6 sm:px-6 sm:py-8 
                 rounded-2xl shadow-lg 
                 max-w-xs sm:max-w-md md:max-w-3xl 
                 mx-auto"
-            >
-              {/* Top */}
-              <div className="flex justify-between text-sm text-gray-500">
-                <span>Question 5 of 6</span>
-                <span className="text-[#0B7D69] font-medium">83%</span>
-              </div>
+          >
+            {/* Top */}
+            <div className="flex justify-between text-sm text-gray-500">
+              <span>Question 5 of 6</span>
+              <span className="text-[#0B7D69] font-medium">83%</span>
+            </div>
 
-              {/* Progress */}
-              <div className="w-full bg-gray-200 h-2 rounded-full mt-2 mb-8">
-                <div className="bg-[#0B7D69] h-2 w-[83%] rounded-full"></div>
-              </div>
+            {/* Progress */}
+            <div className="w-full bg-gray-200 h-2 rounded-full mt-2 mb-8">
+              <div className="bg-[#0B7D69] h-2 w-[83%] rounded-full"></div>
+            </div>
 
-              {/* Title */}
-              <h2 className="text-[30px] font-semibold text-gray-800 mb-2">
-                What's your phone number?
-              </h2>
-              <p className="text-gray-500 mb-8">
-                We'll use this to send you your quote
-              </p>
+            {/* Title */}
+            <h2 className="text-[30px] font-semibold text-gray-800 mb-2">
+              What's your phone number?
+            </h2>
+            <p className="text-gray-500 mb-8">
+              We'll use this to send you your quote
+            </p>
 
-              {/* Inputs */}
-              <div className="flex flex-col sm:flex-row gap-4 relative">
-                {/* Country Dropdown */}
-                <div className="relative w-full sm:w-[220px]">
-                  <div
-                    onClick={() => setOpenDropdown(!openDropdown)}
-                    className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
-                  >
-                    <span className="text-sm text-gray-700">AE {country}</span>
-                    <HiChevronDown className="text-sm text-gray-500" />
-                  </div>
-
-                  {/* Dropdown List */}
-                  {openDropdown && (
-                    <div className="absolute top-full mt-2 w-full bg-white border rounded-xl shadow-lg z-50 max-h-60 overflow-y-auto">
-                      {countries.map((c, i) => (
-                        <div
-                          key={i}
-                          onClick={() => {
-                            setCountry(c);
-                            setOpenDropdown(false);
-                          }}
-                          className="px-4 py-3 text-sm hover:bg-[#0B7D69] hover:text-white cursor-pointer"
-                        >
-                          {c}
-                        </div>
-                      ))}
-                    </div>
-                  )}
+            {/* Inputs */}
+            <div className="flex flex-col sm:flex-row gap-4 relative">
+              {/* Country Dropdown */}
+              <div className="relative w-full sm:w-[220px]">
+                <div
+                  onClick={() => setOpenDropdown(!openDropdown)}
+                  className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
+                >
+                  <span className="text-sm text-gray-700">AE {country}</span>
+                  <HiChevronDown className="text-sm text-gray-500" />
                 </div>
 
+                {/* Dropdown List */}
+                {openDropdown && (
+                  <div className="absolute top-full mt-2 w-full bg-white border rounded-xl shadow-lg z-50 max-h-60 overflow-y-auto">
+                    {countries.map((c, i) => (
+                      <div
+                        key={i}
+                        onClick={() => {
+                          setCountry(c);
+                          setOpenDropdown(false);
+                        }}
+                        className="px-4 py-3 text-sm hover:bg-[#0B7D69] hover:text-white cursor-pointer"
+                      >
+                        {c}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Phone Input */}
+              <div className="flex flex-col w-full">
                 {/* Phone Input */}
-                <div className="flex flex-col w-full">
-                  {/* Phone Input */}
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => {
-                      const value = e.target.value;
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => {
+                    const value = e.target.value;
 
-                      if (!/^\d*$/.test(value)) return;
+                    if (!/^\d*$/.test(value)) return;
 
-                      setPhone(value);
+                    setPhone(value);
 
-                      if (value === "" || isValidPhone(value, country)) {
-                        setPhoneError("");
-                      } else {
-                        const code = getCode(country);
-                        setPhoneError(
-                          `Enter valid ${phoneRules[code]} digit number`,
-                        );
-                      }
-                    }}
-                    placeholder="Enter phone number"
-                    className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
+                    if (value === "" || isValidPhone(value, country)) {
+                      setPhoneError("");
+                    } else {
+                      const code = getCode(country);
+                      setPhoneError(
+                        `Enter valid ${phoneRules[code]} digit number`,
+                      );
+                    }
+                  }}
+                  placeholder="Enter phone number"
+                  className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
       ${
         phoneError ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"
       }`}
-                  />
+                />
 
-                  {/* Centered Error */}
-                  {/* {phoneError && (
+                {/* Centered Error */}
+                {/* {phoneError && (
                     <p className="text-red-500 text-xs mt-2 text-center">
                       {phoneError}
                     </p>
                   )} */}
-                </div>
-              </div>
-
-              {/* Helper Text */}
-              <p className="text-xs text-gray-400">
-                Enter digits without country code
-              </p>
-
-              {/* Bottom Buttons */}
-              <div className="flex justify-between items-center mt-12">
-                {/* Back */}
-                <button
-                  onClick={() => setStep(6)}
-                  className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
-                >
-                  ← Back
-                </button>
-
-                {/* Next */}
-                <button
-                  onClick={() => setStep(8)}
-                  disabled={!isValidPhone(phone, country)}
-                  className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
-    ${
-      isValidPhone(phone, country)
-        ? "bg-[#0B7D69] text-white"
-        : "bg-gray-200 text-gray-400 cursor-not-allowed"
-    }`}
-                >
-                  Next →
-                </button>
               </div>
             </div>
-          )}
+
+            {/* Helper Text */}
+            <p className="text-xs text-gray-400">
+              Enter digits without country code
+            </p>
+
+            {/* Bottom Buttons */}
+            <div className="flex items-center justify-between mt-12">
+              {/* Back */}
+              <button
+                onClick={() => setStep(6)}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 transition"
+              >
+                <HiChevronLeft className="text-lg" />
+                Back
+              </button>
+
+              {/* Next */}
+              <button
+                onClick={() => setStep(8)}
+                disabled={!isValidPhone(phone, country)}
+                className={`group px-6 py-3 rounded-xl flex items-center gap-2 transition
+      ${
+        isValidPhone(phone, country)
+          ? "bg-[#0B7D69] text-white hover:bg-[#096b5a]"
+          : "bg-gray-200 text-gray-400 cursor-not-allowed"
+      }`}
+              >
+                Next
+                <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
+          </div>
+        )}
         {step === 8 && (
           <div className="bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
             {/* Top */}
@@ -812,7 +814,7 @@ export default function CTASection() {
                 ) : (
                   <>
                     Submit
-                    <HiArrowRight className="text-lg transition-transform group-hover:translate-x-1" />
+                    <HiChevronRight className="text-lg transition-transform group-hover:translate-x-1" />
                   </>
                 )}
               </button>
