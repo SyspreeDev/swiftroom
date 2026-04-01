@@ -2,6 +2,7 @@
 
 import { FaArrowRight, FaHardHat } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FiArrowRight } from "react-icons/fi";
 import { DoorOpen, DoorClosed, LayoutGrid } from "lucide-react";
 import { IoGlassesOutline } from "react-icons/io5";
 import { useState } from "react";
@@ -159,9 +160,12 @@ export default function CTASection() {
               duration: 1,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="bg-[#0B7D69] text-white px-10 py-5 rounded-2xl"
+            className="bg-[#0B7D69] text-white font-medium md:text-xl 
+             px-10 py-5 rounded-2xl 
+             flex items-center gap-3 mx-auto shadow-lg hover:bg-[#09695a] transition"
           >
             Start Your Swiftrooms Journey
+            <FiArrowRight className="text-2xl" />
           </motion.button>
         )}
         {step === 2 && (
