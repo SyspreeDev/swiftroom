@@ -85,6 +85,27 @@ export default function Navbar() {
     },
   };
 
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08, // controls one-by-one speed
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.25,
+        ease: "linear", // no lag, smooth
+      },
+    },
+  };
+
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -97,16 +118,26 @@ export default function Navbar() {
     >
       {/* ================= MAIN NAV ================= */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 py-3">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 py-4 relative">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0">
-            <Link href="/">
+          <div className="flex items-center flex-shrink-0 absolute left-1/2 -translate-x-1/2 md:static">
+            <Link href="/" className="flex items-center">
+              {/* Desktop Logo */}
               <Image
                 src="/images/logo.png"
                 alt="SwiftRooms"
                 width={180}
                 height={50}
-                className="object-contain"
+                className="object-contain hidden md:block"
+              />
+
+              {/* Mobile Logo */}
+              <Image
+                src="/images/circle.png"
+                alt="SwiftRooms"
+                width={48}
+                height={40}
+                className="object-contain block md:hidden"
               />
             </Link>
           </div>
@@ -122,12 +153,12 @@ export default function Navbar() {
                   href={href}
                   variants={itemVariants}
                   className={`px-3 py-2 transition-all duration-300
-                    ${
-                      pathname === href
-                        ? "bg-[#E6F4F1] text-[#0B6F63]"
-                        : "text-gray-700 hover:bg-[#E6F4F1] hover:text-[#0B6F63]"
-                    }
-                  `}
+            ${
+              pathname === href
+                ? "bg-[#E6F4F1] text-[#0B6F63]"
+                : "text-gray-700 hover:bg-[#E6F4F1] hover:text-[#0B6F63]"
+            }
+          `}
                 >
                   {item.name}
                 </motion.a>
@@ -147,17 +178,15 @@ export default function Navbar() {
             </Link>
           </motion.div>
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden text-gray-800"
+            className="md:hidden ml-auto text-[#09695a]"
           >
-            {open ? <X size={26} /> : <Menu size={26} />}
+            {open ? <X size={26} /> : <Menu size={35} />}
           </button>
         </div>
 
-        {/* ================= MOBILE MENU ================= */}
-        {/* ================= MOBILE MENU ================= */}
         {/* ================= MOBILE MENU ================= */}
 
         {open && (
@@ -168,17 +197,34 @@ export default function Navbar() {
             className="fixed inset-0 bg-white z-50 md:hidden flex flex-col justify-between"
           >
             {/* TOP */}
-            <div className="relative flex items-center px-6 py-6">
+            <div className="relative flex items-center px-6 py-4">
               {/* CENTER LOGO */}
-              <div className="absolute left-1/2 -translate-x-1/2">
+              {/* CENTER LOGO */}
+              <motion.div
+                initial={{ rotate: 0, opacity: 1 }}
+                animate={
+                  open
+                    ? {
+                        rotate: 12, // slight tilt right
+                      }
+                    : {
+                        rotate: 0,
+                        opacity: 1, // appear back
+                      }
+                }
+                transition={{
+                  duration: 0.25,
+                  ease: "linear", // no weird slowdown
+                }}
+                className="absolute left-1/2 -translate-x-1/2"
+              >
                 <Image
-                  src="/images/logo-circle.png"
+                  src="/images/circle.png"
                   alt="logo"
                   width={50}
                   height={40}
                 />
-              </div>
-
+              </motion.div>
               {/* CLOSE BUTTON (RIGHT) */}
               <div className="ml-auto">
                 <button onClick={() => setOpen(false)}>
@@ -189,15 +235,12 @@ export default function Navbar() {
 
             {/* MENU CENTER */}
             <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.12, // 👈 controls delay between items
-                  },
-                },
+              initial={{ x: -40, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -40, opacity: 0 }}
+              transition={{
+                duration: 0.28,
+                ease: "linear", // constant smooth motion (no slowdown)
               }}
               className="flex flex-col items-center justify-center gap-4 text-xl font-medium text-gray-300"
             >
@@ -205,44 +248,40 @@ export default function Navbar() {
                 const href = isHome ? `#${item.id}` : `/#${item.id}`;
 
                 return (
-                  <motion.a
+                  <a
                     key={item.name}
                     href={href}
                     onClick={() => setOpen(false)}
-                    variants={{
-                      hidden: { x: -60, opacity: 0 },
-                      visible: {
-                        x: 0,
-                        opacity: 1,
-                        transition: {
-                          duration: 0.6, // slower
-                         ease: "linear", // smooth cubic-bezier
-                        },
-                      },
-                    }}
                     className={`pb-1 border-b transition
-  ${
-    active === item.id
-      ? "text-[#0B7D69]  border-[#0B7D69]"
-      : "text-gray-800 border-gray-300 hover:text-[#0B7D69]"
-  }
-`}
+          ${
+            active === item.id
+              ? "text-[#0B7D69] border-[#0B7D69]"
+              : "text-gray-800 border-gray-300 hover:text-[#0B7D69]"
+          }
+        `}
                   >
                     {item.name}
-                  </motion.a>
+                  </a>
                 );
               })}
             </motion.div>
 
             {/* BOTTOM */}
-            <div className="text-center text-xs text-gray-500 pb-6 px-6 space-y-2">
-              <p>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={container}
+              className="text-center text-xs text-gray-500 pb-6 px-6 space-y-2"
+            >
+              <motion.p variants={item}>
                 Dubai’s trusted aluminium windows and doors specialist since
                 2009
-              </p>
-              <p>hello@swiftrooms.ae</p>
-              <p>050 526 9149</p>
-            </div>
+              </motion.p>
+
+              <motion.p variants={item}>hello@swiftrooms.ae</motion.p>
+
+              <motion.p variants={item}>050 526 9149</motion.p>
+            </motion.div>
           </motion.div>
         )}
       </div>

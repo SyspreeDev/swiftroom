@@ -48,6 +48,32 @@ export default function CTASection() {
     "+44 - UK",
     "+1 - USA/Canada",
   ];
+  const getCode = (country) => {
+    return country.split(" - ")[0]; // "+971"
+  };
+  const phoneRules = {
+    "+971": 9,
+    "+966": 9,
+    "+974": 8,
+    "+965": 8,
+    "+973": 8,
+    "+968": 8,
+    "+91": 10,
+    "+92": 10,
+    "+20": 10,
+    "+44": 10,
+    "+1": 10,
+  };
+
+  const isValidPhone = (phone, country) => {
+    const code = getCode(country);
+    const requiredLength = phoneRules[code];
+
+    if (!requiredLength) return true;
+
+    return phone.length === requiredLength && /^[0-9]+$/.test(phone);
+  };
+
   const toggleProduct = (item) => {
     if (selectedProducts.includes(item)) {
       setSelectedProducts(selectedProducts.filter((p) => p !== item));
@@ -56,6 +82,12 @@ export default function CTASection() {
     }
   };
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const isValidEmail = (email) => {
+    let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  };
 
   return (
     <section id="cta" className="py-20 px-6 relative overflow-x-hidden">
@@ -573,23 +605,47 @@ export default function CTASection() {
               <input
                 type="tel"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+
+                  // allow only numbers
+                  if (!/^\d*$/.test(value)) return;
+
+                  setPhone(value);
+
+                  if (value === "" || isValidPhone(value, country)) {
+                    setPhoneError("");
+                  } else {
+                    const code = getCode(country);
+                    setPhoneError(
+                      `Enter valid ${phoneRules[code]} digit number`,
+                    );
+                  }
+                }}
                 placeholder="Enter phone number"
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69]"
+                className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
+    ${
+      phoneError ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"
+    }`}
               />
+              {phoneError && (
+                <p className="text-red-500 text-xs font-medium mt-1">
+                  {phoneError}
+                </p>
+              )}
             </div>
 
             {/* Helper Text */}
             <p className="text-xs text-gray-400 mt-2">
-              Enter 9 digits without country code
+              Enter digits without country code
             </p>
 
             {/* Bottom Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:justify-between sm:items-center mt-12">
+            <div className="flex justify-between items-center mt-12">
               {/* Back */}
               <button
                 onClick={() => setStep(6)}
-                className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
+                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
               >
                 ← Back
               </button>
@@ -597,13 +653,13 @@ export default function CTASection() {
               {/* Next */}
               <button
                 onClick={() => setStep(8)}
-                disabled={phone.length < 9}
-                className={`w-full sm:w-auto px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition
-      ${
-        phone.length >= 9
-          ? "bg-[#0B7D69] text-white"
-          : "bg-gray-200 text-gray-400 cursor-not-allowed"
-      }`}
+                disabled={!isValidPhone(phone, country)}
+                className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
+    ${
+      isValidPhone(phone, country)
+        ? "bg-[#0B7D69] text-white"
+        : "bg-gray-200 text-gray-400 cursor-not-allowed"
+    }`}
               >
                 Next →
               </button>
@@ -611,7 +667,7 @@ export default function CTASection() {
           </div>
         )}
         {step === 8 && (
-          <div className="bg-white p-10 rounded-2xl shadow-lg max-w-2xl mx-auto">
+          <div className="bg-white p-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
             {/* Top */}
             <div className="flex justify-between text-sm text-gray-500">
               <span>Question 6 of 6</span>
@@ -635,10 +691,26 @@ export default function CTASection() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setEmail(value);
+
+                if (value === "" || isValidEmail(value)) {
+                  setError("");
+                } else {
+                  setError("Please enter a valid email address");
+                }
+              }}
               placeholder="your@email.com"
-              className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69] text-gray-800 placeholder-gray-400"
+              className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
+    ${error ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"}
+    text-gray-800 placeholder-gray-400`}
             />
+
+            {/* Error Message */}
+            {error && (
+              <p className="text-red-500 text-xs font-medium mt-1">{error}</p>
+            )}
 
             {/* Bottom Buttons */}
             <div className="flex justify-between items-center mt-12">
@@ -650,9 +722,8 @@ export default function CTASection() {
                 ← Back
               </button>
 
-              {/* Submit */}
               <button
-                disabled={loading}
+                disabled={loading || !isValidEmail(email)}
                 onClick={async () => {
                   setLoading(true);
 
@@ -689,7 +760,12 @@ export default function CTASection() {
 
                   setLoading(false);
                 }}
-                className="px-6 py-3 rounded-xl bg-[#0B7D69] text-white flex items-center gap-2"
+                className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
+    ${
+      isValidEmail(email)
+        ? "bg-[#0B7D69] text-white"
+        : "bg-gray-200 text-gray-400 cursor-not-allowed"
+    }`}
               >
                 {loading ? "Sending..." : "Submit →"}
               </button>
