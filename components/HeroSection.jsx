@@ -607,39 +607,45 @@ export default function Hero() {
                 </div>
 
                 {/* Phone Input */}
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => {
-                    const value = e.target.value;
+                <div className="flex flex-col w-full">
+                  {/* Phone Input */}
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => {
+                      const value = e.target.value;
 
-                    // allow only numbers
-                    if (!/^\d*$/.test(value)) return;
+                      if (!/^\d*$/.test(value)) return;
 
-                    setPhone(value);
+                      setPhone(value);
 
-                    if (value === "" || isValidPhone(value, country)) {
-                      setPhoneError("");
-                    } else {
-                      const code = getCode(country);
-                      setPhoneError(
-                        `Enter valid ${phoneRules[code]} digit number`,
-                      );
-                    }
-                  }}
-                  placeholder="Enter phone number"
-                  className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
-    ${
-      phoneError ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"
-    }`}
-                />
-                {phoneError && (
-                  <p className="text-red-500 text-xs font-medium mt-1">{phoneError}</p>
-                )}
+                      if (value === "" || isValidPhone(value, country)) {
+                        setPhoneError("");
+                      } else {
+                        const code = getCode(country);
+                        setPhoneError(
+                          `Enter valid ${phoneRules[code]} digit number`,
+                        );
+                      }
+                    }}
+                    placeholder="Enter phone number"
+                    className={`w-full px-5 py-4 rounded-xl border bg-gray-50 focus:outline-none
+      ${
+        phoneError ? "border-red-500" : "border-gray-200 focus:border-[#0B7D69]"
+      }`}
+                  />
+
+                  {/* Centered Error */}
+                  {phoneError && (
+                    <p className="text-red-500 text-xs mt-2 text-center">
+                      {phoneError}
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Helper Text */}
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-gray-400">
                 Enter digits without country code
               </p>
 
@@ -711,7 +717,9 @@ export default function Hero() {
               />
 
               {/* Error Message */}
-              {error && <p className="text-red-500 text-xs font-medium mt-1">{error}</p>}
+              {error && (
+                <p className="text-red-500 text-xs font-medium mt-1">{error}</p>
+              )}
 
               {/* Bottom Buttons */}
               <div className="flex justify-between items-center mt-12">
