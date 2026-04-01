@@ -754,7 +754,8 @@ export default function CTASection() {
             )}
 
             {/* Bottom Buttons */}
-            <div className="flex justify-between items-center mt-12">
+            <div className="flex items-center justify-between gap-4 mt-12">
+              {/* Back */}
               {/* Back */}
               <button
                 onClick={() => setStep(7)}
@@ -763,7 +764,6 @@ export default function CTASection() {
                 <HiChevronLeft className="text-lg" />
                 Back
               </button>
-
               <button
                 disabled={loading || !isValidEmail(email)}
                 onClick={async () => {
