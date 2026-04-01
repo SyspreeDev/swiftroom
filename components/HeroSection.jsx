@@ -544,9 +544,9 @@ export default function Hero() {
               </p>
 
               {/* Inputs */}
-              <div className="flex gap-4 relative">
+              <div className="flex flex-col sm:flex-row gap-4 relative">
                 {/* Country Dropdown */}
-                <div className="relative w-[220px]">
+                <div className="relative w-full sm:w-[220px]">
                   <div
                     onClick={() => setOpenDropdown(!openDropdown)}
                     className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
@@ -580,7 +580,7 @@ export default function Hero() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Enter phone number"
-                  className="flex-1 px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69]"
+                  className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69]"
                 />
               </div>
 

@@ -539,9 +539,9 @@ export default function CTASection() {
             </p>
 
             {/* Inputs */}
-            <div className="flex gap-4 relative">
+            <div className="flex flex-col sm:flex-row gap-4 relative">
               {/* Country Dropdown */}
-              <div className="relative w-[220px]">
+              <div className="relative w-full sm:w-[220px]">
                 <div
                   onClick={() => setOpenDropdown(!openDropdown)}
                   className="px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 flex justify-between items-center cursor-pointer"
@@ -575,7 +575,7 @@ export default function CTASection() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Enter phone number"
-                className="flex-1 px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69]"
+                className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-[#0B7D69]"
               />
             </div>
 
@@ -585,11 +585,11 @@ export default function CTASection() {
             </p>
 
             {/* Bottom Buttons */}
-            <div className="flex justify-between items-center mt-12">
+            <div className="flex flex-col sm:flex-row gap-4 sm:justify-between sm:items-center mt-12">
               {/* Back */}
               <button
                 onClick={() => setStep(6)}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
               >
                 ← Back
               </button>
@@ -598,12 +598,12 @@ export default function CTASection() {
               <button
                 onClick={() => setStep(8)}
                 disabled={phone.length < 9}
-                className={`px-6 py-3 rounded-xl flex items-center gap-2 transition
-          ${
-            phone.length >= 9
-              ? "bg-[#0B7D69] text-white"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
-          }`}
+                className={`w-full sm:w-auto px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition
+      ${
+        phone.length >= 9
+          ? "bg-[#0B7D69] text-white"
+          : "bg-gray-200 text-gray-400 cursor-not-allowed"
+      }`}
               >
                 Next →
               </button>
