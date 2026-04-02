@@ -98,13 +98,13 @@ export default function ProductSlider() {
           ease: [0.22, 1, 0.36, 1], // ✅ smoother easing
         }}
         viewport={{ once: true, amount: 0.3 }}
-        className="text-center mb-12 z-10 relative"
+        className="text-center mb-4 md:mb-12 z-10 relative"
       >
-        <h2 className="md:text-4xl text-3xl font-medium">
+        <h2 className="text-lg md:text-4xl font-medium">
           Our Premium Products
         </h2>
 
-        <p className="text-gray-700 text-xl mt-2">
+        <p className="text-gray-700 text-xs md:text-xl mt-2">
           High-quality aluminum and UPVC solutions for UAE's climate
         </p>
       </motion.div>
@@ -122,7 +122,7 @@ export default function ProductSlider() {
         className="relative max-w-7xl mx-auto"
       >
         {/* ================= MOBILE SLIDER ================= */}
-        <div className="block md:hidden px-2 py-12">
+        <div className="block md:hidden px-4 py-0 md:px-2 md:py-12">
           <Swiper
             modules={[Pagination, Autoplay]}
             slidesPerView={1.2} // 👈 peek effect

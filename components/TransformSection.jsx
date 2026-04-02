@@ -80,7 +80,7 @@ export default function TransformSection() {
         {/* Title */}
         <h2
           className="
-    text-2xl sm:text-3xl md:text-4xl
+    text-xl md:text-3xl md:text-4xl
     font-bold
     text-gray-900
     leading-snug
@@ -93,7 +93,7 @@ export default function TransformSection() {
         <p
           className="
     text-gray-600
-    text-sm sm:text-base md:text-lg
+    text-xs sm:text-base md:text-lg
     mt-2 sm:mt-3
     max-w-xl mx-auto
   "
@@ -104,6 +104,35 @@ export default function TransformSection() {
       </motion.div>
       {/* Cards */}
       <div className="max-w-6xl mx-auto relative z-10">
+        <div class="lg:hidden text-center mb-3">
+          <p class="font-['Barlow',sans-serif] text-xs text-gray-400 flex items-center justify-center gap-1.5 animate-pulse">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 8L22 12L18 16M6 8L2 12L6 16"></path>
+            </svg>
+            Swipe to explore
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 8L22 12L18 16M6 8L2 12L6 16"></path>
+            </svg>
+          </p>
+        </div>
         {/* Mobile Slider */}
         <div className="block md:hidden">
           <Swiper
